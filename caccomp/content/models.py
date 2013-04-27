@@ -30,7 +30,7 @@ class Post( models.Model ):
 	'''
 
 	title = models.CharField( max_length = 255 )
-	datePost = models.DateTimePost( auto_now_add = True )
+	datePost = models.DateTimeField( auto_now_add = True )
 	content = models.TextField()
 
 	user = models.ForeignKey( User )
