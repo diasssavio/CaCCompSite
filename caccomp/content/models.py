@@ -60,13 +60,40 @@ class Keyword( models.Model ):
 		pass
 
 class Galery( models.Model ):
+	'''
+	Model que representa a tabela de galerias
+	'''
+
+	post = models.OneToOneField( Post )
 	pass
 
 class Document( models.Model ):
+	'''
+	Model que representa a tabela de documentos
+	'''
+
+	legend = models.CharField( max_length = 45 )
+	path = models.CharField( max_length = 255 )
+	is_img = models.BooleanField()
+	galery = models.ForeignKey( Galery, null = True, default = None )
+	post = models.ForeignKey( Post, null = True, default = None )
 	pass
 
 class News( models.Model ):
+	'''
+	Model que representa a tabela de notícias
+	'''
+
+	content = models.CharField( max_length = 45 )
+	categoryNews = models.ForeignKey( 'CategoryNews' )
+	post = models.OneToOneField( Post )
 	pass
 
 class CategoryNews( models.Model ):
+	'''
+	Model que representa a tabela de categoria de notícias
+	'''
+
+	name = models.CharField( max_length = 45 )
+	description = models.CharField( max_length = 255 )
 	pass
