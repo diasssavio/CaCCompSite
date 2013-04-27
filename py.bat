@@ -1,0 +1,2 @@
+cd caccomp
+start cmd
