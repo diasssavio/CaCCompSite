@@ -65,7 +65,14 @@ class Galery( models.Model ):
 	'''
 
 	post = models.OneToOneField( Post )
-	pass
+
+	def __unicode__( self ):
+		'''
+		Metodo que formata a mostragem dos itens dessa tabela na exibição
+		da interface do admin
+		'''
+
+		pass
 
 class Document( models.Model ):
 	'''
@@ -77,7 +84,14 @@ class Document( models.Model ):
 	is_img = models.BooleanField()
 	galery = models.ForeignKey( Galery, null = True, default = None )
 	post = models.ForeignKey( Post, null = True, default = None )
-	pass
+	
+	def __unicode__( self ):
+		'''
+		Metodo que formata a mostragem dos itens dessa tabela na exibição
+		da interface do admin
+		'''
+
+		pass
 
 class News( models.Model ):
 	'''
@@ -87,7 +101,14 @@ class News( models.Model ):
 	content = models.CharField( max_length = 45 )
 	categoryNews = models.ForeignKey( 'CategoryNews' )
 	post = models.OneToOneField( Post )
-	pass
+
+	def __unicode__( self ):
+		'''
+		Metodo que formata a mostragem dos itens dessa tabela na exibição
+		da interface do admin
+		'''
+
+		pass
 
 class CategoryNews( models.Model ):
 	'''
@@ -96,4 +117,11 @@ class CategoryNews( models.Model ):
 
 	name = models.CharField( max_length = 45 )
 	description = models.CharField( max_length = 255 )
-	pass
+	
+	def __unicode__( self ):
+		'''
+		Metodo que formata a mostragem dos itens dessa tabela na exibição
+		da interface do admin
+		'''
+
+		pass
