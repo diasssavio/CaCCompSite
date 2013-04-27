@@ -2,21 +2,27 @@
 #!/usr/bin/env python2.7
 
 from django.conf.urls import patterns, include, url
+from django.conf import settings
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = patterns('',
-	
+
 	
     # Examples:
     # url(r'^$', 'caccomp.views.home', name='home'),
     # url(r'^caccomp/', include('caccomp.foo.urls')),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # login/logout urls
+    url(r'^login/', 'django.contrib.auth.views.login', { 'template_name' : 'login.html' } ),
+    url(r'^logout/', 'django.contrib.auth.views.logout_then_login', { 'login_url' : '/login/' } ),
 
-    # Uncomment the next line to enable the admin:
+    # Admin interface urls
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
+
+if settings.DEBUG:
+	urlpatterns += patterns( '', ( r'^media/(?P<path>.*)$', 
+		'django.views.static.serve', { 'document_root' : settings.MEDIA_ROOT } ), )
