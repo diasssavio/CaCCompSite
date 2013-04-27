@@ -16,14 +16,6 @@ class Academic( models.Model ):
 	user = models.OneToOneField( User )
 	picture = models.OneToOneField( 'Document' )
 
-	def __unicode__( self ):
-		'''
-		Metodo que formata a mostragem dos itens dessa tabela na exibição
-		da interface do admin
-		'''
-
-		pass
-
 class Post( models.Model ):
 	'''
 	Model que representa a tabela de postagens
@@ -36,14 +28,6 @@ class Post( models.Model ):
 	user = models.ForeignKey( User )
 	keywords = models.ManyToManyField( 'Keyword' )
 
-	def __unicode__( self ):
-		'''
-		Metodo que formata a mostragem dos itens dessa tabela na exibição
-		da interface do admin
-		'''
-
-		pass
-
 class Keyword( models.Model ):
 	'''
 	Model que representa a tabela de palavras-chave
@@ -51,28 +35,12 @@ class Keyword( models.Model ):
 
 	name = models.CharField( max_length = 45 )
 
-	def __unicode__( self ):
-		'''
-		Metodo que formata a mostragem dos itens dessa tabela na exibição
-		da interface do admin
-		'''
-
-		pass
-
 class Galery( models.Model ):
 	'''
 	Model que representa a tabela de galerias
 	'''
 
 	post = models.OneToOneField( Post )
-
-	def __unicode__( self ):
-		'''
-		Metodo que formata a mostragem dos itens dessa tabela na exibição
-		da interface do admin
-		'''
-
-		pass
 
 class Document( models.Model ):
 	'''
@@ -84,14 +52,6 @@ class Document( models.Model ):
 	is_img = models.BooleanField()
 	galery = models.ForeignKey( Galery, null = True, default = None )
 	post = models.ForeignKey( Post, null = True, default = None )
-	
-	def __unicode__( self ):
-		'''
-		Metodo que formata a mostragem dos itens dessa tabela na exibição
-		da interface do admin
-		'''
-
-		pass
 
 class News( models.Model ):
 	'''
@@ -102,14 +62,6 @@ class News( models.Model ):
 	categoryNews = models.ForeignKey( 'CategoryNews' )
 	post = models.OneToOneField( Post )
 
-	def __unicode__( self ):
-		'''
-		Metodo que formata a mostragem dos itens dessa tabela na exibição
-		da interface do admin
-		'''
-
-		pass
-
 class CategoryNews( models.Model ):
 	'''
 	Model que representa a tabela de categoria de notícias
@@ -117,11 +69,3 @@ class CategoryNews( models.Model ):
 
 	name = models.CharField( max_length = 45 )
 	description = models.CharField( max_length = 255 )
-	
-	def __unicode__( self ):
-		'''
-		Metodo que formata a mostragem dos itens dessa tabela na exibição
-		da interface do admin
-		'''
-
-		pass

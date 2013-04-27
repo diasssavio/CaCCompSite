@@ -16,7 +16,7 @@ class FormAcademic( forms.ModelForm ):
 		'''
 
 		model = Academic
-		#fields = (  )
+		fields = ( 'enrollment', 'role', 'user', 'picture', )
 
 class FormPost( forms.ModelForm ):
 	'''
@@ -29,7 +29,7 @@ class FormPost( forms.ModelForm ):
 		'''
 
 		model = Post
-		#fields = (  )
+		fields = ( 'title', 'datePost', 'content', 'user', 'keywords', )
 
 class FormKeyword( forms.ModelForm ):
 	'''
@@ -42,7 +42,7 @@ class FormKeyword( forms.ModelForm ):
 		'''
 
 		model = Keyword
-		#fields = (  )
+		fields = ( 'name', )
 
 class FormGalery( forms.ModelForm ):
 	'''
@@ -55,7 +55,7 @@ class FormGalery( forms.ModelForm ):
 		'''
 
 		model = Galery
-		#fields = (  )
+		fields = ( 'post', )
 
 class FormDocument( forms.ModelForm ):
 	'''
@@ -68,7 +68,7 @@ class FormDocument( forms.ModelForm ):
 		'''
 
 		model = Document
-		#fields = (  )
+		fields = ( 'legend', 'path', 'is_img', 'galery', 'post', )
 
 class FormNews( forms.ModelForm ):
 	'''
@@ -81,7 +81,7 @@ class FormNews( forms.ModelForm ):
 		'''
 
 		model = News
-		#fields = (  )
+		fields = ( 'content', 'categoryNews', 'post' )
 
 class FormCategoryNews( forms.ModelForm ):
 	'''
@@ -94,4 +94,4 @@ class FormCategoryNews( forms.ModelForm ):
 		'''
 
 		model = CategoryNews
-		#fields = (  )
+		fields = ( 'name', 'description', )

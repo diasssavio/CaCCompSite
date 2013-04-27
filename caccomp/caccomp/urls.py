@@ -8,7 +8,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-
+	url(r'^adicionarKey/$', 'content.views.addKey'),
 	
     # Examples:
     # url(r'^$', 'caccomp.views.home', name='home'),
@@ -23,6 +23,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 )
 
-if settings.DEBUG:
-	urlpatterns += patterns( '', ( r'^media/(?P<path>.*)$', 
-		'django.views.static.serve', { 'document_root' : settings.MEDIA_ROOT } ), )
+# if settings.DEBUG:
+# 	urlpatterns += patterns( '', ( r'^media/(?P<path>.*)$', 
+# 		'django.views.static.serve', { 'document_root' : settings.MEDIA_ROOT } ), )
