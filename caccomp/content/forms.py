@@ -29,7 +29,7 @@ class FormPost( forms.ModelForm ):
 		'''
 
 		model = Post
-		fields = ( 'title', 'datePost', 'content', 'user', 'keywords', )
+		fields = ( 'title', 'content', 'user', 'keywords', )
 
 class FormKeyword( forms.ModelForm ):
 	'''
@@ -81,7 +81,7 @@ class FormNews( forms.ModelForm ):
 		'''
 
 		model = News
-		fields = ( 'content', 'categoryNews', 'post' )
+		fields = ( 'content', 'categorynews', 'post' )
 
 class FormCategoryNews( forms.ModelForm ):
 	'''
