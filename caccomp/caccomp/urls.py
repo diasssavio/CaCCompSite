@@ -8,6 +8,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    
 	url(r'^adicionarKey/$', 'content.views.addKey'),
 	
     # Examples:
