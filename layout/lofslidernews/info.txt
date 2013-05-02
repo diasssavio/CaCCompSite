@@ -1,0 +1,3 @@
+http://www.landofcoder.com/demo/jquery/lofslidernews/index3.html
+http://www.landofcoder.com/download/free-extensions/viewdownload/5-jquery-plugin/9-jquery-lof-jslidernews-plugin.html
+http://www.smashingapps.com/2012/05/22/37-fresh-jquery-image-content-sliders-and-slideshows.html

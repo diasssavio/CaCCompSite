@@ -13,6 +13,54 @@
         border: 0px solid #cccccc;
       }
     </style>
+
+    <!-- NEWS CCOMP -->
+      <link rel="stylesheet" type="text/css" href="lofslidernews/css/layout.css" />
+      <link rel="stylesheet" type="text/css" href="lofslidernews/css/style3.css" />
+      <script language="javascript" type="text/javascript" src="lofslidernews/js/jquery.js"></script>
+      <script language="javascript" type="text/javascript" src="lofslidernews/js/jquery.easing.js"></script>
+      <script language="javascript" type="text/javascript" src="lofslidernews/js/script.js"></script>
+      <script type="text/javascript">
+       $(document).ready( function(){ 
+          var buttons = { previous:$('#jslidernews3 .button-previous') ,
+                  next:$('#jslidernews3 .button-next') };
+          $('#jslidernews3').lofJSidernews( { interval:5000,
+                              easing:'easeOutBounce',
+                              duration:1200,
+                              auto:false,
+                              mainWidth:980,
+                              mainHeight:300,
+                              navigatorHeight   : 100,
+                              navigatorWidth    : 310,
+                              maxItemDisplay:3,
+                              buttons:buttons} );           
+        });
+
+      </script>
+      <style>
+        
+        ul.lof-main-wapper li {
+          position:relative;  
+        }
+      </style>
+    <!-- FIM NEWS CCOMP -->
+
+    <!-- NEWS UFT -->
+      <!-- CSS STYLE -->
+      <link rel="stylesheet" type="text/css" href="showbiz/css/style.css" media="screen" />
+      <!-- ANIMATE AND EASING LIBRARIES -->
+      <script type="text/javascript" src="showbiz/services-plugin/js/jquery.easing.1.3.js"></script>
+      <script type="text/javascript" src="showbiz/services-plugin/js/jquery.cssAnimate.mini.js"></script>
+      <!-- TOUCH AND MOUSE WHEEL SETTINGS -->
+      <script type="text/javascript" src="showbiz/services-plugin/js/jquery.touchwipe.min.js"></script>
+      <script type="text/javascript" src="showbiz/services-plugin/js/jquery.mousewheel.min.js"></script>
+      <!-- jQuery SERVICES Slider  -->
+      <script type="text/javascript" src="showbiz/services-plugin/js/jquery.themepunch.services.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="showbiz/services-plugin/css/settings.css" media="screen" />
+      <!-- FONT IMPORT -->
+      <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
+    <!-- FIM NEWS UFT -->
+
   </head>
   <body style="margin:0; padding:0; background:#cccccc; text-align:center;">
     <div class="conteiner-fluid" style="width: 1024px; margin:0 auto; padding: 10px; text-align:left;">
@@ -60,8 +108,9 @@
               <!-- FIM LOGIN REGISTER -->
             </div>
           </div>
+          <div class="row-fluid"><div class="span12"></div></div>
           <div class="row-fluid">
-            <div class="span12">
+            <div class="span9 offset3">
               <!-- SEARCH -->
               <form class="form-search">
                 <div class="input-append">
@@ -77,7 +126,7 @@
       <div class="row-fluid">
         <div class="span12">
           <!-- MENU -->
-<div class="navbar navbar-inverse" style="position: static;">
+            <div class="navbar navbar-inverse" style="position: static;">
               <div class="navbar-inner">
                 <div class="container">
                   <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
@@ -85,7 +134,6 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </a>
-                  <a class="brand" href="#">Title</a>
                   <div class="nav-collapse collapse navbar-inverse-collapse">
                     <ul class="nav">
                       <li class="active"><a href="#">Home</a></li>
@@ -104,7 +152,6 @@
                         </ul>
                       </li>
                     </ul>
-                    
                   </div><!-- /.nav-collapse -->
                 </div>
               </div><!-- /navbar-inner -->
@@ -113,36 +160,532 @@
         </div>
       </div>
       <div class="row-fluid">
-        <div class="span12">News CCOMP</div>
-      </div>
-      <div class="row-fluid">
-        <div class="span12">News UFT</div>
-      </div>
-      <div class="row-fluid">
-        <div class="span4">Galerias</div>
-        <div class="span5">
-          <div class="row-fluid">
-            <div class="span12">Links</div>
-          </div>
-          <div class="row-fluid">
-            <div class="span12">Documentos</div>
+        <div class="span12">
+          <!-- NEWS CCOMP -->
+            <div id="container">
+            <!--- The Content ---->
+            <div id="jslidernews3" class="lof-slidecontent" style="width:980px; height:300px;">
+              <div class="preload"><div></div></div>
+              <div  class="button-previous">Previous</div>
+              <!-- MAIN CONTENT --> 
+              <div class="main-slider-content" style="width:980px; height:300px;">
+                <ul class="sliders-wrap-inner">
+                  <li>
+                    <img src="lofslidernews/images/thumbl_980x340.png" title="Newsflash 2" >           
+                    <div class="slider-description">
+                      <div class="slider-meta"><a target="_parent" title="Newsflash 1" href="#Category-1">/ Newsflash 1 /</a> <i> — Monday, February 15, 2010 12:42</i></div>
+                      <h4>Content of Newsflash 1</h4>
+                      <p>The one thing about a Web site, it always changes! Joomla! makes it easy to add Articles, content,...
+                        <a class="readmore" href="#">Read more </a>
+                      </p>
+                    </div>
+                  </li> 
+                  <li>
+                    <img src="lofslidernews/images/thumbl_980x340_002.png" title="Newsflash 1" >           
+                    <div class="slider-description">
+                      <div class="slider-meta"><a target="_parent" title="Newsflash 2" href="#Category-2">/ Newsflash 2 /</a>  <i> — Monday, February 15, 2010 12:42</i></div>
+                      <h4>Content of Newsflash 2</h4>
+                      <p>Joomla! makes it easy to launch a Web site of any kind. Whether you want a brochure site or you are...
+                        <a class="readmore" href="#">Read more </a>
+                      </p>
+                    </div>
+                  </li> 
+                  <li>
+                    <img src="lofslidernews/images/thumbl_980x340_003.png" title="Newsflash 3" >            
+                    <div class="slider-description">
+                      <div class="slider-meta"><a target="_parent" title="Newsflash 3" href="#Category-3">/ Newsflash 3 /</a>   <i> — Monday, February 15, 2010 12:42</i></div>
+                      <h4>Content of Newsflash 3</h4>
+                      <p>With a library of thousands of free Extensions, you can add what you need as your site grows. Don't...
+                        <a class="readmore" href="#">Read more </a>
+                      </p>
+                   </div>
+                  </li> 
+                  <li>
+                    <img src="lofslidernews/images/thumbl_980x340_004.png" title="Newsflash 5" >            
+                    <div class="slider-description">
+                      <div class="slider-meta"><a target="_parent" title="Newsflash 4" href="#Category-4">/ Newsflash 4 /</a> <i> — Monday, February 15, 2010 12:42</i></div>
+                      <h4>Content of Newsflash 4</h4>
+                      <p>Joomla! 1.5 - 'Experience the Freedom'!. It has never been easier to create your own dynamic Web...
+                        <a class="readmore" href="#">Read more </a>
+                      </p>
+                    </div>
+                  </li> 
+                  <li>
+                    <img src="lofslidernews/images/thumbl_980x340_005.png" title="Newsflash 5" >            
+                    <div class="slider-description">
+                      <div class="slider-meta"><a target="_parent" title="Newsflash 5" href="#">/ Newsflash 5 /</a>  <i> — Monday, February 15, 2010 12:42</i></div>
+                      <h4>Content of Newsflash 5</h4>
+                      <p>Joomla! 1.5 - 'Experience the Freedom'!. It has never been easier to create your own dynamic Web...
+                        <a class="readmore" href="#">Read more </a>
+                      </p>
+                    </div>
+                  </li> 
+                  <li>
+                    <img src="lofslidernews/images/thumbl_980x340_006.png" title="Newsflash 5" >            
+                    <div class="slider-description">
+                      <div class="slider-meta"><a target="_parent" title="Newsflash 6" href="#">/ Newsflash 6 /</a> <i> — Monday, February 15, 2010 12:42</i></div>
+                      <h4>Content of Newsflash 6</h4>
+                      <p>Joomla! 1.5 - 'Experience the Freedom'!. It has never been easier to create your own dynamic Web...
+                        <a class="readmore" href="#">Read more </a>
+                      </p>
+                    </div>
+                  </li> 
+                </ul>   
+              </div>
+              <!-- END MAIN CONTENT --> 
+              <!-- NAVIGATOR -->
+              <div class="navigator-content">
+                <div class="navigator-wrapper">
+                  <ul class="navigator-wrap-inner">
+                    <li>
+                      <div>
+                        <img src="lofslidernews/images/lofthumbs/791902news3.jpg" />
+                        <h3> NewsFlash 1 </h3>
+                        <span>20.01.2010</span> - In id, mauris viverra asperiores, bibendum in id. Eu molestie. Ac sit eu...
+                      </div>    
+                    </li>
+                    <li>
+                      <div>
+                        <img src="lofslidernews/images/lofthumbs/435576news10.jpg" />
+                        <h3> NewsFlash 2 </h3>
+                        <span>20.01.2010</span> -In id, mauris viverra asperiores, bibendum in id. Eu molestie. Ac sit eu. ..
+                      </div>    
+                    </li>
+                    <li>
+                      <div>
+                        <img src="lofslidernews/images/lofthumbs/641906img1.jpg" />
+                        <h3> NewsFlash 3 </h3>
+                        <span>20.01.2010</span> - In id, mauris viverra asperiores, bibendum in id. Eu molestie. Ac sit eu. ..
+                      </div>     
+                    </li>
+                    <li>
+                      <div>
+                        <img src="lofslidernews/images/lofthumbs/416719news7.jpg" />
+                        <h3> NewsFlash 4</h3>
+                        <span>20.01.2010</span> - In id, mauris viverra asperiores, bibendum in id. Eu molestie. Ac sit eu. ..
+                      </div>
+                    </li>    
+                    <li>
+                      <div>
+                        <img src="lofslidernews/images/lofthumbs/641906img1.jpg" />
+                        <h3> NewsFlash 5</h3>
+                        <span>20.01.2010</span> -In id, mauris viverra asperiores, bibendum in id. Eu molestie. Ac sit eu. ..
+                      </div>   
+                    </li>
+                    <li>
+                      <div>
+                        <img src="lofslidernews/images/lofthumbs/416719news7.jpg" />
+                        <h3> NewsFlash 6</h3>
+                        <span>20.01.2010</span> - In id, mauris viverra asperiores, bibendum in id. Eu molestie. Ac sit eu. ..
+                      </div>
+                    </li>         
+                  </ul>
+                </div>
+   
+              </div> 
+              <!----------------- END OF NAVIGATOR -------------------->
+              <div class="button-next">Next</div>
+            </div> 
+            <!-- FIM NEWS CCOMP -->
           </div>
         </div>
-        <div class="span3">
-          <div class="row-fluid">
-            <div class="span12">Twitter</div>
+        <div class="row-fluid">
+          <div class="span12">
+            <!-- NEWS UFT -->
+            <div class="example-wrapper" style="margin-top:0px;">
+              <div id="services-example-1" class="theme1">
+              <ul>
+                <!--  ###############    -  SLIDE 1  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service1.jpg" data-bw="showbiz/images/services/service1_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>Slide With Large Image</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <img class="big-image" width="498" height="280" src="showbiz/images/services/large1.jpg">
+                    <div class="details">
+                      <h2>Our Strategy</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <div class="details">
+                      <h2>Step Towards Success</h2>
+                      <ul class="check">
+                        <li>List Item Number One</li>
+                        <li>List Item Number Two</li>
+                        <li>List Item Number Three</li>
+                        <li>List Item Number Four</li>
+                      </ul>
+                      <img src="images/certified.png">
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 2  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service2.jpg" data-bw="showbiz/images/services/service2_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>Youtube Video</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                  -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <iframe class="video_clip" src="http://www.youtube.com/embed/kjX-8kQmakk?hd=1&amp;wmode=opaque&amp;autohide=1&amp;showinfo=0" height="280" width="498" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
+                    <div class="details">
+                      <h2>Our Strategy</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <div class="details">
+                      <h2>Step Towards Success</h2>
+                      <ul class="check">
+                        <li>List Item Number One</li>
+                        <li>List Item Number Two</li>
+                        <li>List Item Number Three</li>
+                        <li>List Item Number Four</li>
+                      </ul>
+                      <img src="images/certified.png">
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 3  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service3.jpg" data-bw="showbiz/images/services/service3_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>Vimeo Video</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <div class="details">
+                      <h2>Our Strategy</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <iframe class="video_clip" src="http://player.vimeo.com/video/24456787?title=0&amp;byline=0&amp;portrait=0" width="498" height="280" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
+                    <div class="details">
+                      <h2>Step Towards Success</h2>
+                      <ul class="check">
+                        <li>List Item Number One</li>
+                        <li>List Item Number Two</li>
+                        <li>List Item Number Three</li>
+                        <li>List Item Number Four</li>
+                      </ul>
+                      <img src="images/certified.png">
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 4  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service4.jpg" data-bw="showbiz/images/services/service4_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>Design Your Layout</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <img class="big-image" width="498" height="280" src="showbiz/images/services/large2.jpg">
+                    <div class="details_double">
+                      <h2>Just An Image & Text</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen, no sea takimata sanctus est Lorem ipsum dolor.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 5  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service5.jpg" data-bw="showbiz/images/services/service5_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>No Image Just Text</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <div class="details">
+                      <h2>Diverse Layouts</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen, no sea takimata sanctus est Lorem ipsum dolor.</p>
+                    </div>
+                    <div class="details">
+                      <h2>Step Towards Success</h2>
+                      <ul class="check">
+                        <li>List Item Number One</li>
+                        <li>List Item Number Two</li>
+                        <li>List Item Number Three</li>
+                        <li>List Item Number Four</li>
+                      </ul>
+                      <img src="images/certified.png">
+                    </div>
+                    <div class="details_double">
+                      <h2>Wide Text Block</h2>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen, no sea takimata sanctus est Lorem ipsum dolor.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <div class="details">
+                      <h2>Short Text Block</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen, no sea takimata sanctus est Lorem ipsum dolor.</p>
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 6  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service1.jpg" data-bw="showbiz/images/services/service1_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>Slide With Large Image</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <img class="big-image" width="498" height="280" src="showbiz/images/services/large1.jpg">
+                    <div class="details">
+                      <h2>Our Strategy</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <div class="details">
+                      <h2>Step Towards Success</h2>
+                      <ul class="check">
+                        <li>List Item Number One</li>
+                        <li>List Item Number Two</li>
+                        <li>List Item Number Three</li>
+                        <li>List Item Number Four</li>
+                      </ul>
+                      <img src="images/certified.png">
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 7  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service2.jpg" data-bw="showbiz/images/services/service2_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>Youtube Video</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <iframe class="video_clip" src="http://www.youtube.com/embed/kjX-8kQmakk?hd=1&amp;wmode=opaque&amp;autohide=1&amp;showinfo=0" height="280" width="498" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
+                    <div class="details">
+                      <h2>Our Strategy</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <div class="details">
+                      <h2>Step Towards Success</h2>
+                      <ul class="check">
+                        <li>List Item Number One</li>
+                        <li>List Item Number Two</li>
+                        <li>List Item Number Three</li>
+                        <li>List Item Number Four</li>
+                      </ul>
+                      <img src="images/certified.png">
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 8 -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service3.jpg" data-bw="showbiz/images/services/service3_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>Vimeo Video</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <div class="details">
+                      <h2>Our Strategy</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <iframe class="video_clip" src="http://player.vimeo.com/video/24456787?title=0&amp;byline=0&amp;portrait=0" width="498" height="280" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
+                    <div class="details">
+                      <h2>Step Towards Success</h2>
+                      <ul class="check">
+                        <li>List Item Number One</li>
+                        <li>List Item Number Two</li>
+                        <li>List Item Number Three</li>
+                        <li>List Item Number Four</li>
+                      </ul>
+                      <img src="images/certified.png">
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 9  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service4.jpg" data-bw="showbiz/images/services/service4_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>Design Your Layout</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <img class="big-image" width="498" height="280" src="showbiz/images/services/large2.jpg">
+                    <div class="details_double">
+                      <h2>Just An Image & Text</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen, no sea takimata sanctus est Lorem ipsum dolor.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 10  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service5.jpg" data-bw="showbiz/images/services/service5_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>No Image Just Text</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <div class="details">
+                      <h2>Diverse Layouts</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen, no sea takimata sanctus est Lorem ipsum dolor.</p>
+                    </div>
+                    <div class="details">
+                      <h2>Step Towards Success</h2>
+                      <ul class="check">
+                        <li>List Item Number One</li>
+                        <li>List Item Number Two</li>
+                        <li>List Item Number Three</li>
+                        <li>List Item Number Four</li>
+                      </ul>
+                      <img src="images/certified.png">
+                    </div>
+                    <div class="details_double">
+                      <h2>Wide Text Block</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen, no sea takimata sanctus est Lorem ipsum dolor.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <div class="details">
+                      <h2>Short Text Block</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen, no sea takimata sanctus est Lorem ipsum dolor.</p>
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+              </ul>
+              <!--  ###############    -  TOOLBAR (LEFT/RIGHT) BUTTONS  -  ###############   -->
+              <div class="toolbar">
+                <div class="left"></div><div class="right"></div>
+              </div>
+            </div>
           </div>
-          <div class="row-fluid">
-            <div class="span12">Facebook</div>
+        <!--
+          ##############################
+          - ACTIVATE THE BANNER HERE -
+          ##############################
+          -->
+          <script type="text/javascript">
+          $(document).ready(function() {
+              $.noConflict();
+
+              jQuery('#services-example-1').services(
+              {
+                width:920,
+                height:290,
+                slideAmount:5,
+                slideSpacing:30,
+                touchenabled:"on",
+                mouseWheel:"on",
+                hoverAlpha:"off",
+                slideshow:3000,
+                hovereffect:"on",
+                callBack:function() { }
+            });
+            });
+          </script>
+            <!-- FIM NEWS UFT -->
           </div>
         </div>
+        <div class="row-fluid">
+          <div class="span4">Galerias</div>
+          <div class="span5">
+            <div class="row-fluid">
+              <div class="span12">Links</div>
+            </div>
+            <div class="row-fluid">
+              <div class="span12">Documentos</div>
+            </div>
+          </div>
+          <div class="span3">
+            <div class="row-fluid">
+              <div class="span12">Twitter</div>
+            </div>
+            <div class="row-fluid">
+              <div class="span12">Facebook</div>
+            </div>
+          </div>
+        </div>
+        <div class="row-fluid">
+          <div class="span12">Vídeo</div>
+        </div>
+        <div class="row-fluid">
+          <div class="span12">Rodapé</div>
+        </div>
       </div>
-      <div class="row-fluid">
-        <div class="span12">Vídeo</div>
-      </div>
-      <div class="row-fluid">
-        <div class="span12">Rodapé</div>
-      </div>
-    </div>
   </body>
 </html>
