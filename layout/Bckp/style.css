@@ -50,6 +50,13 @@ background-color: #eeeeee;
 	z-index: 0; 
 }
 
+.content2 {
+	min-height: 100%;
+	position: inherit;
+	overflow: auto;
+	z-index: 0; 
+}
+
 .background {
 	position: absolute;
 	z-index: -1;
@@ -88,7 +95,7 @@ background-color: #eeeeee;
 
 .header {
 	width: 100%;
-	height: 119px;
+	height: 140px;
 	background-color: #9999ff;
 }
 
@@ -140,10 +147,11 @@ background-color: #eeeeee;
 	padding-bottom: 0px;
 }
 
-.menu {
+.menudiv {
 	width: 100%;
-	height: 39px;
+	height: 55px;
 	background-color: #996666;
+	z-index: auto;
 }
 
 .contents {
