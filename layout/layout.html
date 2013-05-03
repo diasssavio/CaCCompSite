@@ -63,6 +63,18 @@
 
   </head>
   <body style="margin:0; padding:0; background:#cccccc; text-align:center;">
+    <!-- Facebook Plugin -->
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- FIM Facebook Plugin -->
+
+
     <div class="conteiner-fluid" style="width: 1024px; margin:0 auto; padding: 10px; text-align:left;">
       <div class="row-fluid">
         <div class="span6">
@@ -673,10 +685,28 @@
           </div>
           <div class="span3">
             <div class="row-fluid">
-              <div class="span12">Twitter</div>
+              <div class="span12">
+                <!-- ENQUETE -->
+                ENQUETE
+                <!-- FIM ENQUETE -->
+              </div>
             </div>
             <div class="row-fluid">
-              <div class="span12">Facebook</div>
+              <div class="span12">
+                <!-- TWITTER PLUGIN -->
+                  <div style="margin:0; padding:0; background:#cccccc; text-align:center; width:290px;">
+                    <a class="twitter-timeline" href="https://twitter.com/CACCOMP" data-widget-id="330126009254936577">Tweets de @CACCOMP</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                  </div>
+                <!-- FIM TWITTER PLUGIN -->
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span12">
+                <!-- FACEBOOK PLUGIN -->
+                  <iframe src="https://www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fcaccompuft&amp;width=300&amp;height=590&amp;show_faces=true&amp;colorscheme=light&amp;stream=true&amp;border_color&amp;header=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:290px; height:590px; background:#ffffff" allowTransparency="true"></iframe>
+                <!-- FIM FACEBOOK PLUGIN -->
+              </div>
             </div>
           </div>
         </div>

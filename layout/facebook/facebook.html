@@ -1,0 +1,29 @@
+<html>
+<body>
+<div id="fb-root"></div>
+<script>
+	window.fbAsyncInit = function() {
+    // init the FB JS SDK
+    FB.init({
+      appId      : 'YOUR_APP_ID',                        // App ID from the app dashboard
+      channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel file for x-domain comms
+      status     : true,                                 // Check Facebook Login status
+      xfbml      : true                                  // Look for social plugins on the page
+    });
+
+    // Additional initialization code such as adding Event Listeners goes here
+  };
+	(function(d, s, id) {
+  		var js, fjs = d.getElementsByTagName(s)[0];
+  		if (d.getElementById(id)) return;
+  		js = d.createElement(s); js.id = id;
+  		js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
+  		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-like-box" data-href="https://www.facebook.com/caccompuft" data-width="300" data-height="510" data-show-faces="true" data-stream="true" data-header="true"></div>
+</body>
+</html>
+
+<iframe src="https://www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fcaccompuft&amp;width=300&amp;height=590&amp;show_faces=true&amp;colorscheme=light&amp;stream=true&amp;border_color&amp;header=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:590px;" allowTransparency="true"></iframe>
