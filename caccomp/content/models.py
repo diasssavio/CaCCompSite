@@ -19,6 +19,9 @@ class Academic( models.Model ):
 	def __unicode__( self ):
 		return '%s %s' % ( self.user.first_name, self.user.last_name )
 
+	class Meta:
+		verbose_name = u'Acadêmico'
+
 class Post( models.Model ):
 	'''
 	Model que representa a tabela de postagens
@@ -26,13 +29,17 @@ class Post( models.Model ):
 
 	title = models.CharField( max_length = 255 )
 	datepost = models.DateTimeField( auto_now_add = True )
-	content = models.TextField()
+	content = models.TextField( null = True, default = None, blank = True )
 
 	user = models.ForeignKey( User )
+	category = models.ForeignKey( 'Category' )
 	keywords = models.ManyToManyField( 'Keyword' )
 
 	def __unicode__( self ):
 		return '%s - %s' % ( self.title, self.datepost.strftime( '%H:%Mhrs %d/%m/%Y' ) )
+
+	class Meta:
+		verbose_name = 'Postagem'
 
 class Keyword( models.Model ):
 	'''
@@ -44,6 +51,9 @@ class Keyword( models.Model ):
 	def __unicode__( self ):
 		return '%s' % ( self.name )
 
+	class Meta:
+		verbose_name = 'Palavra-chave'
+
 class Galery( models.Model ):
 	'''
 	Model que representa a tabela de galerias
@@ -51,33 +61,28 @@ class Galery( models.Model ):
 
 	post = models.OneToOneField( Post )
 
+	class Meta:
+		verbose_name = 'Galeria'
+
 class Document( models.Model ):
 	'''
 	Model que representa a tabela de documentos
 	'''
 
 	legend = models.CharField( max_length = 45 )
-	path = models.CharField( max_length = 255 )
-	is_img = models.BooleanField()
+	path = models.FileField( upload_to = 'content/pictures' )
+	is_image = models.BooleanField()
+
 	galery = models.ForeignKey( Galery, null = True, default = None, blank = True )
 	post = models.ForeignKey( Post, null = True, default = None, blank = True )
 
 	def __unicode__( self ):
 		return '%s' % ( self.legend )
 
-class News( models.Model ):
-	'''
-	Model que representa a tabela de notícias
-	'''
+	class Meta:
+		verbose_name = 'Documento'
 
-	content = models.CharField( max_length = 45 )
-	categorynews = models.ForeignKey( 'CategoryNews' )
-	post = models.OneToOneField( Post )
-
-	def __unicode__( self ):
-		return '%s - %s' % ( self.content, self.post.title )
-
-class CategoryNews( models.Model ):
+class Category( models.Model ):
 	'''
 	Model que representa a tabela de categoria de notícias
 	'''
@@ -87,3 +92,6 @@ class CategoryNews( models.Model ):
 
 	def __unicode__( self ):
 		return '%s' % ( self.name )
+
+	class Meta:
+		verbose_name = u'Categoria-Notícia'

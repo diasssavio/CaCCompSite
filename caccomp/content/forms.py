@@ -2,7 +2,7 @@
 
 from django import forms
 
-from models import Academic, Post, Keyword, Galery, Document, News, CategoryNews
+from models import Academic, Post, Keyword, Galery, Document, Category
 
 class FormAcademic( forms.ModelForm ):
 	'''
@@ -68,22 +68,9 @@ class FormDocument( forms.ModelForm ):
 		'''
 
 		model = Document
-		fields = ( 'legend', 'path', 'is_img', 'galery', 'post', )
+		fields = ( 'legend', 'path', 'is_image', 'galery', 'post', )
 
-class FormNews( forms.ModelForm ):
-	'''
-	Formulário ModelForm de notícias.
-	'''
-
-	class Meta:
-		'''
-		Permite a personalização do formulário gerado automaticamente
-		'''
-
-		model = News
-		fields = ( 'content', 'categorynews', 'post' )
-
-class FormCategoryNews( forms.ModelForm ):
+class FormCategory( forms.ModelForm ):
 	'''
 	Formulário ModelForm de categoria de notícias.
 	'''
@@ -93,5 +80,5 @@ class FormCategoryNews( forms.ModelForm ):
 		Permite a personalização do formulário gerado automaticamente
 		'''
 
-		model = CategoryNews
+		model = Category
 		fields = ( 'name', 'description', )
