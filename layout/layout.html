@@ -84,7 +84,7 @@
           <div class="row-fluid">
             <div class="span6 offset6">
               <!-- LOGIN -->
-              <a href="#loginModal" role="button" class="btn btn-primary" data-toggle="modal">Login</a>
+              <a href="#loginModal" role="button" class="btn btn-primary" data-toggle="modal"><i class="icon-user icon-white"></i> Login</a>
                
               <!-- loginModal -->
               <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -101,7 +101,7 @@
                 </div>
               </div>
               <!-- REGISTER -->
-              <a href="#regisModal" role="button" class="btn btn-success" data-toggle="modal">Register</a>
+              <a href="#regisModal" role="button" class="btn btn-success" data-toggle="modal"><i class=" icon-edit icon-white"></i> Register</a>
                
               <!-- registerModal -->
               <div id="regisModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="regisModalLabel" aria-hidden="true">
@@ -127,7 +127,7 @@
               <form class="form-search">
                 <div class="input-append">
                   <input type="text" class="span8 search-query">
-                  <button type="submit" class="btn">Search</button>
+                  <button type="submit" class="btn"><i class="icon-search"></i> Search</button>
                 </div>
               </form>
               <!-- FIM SEARCH -->
@@ -685,9 +685,41 @@
           </div>
           <div class="span3">
             <div class="row-fluid">
-              <div class="span12">
+              <div class="span12" style="border: solid thick #dddddd; border-radius: 8px; background-color: #ffffff; border-width: 1px; width: 290px;">
                 <!-- ENQUETE -->
-                ENQUETE
+                <div class="row-fluid">
+                  <div class="span12">
+                    <a href="#" class="btn btn-inverse" style="width:262px">Enquete</a>
+                  </div>
+                </div>
+                <div class="row-fluid">
+                  <div class="span12">
+                    <form class="bs-docs-example form-inline">
+                      <p> Como você avalia o novo layout do site do CACCOMP:</p>
+                      <label class="radio">
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                        Ótimo
+                      </label>
+                      <label class="radio">
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                        Bom
+                      </label>
+                      <label class="radio">
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                        Médio
+                      </label>
+                      <label class="radio">
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                        Ruim
+                      </label>
+                      <label class="radio">
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                        Péssimo
+                      </label>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                  </div>
+                </div>
                 <!-- FIM ENQUETE -->
               </div>
             </div>
