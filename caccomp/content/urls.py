@@ -4,5 +4,11 @@
 from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
-	
+	# Add forms urls
+	url(r'^academic/add/$', 'content.views.addAcademic'),
+	url(r'^post/add/$', 'content.views.addPost'),
+	url(r'^galery/add/$', 'content.views.addGalery'),
+	url(r'^category/add/$', 'content.views.addCategory'),
+
+	# List urls
 )

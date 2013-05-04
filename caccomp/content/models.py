@@ -10,11 +10,11 @@ class Academic( models.Model ):
 	Model que representa a tabela de acadêmicos
 	'''
 
-	enrollment = models.IntegerField()
-	role = models.CharField( max_length = 45 )
+	enrollment = models.IntegerField( verbose_name = u'matrícula' )
+	role = models.CharField( max_length = 45, verbose_name = u'função' )
 
-	user = models.OneToOneField( User )
-	picture = models.OneToOneField( 'Document' )
+	user = models.OneToOneField( User, verbose_name = u'Usuário' )
+	picture = models.OneToOneField( 'Document', verbose_name = u'Imagem' )
 
 	def __unicode__( self ):
 		return '%s %s' % ( self.user.first_name, self.user.last_name )
@@ -31,7 +31,7 @@ class Post( models.Model ):
 	datepost = models.DateTimeField( auto_now_add = True )
 	content = models.TextField( null = True, default = None, blank = True )
 
-	user = models.ForeignKey( User )
+	academic = models.ForeignKey( Academic )
 	category = models.ForeignKey( 'Category' )
 	keywords = models.ManyToManyField( 'Keyword' )
 
@@ -70,8 +70,9 @@ class Document( models.Model ):
 	'''
 
 	legend = models.CharField( max_length = 45 )
-	path = models.FileField( upload_to = 'content/pictures' )
-	is_image = models.BooleanField()
+	document = models.FileField( upload_to = 'content/documents', null = True, default = None, blank = True )
+	image = models.FileField( upload_to = 'content/pictures', null = True, default = None, blank = True )
+	url = models.CharField( max_length = 255, null = True, default = None, blank = True )
 
 	galery = models.ForeignKey( Galery, null = True, default = None, blank = True )
 	post = models.ForeignKey( Post, null = True, default = None, blank = True )

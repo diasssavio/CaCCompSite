@@ -16,7 +16,7 @@ class FormAcademic( forms.ModelForm ):
 		'''
 
 		model = Academic
-		fields = ( 'enrollment', 'role', 'user', 'picture', )
+		fields = ( 'enrollment', 'role', 'picture', )
 
 class FormPost( forms.ModelForm ):
 	'''
@@ -29,7 +29,7 @@ class FormPost( forms.ModelForm ):
 		'''
 
 		model = Post
-		fields = ( 'title', 'content', 'user', 'keywords', )
+		fields = ( 'title', 'content', 'category', 'keywords', )
 
 class FormKeyword( forms.ModelForm ):
 	'''
@@ -68,7 +68,7 @@ class FormDocument( forms.ModelForm ):
 		'''
 
 		model = Document
-		fields = ( 'legend', 'path', 'is_image', 'galery', 'post', )
+		fields = ( 'legend', 'document', 'image', 'galery', 'post', )
 
 class FormCategory( forms.ModelForm ):
 	'''
