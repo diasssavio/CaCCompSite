@@ -10,9 +10,14 @@
     <script src="src/js/bootstrap.min.js"></script>
     <style>
       div{
-        border: 0px solid #cccccc;
+        /*border: 1px solid #000;*/
       }
     </style>
+
+    <!-- Bootstrap DatePicker -->
+    <link href="src/css/datepicker.css" rel="stylesheet" media="screen">
+    <script src="src/js/bootstrap-datepicker.js"></script>
+    <!-- Fim Bootstrap -->
 
     <!-- NEWS CCOMP -->
       <link rel="stylesheet" type="text/css" href="lofslidernews/css/layout.css" />
@@ -674,143 +679,920 @@
           </div>
         </div>
         <div class="row-fluid">
-          <div class="span4">Galerias</div>
-          <div class="span5">
+          <div class="span4">
             <div class="row-fluid">
-              <div class="span12">Links</div>
+              <div class="span12">
+                <!-- EVENTOS -->
+                  <a class="btn btn-inverse" style="width:299px">Eventos</a>
+                  <div class="well">
+                      <div id="calendario" data-date="03-05-2013" data-date-format="dd-mm-yyyy"></div>
+                  </div>
+                  <script>
+                    $(function(){
+                      window.prettyPrint && prettyPrint();  
+                      $.fn.datepicker.dates['en'] = {
+                        days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"],
+                        daysShort: ["Do", "Se", "Te", "Qa", "Qi", "Sx", "Sa", "Do"],
+                        daysMin: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"],
+                        months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+                        monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
+                      }; 
+                      $('#calendario').datepicker({
+                      });
+                    });
+                  </script>
+                  <table class="table table-striped" style="margin: 0px 0px 0px 0px; background-color: #FFFFFF">
+                    <thead>
+                      <tr style="margin: 0px 0px 0px 0px;"><th><div class="row-fluid"><div class="span4"><h4 style="margin: 0px 0px 0px 0px;">Data</h4></div><div class="span1"><h4 style="margin: 0px 0px 0px 0px;">&nbsp;&nbsp;-</h4></div><div class="span7"><h4 style="margin: 0px 0px 0px 0px;">Evento</h4></div></div></th></tr>
+                    </thead>
+                    <tbody>
+                      <tr style="margin: 0px 0px 0px 0px;"><td><div class="row-fluid">
+                        <div class="span4"><h5 style="margin: 0px 0px 0px 0px;">04/05(Sábado)</h5></div><div class="span1"><h5 style="margin: 0px 0px 0px 0px;">&nbsp;&nbsp;-</h5></div><div class="span7"><h5 style="margin: 0px 0px 0px 0px;">Hoje</h5></div>
+                      </div></td></tr>
+                      
+                      <tr style="margin: 0px 0px 0px 0px;"><td><div class="row-fluid">
+                        <div class="span4"><h5 style="margin: 0px 0px 0px 0px;">05/05(Domingo)</h5></div><div class="span1"><h5 style="margin: 0px 0px 0px 0px;">&nbsp;&nbsp;-</h5></div><div class="span7"><h5 style="margin: 0px 0px 0px 0px;">Amanhã</h5></div>
+                        <div class="span4"><h6 style="margin: 0px 0px 0px 0px;">08h30 - 11h00:</h6></div><div class="span7"><h6 style="margin: 0px 0px 0px 0px;">Reunião</h6></div>
+                      </div></td></tr>
+
+                      <tr style="margin: 0px 0px 0px 0px;"><td><div class="row-fluid">
+                        <div class="span4"><h5 style="margin: 0px 0px 0px 0px;">06 de Maio</h5></div><div class="span1"><h5 style="margin: 0px 0px 0px 0px;">&nbsp;&nbsp;-</h5></div><div class="span7"><h5 style="margin: 0px 0px 0px 0px;">Segunda Feira</h5></div>
+                        <div class="span4"><h6 style="margin: 0px 0px 0px 0px;">08h00 - 10h40:</h6></div><div class="span7"><h6 style="margin: 0px 0px 0px 0px;">Aula de Introdução a Programação</h6></div>
+                        <div class="span4"><h6 style="margin: 0px 0px 0px 0px;">10h00 - 11h40:</h6></div><div class="span7"><h6 style="margin: 0px 0px 0px 0px;">Aula de Introdução a Ciência da Computação</h6></div>
+                        <div class="span4"><h6 style="margin: 0px 0px 0px 0px;">12h00 - 13h00:</h6></div><div class="span7"><h6 style="margin: 0px 0px 0px 0px;">Confecção de Carteirinhas</h6></div>
+                        <div class="span4"><h6 style="margin: 0px 0px 0px 0px;">14h00 - 15h40:</h6></div><div class="span7"><h6 style="margin: 0px 0px 0px 0px;">Aula de Calculo Numérico</h6></div>
+                        <div class="span4"><h6 style="margin: 0px 0px 0px 0px;">16h00 - 17h40:</h6></div><div class="span7"><h6 style="margin: 0px 0px 0px 0px;">Aula de Fisica para Computação</h6></div>
+                        <div class="span4"><h6 style="margin: 0px 0px 0px 0px;">18h00 - 18h40:</h6></div><div class="span7"><h6 style="margin: 0px 0px 0px 0px;">Assembléia do CACCOMP</h6></div>
+                        <div class="span4"><h6 style="margin: 0px 0px 0px 0px;">19h00 - 22h40:</h6></div><div class="span7"><h6 style="margin: 0px 0px 0px 0px;">Aula de Animações Digitais</h6></div>
+                      </div></td></tr>
+                      <!-- Mais Eventos -->
+                      <tr style="margin: 0px 0px 0px 0px;"><td><div class="row-fluid">
+                        <div class="span5 offset7">
+                          <a class="btn btn-success" href="#"><i class=" icon-plus icon-white"></i>Eventos</a>
+                        </div>
+                      </div></td></tr>  
+                    </tbody>
+                  </table>
+                <!-- FIM EVENTOS -->
+              </div>
             </div>
             <div class="row-fluid">
-              <div class="span12">Documentos</div>
+              <div class="span12">
+                <!-- GALERIAS -->
+                  <a class="btn btn-inverse" style="width:299px">Galerias</a>
+                <!-- FIM GALERIAS -->
+              </div>
             </div>
           </div>
-          <div class="span3">
+          <div class="span4">
             <div class="row-fluid">
-              <div class="span12" style="border: solid thick #dddddd; border-radius: 8px; background-color: #ffffff; border-width: 1px; width: 290px;">
-                <!-- ENQUETE -->
-                <script type="text/javascript">
-                  <!--
-                    //Quando o mouse passa por cima da opção
-                    function mouseIn(id){
-                      var resp = document.enquete.elements['optionsRadios'];
-                      var idTr = "enquete_op"+id;
-                      //alert(idTr);
-                      if (resp[id-1].checked == false) {
-                        document.getElementById(idTr).className='success';
-                        //alert(idTr);
-                      };
-                    }
-
-                    //Quando o mouse sai de cima da opção
-                    function mouseOut(id){
-                      var resp = document.enquete.elements['optionsRadios'];
-                      var idTr = "enquete_op"+id;
-                      //alert(idTr);
-                      if (resp[id-1].checked == false) {
-                        document.getElementById(idTr).className='';
-                        //alert(idTr);
-                      };
-                    }
-
-                    //Quando é selecionado uma opção
-                    function selecionar(id){
-                      var resp = document.enquete.elements['optionsRadios'];
-                      var idTr;
-                      for (var i=1; i<=resp.length; i++) {
-                        idTr = "enquete_op"+(i);
-                        document.getElementById(idTr).className='';
-                      };
-                      idTr = "enquete_op"+id;
-                      document.getElementById(idTr).className='info';
-                    }
-                  -->
-                </script>
-                <div class="row-fluid">
-                  <div class="span12">
-                    <a href="#" class="btn btn-inverse" style="width:262px">Enquete</a>
-                  </div>
-                </div>
-                <div class="row-fluid">
-                  <div class="span12">
-                    <form class="bs-docs-example form-inline" name="enquete">
-                      <table class="table table-striped">
-                        <thead>
-                          <tr><th>Como você avalia o novo layout do site do CACCOMP:</th></tr>
-                        </thead>
-                        <tbody>
-                          <tr  onmouseover="mouseIn(1);" onmouseout="mouseOut(1);" id="enquete_op1">
-                            <td>
-                              <label class="radio">
-                                <input type="radio" name="optionsRadios" id="enqueteRadios1" value="option1" onclick="selecionar(1);" checked>
-                                Ótimo
-                              </label>
-                            </td>
-                          </tr>
-                          <tr onmouseover="mouseIn(2);" onmouseout="mouseOut(2);" id="enquete_op2">
-                            <td>
-                              <label class="radio">
-                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="selecionar(2);" checked>
-                                Bom
-                              </label>
-                            </td>
-                          </tr>
-                          <tr onmouseover="mouseIn(3);" onmouseout="mouseOut(3);" id="enquete_op3">
-                            <td>
-                              <label class="radio">
-                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" onclick="selecionar(3);" checked>
-                                Médio
-                              </label>
-                            </td>
-                          </tr>
-                          <tr onmouseover="mouseIn(4);" onmouseout="mouseOut(4);" id="enquete_op4">
-                            <td>
-                              <label class="radio">
-                                <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" onclick="selecionar(4);" checked>
-                                Ruim
-                              </label>
-                            </td>
-                          </tr>
-                          <tr onmouseover="mouseIn(5);" onmouseout="mouseOut(5);" id="enquete_op5">
-                            <td>
-                              <label class="radio">
-                                <input type="radio" name="optionsRadios" id="optionsRadios5" value="option5" onclick="selecionar(5);" checked>
-                                Péssimo
-                              </label>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <button type="submit" class="btn btn-primary">Votar</button> 
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </form>
-                  </div>
-                </div>
-                <!-- FIM ENQUETE -->
+              <div class="span1" style="width: 365px;">
+                <!-- DICAS E LINKS -->
+                  <a class="btn btn-inverse" style="width:340px">Dicas & Links</a>
+                  
+                  <table class="table" style="margin: 0px 0px 0px 0px;">
+                    <!-- ############ PRIMEIRO LINK ################# -->
+                    <tr>
+                      <td>
+                        <div class="row-fluid">
+                          <div class="span4">FOTO</div>
+                          <div class="span8">
+                            <table class="table" style="margin: 0px 0px 0px 0px;">
+                              <tr style="margin: 0px 0px 0px 0px;">
+                                <td>
+                                  <a href="#"><h4 style="margin: 0px 0px 0px 0px;">BootStrap</h4></a>
+                                  <h6 style="margin: 0px 0px 0px 0px;">Posted in 04 de maio de 2013<h6>
+                                </td>
+                              </tr>
+                              <tr style="margin: 0px 0px 0px 0px;">
+                                <td>
+                                  <h5 style="margin: 0px 0px 0px 0px;">Author: Pedro Reis</h5>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="btn-group">
+                                    <a class="btn btn-mini btn-primary" href="#"><i class="icon-hand-down icon-white"></i> Link</a>
+                                    <a class="btn btn-mini btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                      <li><a href="#"> Abrir inbox</a></li>
+                                      <li><a href="#"> Abrir nova aba</a></li>
+                                      <li><a href="#"> Abrir nova janela</a></li>
+                                      <li class="divider"></li>
+                                    </ul>
+                                  </div>
+                                  <a class="btn btn-mini btn-success" href="#"> <i class=" icon-plus icon-white"></i>INFO</a>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </td>
+                    </tr> 
+                    <!-- ############ SEGUNDO LINK ################# -->
+                    <tr>
+                      <td>
+                        <div class="row-fluid">
+                          <div class="span4">FOTO</div>
+                          <div class="span8">
+                            <table class="table" style="margin: 0px 0px 0px 0px;">
+                              <tr style="margin: 0px 0px 0px 0px;">
+                                <td>
+                                  <a href="#"><h4 style="margin: 0px 0px 0px 0px;">BootStrap</h4></a>
+                                  <h6 style="margin: 0px 0px 0px 0px;">Posted in 04 de maio de 2013<h6>
+                                </td>
+                              </tr>
+                              <tr style="margin: 0px 0px 0px 0px;">
+                                <td>
+                                  <h5 style="margin: 0px 0px 0px 0px;">Author: Pedro Reis</h5>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="btn-group">
+                                    <a class="btn btn-mini btn-primary" href="#"><i class="icon-hand-down icon-white"></i> Link</a>
+                                    <a class="btn btn-mini btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                      <li><a href="#"> Abrir inbox</a></li>
+                                      <li><a href="#"> Abrir nova aba</a></li>
+                                      <li><a href="#"> Abrir nova janela</a></li>
+                                      <li class="divider"></li>
+                                    </ul>
+                                  </div>
+                                  <a class="btn btn-mini btn-success" href="#"> <i class=" icon-plus icon-white"></i>INFO</a>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- ############ TERCEIRO LINK ################# -->
+                    <tr>
+                      <td>
+                        <div class="row-fluid">
+                          <div class="span4">FOTO</div>
+                          <div class="span8">
+                            <table class="table" style="margin: 0px 0px 0px 0px;">
+                              <tr style="margin: 0px 0px 0px 0px;">
+                                <td>
+                                  <a href="#"><h4 style="margin: 0px 0px 0px 0px;">BootStrap</h4></a>
+                                  <h6 style="margin: 0px 0px 0px 0px;">Posted in 04 de maio de 2013<h6>
+                                </td>
+                              </tr>
+                              <tr style="margin: 0px 0px 0px 0px;">
+                                <td>
+                                  <h5 style="margin: 0px 0px 0px 0px;">Author: Pedro Reis</h5>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="btn-group">
+                                    <a class="btn btn-mini btn-primary" href="#"><i class="icon-hand-down icon-white"></i> Link</a>
+                                    <a class="btn btn-mini btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                      <li><a href="#"> Abrir inbox</a></li>
+                                      <li><a href="#"> Abrir nova aba</a></li>
+                                      <li><a href="#"> Abrir nova janela</a></li>
+                                      <li class="divider"></li>
+                                    </ul>
+                                  </div>
+                                  <a class="btn btn-mini btn-success" href="#"> <i class=" icon-plus icon-white"></i>INFO</a>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- ############ QUARTO LINK ################# -->
+                    <tr>
+                      <td>
+                        <div class="row-fluid">
+                          <div class="span4">FOTO</div>
+                          <div class="span8">
+                            <table class="table" style="margin: 0px 0px 0px 0px;">
+                              <tr style="margin: 0px 0px 0px 0px;">
+                                <td>
+                                  <a href="#"><h4 style="margin: 0px 0px 0px 0px;">BootStrap</h4></a>
+                                  <h6 style="margin: 0px 0px 0px 0px;">Posted in 04 de maio de 2013<h6>
+                                </td>
+                              </tr>
+                              <tr style="margin: 0px 0px 0px 0px;">
+                                <td>
+                                  <h5 style="margin: 0px 0px 0px 0px;">Author: Pedro Reis</h5>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="btn-group">
+                                    <a class="btn btn-mini btn-primary" href="#"><i class="icon-hand-down icon-white"></i> Link</a>
+                                    <a class="btn btn-mini btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                      <li><a href="#"> Abrir inbox</a></li>
+                                      <li><a href="#"> Abrir nova aba</a></li>
+                                      <li><a href="#"> Abrir nova janela</a></li>
+                                      <li class="divider"></li>
+                                    </ul>
+                                  </div>
+                                  <a class="btn btn-mini btn-success" href="#"> <i class=" icon-plus icon-white"></i>INFO</a>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- ############ MAIS LINKS ################# -->
+                    <tr>
+                      <td>
+                        <div class="row-fluid">
+                          <div class="span5 offset7">
+                            <a class="btn btn-success" href="#"><i class=" icon-plus icon-white"></i>Links&Dicas</a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                  
+                <!-- FIM DE DICAS E LINKS -->
               </div>
             </div>
             <div class="row-fluid">
-              <div class="span12">
-                <!-- TWITTER PLUGIN -->
-                  <div style="margin:0; padding:0; background:#cccccc; text-align:center; width:290px;">
-                    <a class="twitter-timeline" href="https://twitter.com/CACCOMP" data-widget-id="330126009254936577">Tweets de @CACCOMP</a>
-                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-                  </div>
-                <!-- FIM TWITTER PLUGIN -->
-              </div>
+              <div class="span12" style="width: 365px;" >
+                <!-- DOCUMENTOS -->
+                  <a class="btn btn-inverse" style="width:340px">Documentos</a>
+
+                  <table class="table" style="margin: 0px 0px 0px 0px;">
+                    <!-- ############ PRIMEIRO LINK ################# -->
+                    <tr>
+                      <td>
+                        <div class="row-fluid">
+                          <div class="span12">
+                            <table class="table" style="margin: 0px 0px 0px 0px;">
+                              <tr style="margin: 0px 0px 0px 0px;">
+                                <td>
+                                  <a href="#"><h4 style="margin: 0px 0px 0px 0px;">BootStrap</h4></a>
+                                  <h6 style="margin: 0px 0px 0px 0px;">Posted by Pedro Reis in 04 de maio de 2013<h6>
+                                </td>
+                              </tr>
+                              <tr style="margin: 0px 0px 0px 0px;">
+                                <td>
+                                  <h5 style="margin: 0px 0px 0px 0px;">Breve descrição...</h5>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="btn-group">
+                                   <a class="btn btn-mini btn-info" href="#"> <i class=" icon-download icon-white"></i> Download</a>
+                                    <a class="btn btn-mini btn-primary" href="#"><i class="icon-file icon-white"></i> Visualizar</a>
+                                    <a class="btn btn-mini btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                      <li><a href="#"> Visualizar inbox</a></li>
+                                      <li><a href="#"> Visualizar nova aba</a></li>
+                                      <li><a href="#"> Visualizar nova janela</a></li>
+                                      <li class="divider"></li>
+                                    </ul>
+                                  </div>
+                                  <a class="btn btn-mini btn-success" href="#"> <i class=" icon-plus icon-white"></i>INFO</a>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </td>
+                    </tr> 
+                    <!-- ############ SEGUNDO LINK ################# -->
+                    <tr>
+                      <td>
+                        <div class="row-fluid">
+                          <div class="span12">
+                            <table class="table" style="margin: 0px 0px 0px 0px;">
+                              <tr style="margin: 0px 0px 0px 0px;">
+                                <td>
+                                  <a href="#"><h4 style="margin: 0px 0px 0px 0px;">BootStrap</h4></a>
+                                  <h6 style="margin: 0px 0px 0px 0px;">Posted by Pedro Reis in 04 de maio de 2013<h6>
+                                </td>
+                              </tr>
+                              <tr style="margin: 0px 0px 0px 0px;">
+                                <td>
+                                  <h5 style="margin: 0px 0px 0px 0px;">Breve descrição...</h5>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="btn-group">
+                                   <a class="btn btn-mini btn-info" href="#"> <i class=" icon-download icon-white"></i> Download</a>
+                                    <a class="btn btn-mini btn-primary" href="#"><i class="icon-file icon-white"></i> Visualizar</a>
+                                    <a class="btn btn-mini btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                      <li><a href="#"> Visualizar inbox</a></li>
+                                      <li><a href="#"> Visualizar nova aba</a></li>
+                                      <li><a href="#"> Visualizar nova janela</a></li>
+                                      <li class="divider"></li>
+                                    </ul>
+                                  </div>
+                                  <a class="btn btn-mini btn-success" href="#"> <i class=" icon-plus icon-white"></i>INFO</a>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </td>
+                    </tr> 
+                    <!-- ############ TERCEIRO LINK ################# -->
+                    <tr>
+                      <td>
+                        <div class="row-fluid">
+                          <div class="span12">
+                            <table class="table" style="margin: 0px 0px 0px 0px;">
+                              <tr style="margin: 0px 0px 0px 0px;">
+                                <td>
+                                  <a href="#"><h4 style="margin: 0px 0px 0px 0px;">BootStrap</h4></a>
+                                  <h6 style="margin: 0px 0px 0px 0px;">Posted by Pedro Reis in 04 de maio de 2013<h6>
+                                </td>
+                              </tr>
+                              <tr style="margin: 0px 0px 0px 0px;">
+                                <td>
+                                  <h5 style="margin: 0px 0px 0px 0px;">Breve descrição...</h5>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="btn-group">
+                                   <a class="btn btn-mini btn-info" href="#"> <i class=" icon-download icon-white"></i> Download</a>
+                                    <a class="btn btn-mini btn-primary" href="#"><i class="icon-file icon-white"></i> Visualizar</a>
+                                    <a class="btn btn-mini btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                      <li><a href="#"> Visualizar inbox</a></li>
+                                      <li><a href="#"> Visualizar nova aba</a></li>
+                                      <li><a href="#"> Visualizar nova janela</a></li>
+                                      <li class="divider"></li>
+                                    </ul>
+                                  </div>
+                                  <a class="btn btn-mini btn-success" href="#"> <i class=" icon-plus icon-white"></i>INFO</a>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </td>
+                    </tr> 
+                    <!-- ############ QUARTO LINK ################# -->
+                    <tr>
+                      <td>
+                        <div class="row-fluid">
+                          <div class="span12">
+                            <table class="table" style="margin: 0px 0px 0px 0px;">
+                              <tr style="margin: 0px 0px 0px 0px;">
+                                <td>
+                                  <a href="#"><h4 style="margin: 0px 0px 0px 0px;">BootStrap</h4></a>
+                                  <h6 style="margin: 0px 0px 0px 0px;">Posted by Pedro Reis in 04 de maio de 2013<h6>
+                                </td>
+                              </tr>
+                              <tr style="margin: 0px 0px 0px 0px;">
+                                <td>
+                                  <h5 style="margin: 0px 0px 0px 0px;">Breve descrição...</h5>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="btn-group">
+                                   <a class="btn btn-mini btn-info" href="#"> <i class=" icon-download icon-white"></i> Download</a>
+                                    <a class="btn btn-mini btn-primary" href="#"><i class="icon-file icon-white"></i> Visualizar</a>
+                                    <a class="btn btn-mini btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                      <li><a href="#"> Visualizar inbox</a></li>
+                                      <li><a href="#"> Visualizar nova aba</a></li>
+                                      <li><a href="#"> Visualizar nova janela</a></li>
+                                      <li class="divider"></li>
+                                    </ul>
+                                  </div>
+                                  <a class="btn btn-mini btn-success" href="#"> <i class=" icon-plus icon-white"></i>INFO</a>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </td>
+                    </tr> 
+                    <!-- ############ MAIS DOCUMENTOS ################# -->
+                    <tr>
+                      <td>
+                        <div class="row-fluid">
+                          <div class="span5 offset7">
+                            <a class="btn btn-success" href="#"><i class=" icon-plus icon-white"></i>Documentos</a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                <!-- FIM DE DOCUMENTOS --></div>
             </div>
+          </div>
+          <div class="span4">
             <div class="row-fluid">
-              <div class="span12">
-                <!-- FACEBOOK PLUGIN -->
-                  <iframe src="https://www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fcaccompuft&amp;width=300&amp;height=590&amp;show_faces=true&amp;colorscheme=light&amp;stream=true&amp;border_color&amp;header=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:290px; height:590px; background:#ffffff" allowTransparency="true"></iframe>
-                <!-- FIM FACEBOOK PLUGIN -->
+              <div class="span11">
+                <div class="row-fluid">
+                  <div class="span11">
+                    <div class="row-fluid">
+                      <div class="span11">
+                        <div class="row-fluid">
+                          <div class="span10 offset2" style="border: solid thick #dddddd; border-radius: 8px; background-color: #ffffff; border-width: 1px; width: 290px;">
+                            <!-- ENQUETE -->
+                            <script type="text/javascript">
+                              <!--
+                                //Quando o mouse passa por cima da opção
+                                function mouseIn(id){
+                                  var resp = document.enquete.elements['optionsRadios'];
+                                  var idTr = "enquete_op"+id;
+                                  //alert(idTr);
+                                  if (resp[id-1].checked == false) {
+                                    document.getElementById(idTr).className='success';
+                                    //alert(idTr);
+                                  };
+                                }
+
+                                //Quando o mouse sai de cima da opção
+                                function mouseOut(id){
+                                  var resp = document.enquete.elements['optionsRadios'];
+                                  var idTr = "enquete_op"+id;
+                                  //alert(idTr);
+                                  if (resp[id-1].checked == false) {
+                                    document.getElementById(idTr).className='';
+                                    //alert(idTr);
+                                  };
+                                }
+
+                                //Quando é selecionado uma opção
+                                function selecionar(id){
+                                  var resp = document.enquete.elements['optionsRadios'];
+                                  var idTr;
+                                  for (var i=1; i<=resp.length; i++) {
+                                    idTr = "enquete_op"+(i);
+                                    document.getElementById(idTr).className='';
+                                  };
+                                  idTr = "enquete_op"+id;
+                                  document.getElementById(idTr).className='info';
+                                }
+                              -->
+                            </script>
+                            <div class="row-fluid">
+                              <div class="span12">
+                                <a class="btn btn-inverse" style="width:262px">Enquete</a>
+                              </div>
+                            </div>
+                            <div class="row-fluid">
+                              <div class="span12">
+                                <form class="bs-docs-example form-inline" name="enquete">
+                                  <table class="table table-striped">
+                                    <thead>
+                                      <tr><th>Como você avalia o novo layout do site do CACCOMP:</th></tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr  onmouseover="mouseIn(1);" onmouseout="mouseOut(1);" id="enquete_op1">
+                                        <td>
+                                          <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="enqueteRadios1" value="option1" onclick="selecionar(1);" checked>
+                                            Ótimo
+                                          </label>
+                                        </td>
+                                      </tr>
+                                      <tr onmouseover="mouseIn(2);" onmouseout="mouseOut(2);" id="enquete_op2">
+                                        <td>
+                                          <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="selecionar(2);" checked>
+                                            Bom
+                                          </label>
+                                        </td>
+                                      </tr>
+                                      <tr onmouseover="mouseIn(3);" onmouseout="mouseOut(3);" id="enquete_op3">
+                                        <td>
+                                          <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" onclick="selecionar(3);" checked>
+                                            Médio
+                                          </label>
+                                        </td>
+                                      </tr>
+                                      <tr onmouseover="mouseIn(4);" onmouseout="mouseOut(4);" id="enquete_op4">
+                                        <td>
+                                          <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" onclick="selecionar(4);" checked>
+                                            Ruim
+                                          </label>
+                                        </td>
+                                      </tr>
+                                      <tr onmouseover="mouseIn(5);" onmouseout="mouseOut(5);" id="enquete_op5">
+                                        <td>
+                                          <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios5" value="option5" onclick="selecionar(5);" checked>
+                                            Péssimo
+                                          </label>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <button type="submit" class="btn btn-primary">Votar</button>
+                                          Deixe a sua opinião, e veja outras pesquisas aqui. 
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </form>
+                              </div>
+                            </div>
+                            <!-- FIM ENQUETE -->
+                          </div>
+                        </div>
+                        <div class="row-fluid">
+                          <div class="span10 offset2">
+                            <!-- TWITTER PLUGIN -->
+                              <div style="margin:0; padding:0; background:#cccccc; text-align:center; width:290px;">
+                                <a class="twitter-timeline" href="https://twitter.com/CACCOMP" data-widget-id="330126009254936577">Tweets de @CACCOMP</a>
+                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                              </div>
+                            <!-- FIM TWITTER PLUGIN -->
+                          </div>
+                        </div>
+                        <div class="row-fluid">
+                          <div class="span10 offset2">
+                            <!-- FACEBOOK PLUGIN -->
+                              <iframe src="https://www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fcaccompuft&amp;width=300&amp;height=590&amp;show_faces=true&amp;colorscheme=light&amp;stream=true&amp;border_color&amp;header=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:290px; height:590px; background:#ffffff" allowTransparency="true"></iframe>
+                            <!-- FIM FACEBOOK PLUGIN -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="row-fluid">
-          <div class="span12">Vídeo</div>
+          <div class="span12">
+            <a class="btn btn-inverse" style="margin-left: 19px; width:960px;">Vídeos</a>
+            <!-- VIDEOS -->
+            <div class="example-wrapper" style="margin-top:0px;">
+              <div id="services-example-2" class="theme1">
+              <ul>
+                <!--  ###############    -  SLIDE 1  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service1.jpg" data-bw="showbiz/images/services/service1_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>Slide With Large Image</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <img class="big-image" width="498" height="280" src="showbiz/images/services/large1.jpg">
+                    <div class="details">
+                      <h2>Our Strategy</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <div class="details">
+                      <h2>Step Towards Success</h2>
+                      <ul class="check">
+                        <li>List Item Number One</li>
+                        <li>List Item Number Two</li>
+                        <li>List Item Number Three</li>
+                        <li>List Item Number Four</li>
+                      </ul>
+                      <img src="images/certified.png">
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 2  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service2.jpg" data-bw="showbiz/images/services/service2_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>Youtube Video</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                  -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <iframe class="video_clip" src="http://www.youtube.com/embed/kjX-8kQmakk?hd=1&amp;wmode=opaque&amp;autohide=1&amp;showinfo=0" height="280" width="498" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
+                    <div class="details">
+                      <h2>Our Strategy</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <div class="details">
+                      <h2>Step Towards Success</h2>
+                      <ul class="check">
+                        <li>List Item Number One</li>
+                        <li>List Item Number Two</li>
+                        <li>List Item Number Three</li>
+                        <li>List Item Number Four</li>
+                      </ul>
+                      <img src="images/certified.png">
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 3  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service3.jpg" data-bw="showbiz/images/services/service3_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>Vimeo Video</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <div class="details">
+                      <h2>Our Strategy</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <iframe class="video_clip" src="http://player.vimeo.com/video/24456787?title=0&amp;byline=0&amp;portrait=0" width="498" height="280" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
+                    <div class="details">
+                      <h2>Step Towards Success</h2>
+                      <ul class="check">
+                        <li>List Item Number One</li>
+                        <li>List Item Number Two</li>
+                        <li>List Item Number Three</li>
+                        <li>List Item Number Four</li>
+                      </ul>
+                      <img src="images/certified.png">
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 4  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service4.jpg" data-bw="showbiz/images/services/service4_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>Design Your Layout</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <img class="big-image" width="498" height="280" src="showbiz/images/services/large2.jpg">
+                    <div class="details_double">
+                      <h2>Just An Image & Text</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen, no sea takimata sanctus est Lorem ipsum dolor.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 5  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service5.jpg" data-bw="showbiz/images/services/service5_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>No Image Just Text</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <div class="details">
+                      <h2>Diverse Layouts</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen, no sea takimata sanctus est Lorem ipsum dolor.</p>
+                    </div>
+                    <div class="details">
+                      <h2>Step Towards Success</h2>
+                      <ul class="check">
+                        <li>List Item Number One</li>
+                        <li>List Item Number Two</li>
+                        <li>List Item Number Three</li>
+                        <li>List Item Number Four</li>
+                      </ul>
+                      <img src="images/certified.png">
+                    </div>
+                    <div class="details_double">
+                      <h2>Wide Text Block</h2>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen, no sea takimata sanctus est Lorem ipsum dolor.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <div class="details">
+                      <h2>Short Text Block</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen, no sea takimata sanctus est Lorem ipsum dolor.</p>
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 6  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service1.jpg" data-bw="showbiz/images/services/service1_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>Slide With Large Image</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <img class="big-image" width="498" height="280" src="showbiz/images/services/large1.jpg">
+                    <div class="details">
+                      <h2>Our Strategy</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <div class="details">
+                      <h2>Step Towards Success</h2>
+                      <ul class="check">
+                        <li>List Item Number One</li>
+                        <li>List Item Number Two</li>
+                        <li>List Item Number Three</li>
+                        <li>List Item Number Four</li>
+                      </ul>
+                      <img src="images/certified.png">
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 7  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service2.jpg" data-bw="showbiz/images/services/service2_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>Youtube Video</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <iframe class="video_clip" src="http://www.youtube.com/embed/kjX-8kQmakk?hd=1&amp;wmode=opaque&amp;autohide=1&amp;showinfo=0" height="280" width="498" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
+                    <div class="details">
+                      <h2>Our Strategy</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <div class="details">
+                      <h2>Step Towards Success</h2>
+                      <ul class="check">
+                        <li>List Item Number One</li>
+                        <li>List Item Number Two</li>
+                        <li>List Item Number Three</li>
+                        <li>List Item Number Four</li>
+                      </ul>
+                      <img src="images/certified.png">
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 8 -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service3.jpg" data-bw="showbiz/images/services/service3_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>Vimeo Video</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <div class="details">
+                      <h2>Our Strategy</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <iframe class="video_clip" src="http://player.vimeo.com/video/24456787?title=0&amp;byline=0&amp;portrait=0" width="498" height="280" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
+                    <div class="details">
+                      <h2>Step Towards Success</h2>
+                      <ul class="check">
+                        <li>List Item Number One</li>
+                        <li>List Item Number Two</li>
+                        <li>List Item Number Three</li>
+                        <li>List Item Number Four</li>
+                      </ul>
+                      <img src="images/certified.png">
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 9  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service4.jpg" data-bw="showbiz/images/services/service4_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>Design Your Layout</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <img class="big-image" width="498" height="280" src="showbiz/images/services/large2.jpg">
+                    <div class="details_double">
+                      <h2>Just An Image & Text</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen, no sea takimata sanctus est Lorem ipsum dolor.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+                <!--  ###############    -  SLIDE 10  -  ###############   -->
+                <li>
+                  <img class="thumb" src="showbiz/images/services/service5.jpg" data-bw="showbiz/images/services/service5_bw.jpg">
+                  <div style="margin-top:16px"></div>
+                  <h2>No Image Just Text</h2>
+                  <p>Lorem ipsum dolor sit amet, conseteetur sadipscing elitr,<br> sed diam monumy eirmod...</p>
+                  <a class="buttonlight morebutton" href="#">View More</a>
+                  <!--
+                  ***********************************************************************************************************
+                    -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
+                  ***********************************************************************************************************
+                  -->
+                  <div class="page-more">
+                    <div class="details">
+                      <h2>Diverse Layouts</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen, no sea takimata sanctus est Lorem ipsum dolor.</p>
+                    </div>
+                    <div class="details">
+                      <h2>Step Towards Success</h2>
+                      <ul class="check">
+                        <li>List Item Number One</li>
+                        <li>List Item Number Two</li>
+                        <li>List Item Number Three</li>
+                        <li>List Item Number Four</li>
+                      </ul>
+                      <img src="images/certified.png">
+                    </div>
+                    <div class="details_double">
+                      <h2>Wide Text Block</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen, no sea takimata sanctus est Lorem ipsum dolor.</p>
+                      <a class="buttonlight" href="#">Visit Website</a>
+                    </div>
+                    <div class="details">
+                      <h2>Short Text Block</h2>
+                      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labora et dolore magna.</p>
+                      <p>At vero eou et accusam et justo duo dolores et ea rebum.<br>Stet clita kasd gubergen, no sea takimata sanctus est Lorem ipsum dolor.</p>
+                    </div>
+                    <div  class="closer"></div>
+                  </div>
+                </li>
+              </ul>
+              <!--  ###############    -  TOOLBAR (LEFT/RIGHT) BUTTONS  -  ###############   -->
+              <div class="toolbar">
+                <div class="left"></div><div class="right"></div>
+              </div>
+            </div>
+          </div>
+        <!--
+          ##############################
+          - ACTIVATE THE BANNER HERE -
+          ##############################
+          -->
+          <script type="text/javascript">
+          $(document).ready(function() {
+              $.noConflict();
+
+              jQuery('#services-example-2').services(
+              {
+                width:920,
+                height:290,
+                slideAmount:5,
+                slideSpacing:30,
+                touchenabled:"on",
+                mouseWheel:"on",
+                hoverAlpha:"off",
+                slideshow:3000,
+                hovereffect:"on",
+                callBack:function() { }
+            });
+            });
+          </script>
+            <!-- Videos -->
+          </div>
         </div>
         <div class="row-fluid">
           <div class="span12">Rodapé</div>
