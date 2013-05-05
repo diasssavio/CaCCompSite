@@ -39,11 +39,9 @@ def logout_then_login( request ):
 	logout( request )
 	# Redirect to a success page.
 
-@login_required
 def index( request, user = None ):
 	pass
 
-@login_required
 def addAcademic( request ):
 	if request.method == 'POST':
 		form = FormAcademic( request.POST, request.FILES )

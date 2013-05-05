@@ -3,6 +3,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 # Create your models here.
 class Academic( models.Model ):
@@ -13,14 +14,21 @@ class Academic( models.Model ):
 	enrollment = models.IntegerField( verbose_name = u'matrícula' )
 	role = models.CharField( max_length = 45, verbose_name = u'função' )
 
-	user = models.OneToOneField( User, verbose_name = u'Usuário' )
 	picture = models.OneToOneField( 'Document', verbose_name = u'Imagem' )
+
+	user = models.OneToOneField( User, verbose_name = u'Usuário' )
 
 	def __unicode__( self ):
 		return '%s %s' % ( self.user.first_name, self.user.last_name )
 
 	class Meta:
 		verbose_name = u'Acadêmico'
+
+def createAcademic( sender, instance, created, **kwargs ):
+	if created:
+		profile, created = Academic.objects.get_or_create( user = instance )
+
+post_save.connect( createAcademic, sender = User )
 
 class Post( models.Model ):
 	'''

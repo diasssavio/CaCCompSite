@@ -2,9 +2,20 @@
 #!/usr/bin/env python2.7
 
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
 from content.models import Academic, Post, Keyword, Galery, Document, Category
+
+class academicInline( admin.StackedInline ):
+	model = Academic
+	can_delete = False
+
+class UserAdmin( UserAdmin ):
+	inlines = [ academicInline ]
+
+admin.site.unregister( User )
+admin.site.register( User, UserAdmin )
 
 class AdminAcademic( admin.ModelAdmin ):
 	'''
@@ -14,7 +25,7 @@ class AdminAcademic( admin.ModelAdmin ):
 	fields = ( 'enrollment', 'role', 'user', 'picture', )
 	list_display = ( 'user', 'enrollment', 'role', )
 
-admin.site.register( Academic, AdminAcademic )
+# admin.site.register( Academic, AdminAcademic )
 
 class AdminPost( admin.ModelAdmin ):
 	'''
