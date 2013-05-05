@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
 from models import Academic
-from forms import FormAcademic, FormPost, FormGalery, FormCategory
+from forms import FormUser, FormAcademic, FormPost, FormGalery, FormCategory
 
 # Create your views here.
 
@@ -44,16 +44,20 @@ def index( request, user = None ):
 
 def addAcademic( request ):
 	if request.method == 'POST':
-		form = FormAcademic( request.POST, request.FILES )
-		if form.is_valid():
-			item = form.save()
-			item.user = request.user
-			item.save()
+		formAcademic = FormAcademic( data = request.POST )
+		formUser = FormUser( data = request.POST )
+		if formAcademic.is_valid() and formUser.is_valid():
+			user = formUser.save()
+			academic = formAcademic.save( commit = False )
+			academic.user = user
+			academic.save()
 			return render_to_response( 'saved.html', { 'name' : u'Acadêmico', 'this' : 'academic/add/' } )
 	else:
-		form = FormAcademic()
+		formAcademic = FormAcademic()
+		formUser = FormUser()
 
-	return render_to_response( 'content/addAcademic.html', { 'form' : form }, context_instance = RequestContext( request ) )
+	return render_to_response( 'content/addAcademic.html', { 'formAcademic' : formAcademic, 'formUser' : formUser },
+								context_instance = RequestContext( request ) )
 
 @login_required
 def addPost( request ):

@@ -5,15 +5,16 @@ from django.contrib.auth.models import User
 
 from models import Academic, Post, Keyword, Galery, Document, Category
 
-
+class FormUser( forms.ModelForm ):
+	class Meta:
+		model = User
+		# fields = ( 'username',  )
 
 class FormAcademic( forms.ModelForm ):
 	'''
 	Formulário ModelForm do acadêmico.
 	Cria os campos do formulário de acordo com o model definido
 	'''
-
-	# user = 
 
 	class Meta:
 		'''
