@@ -1,6 +1,7 @@
 {% extends 'content/base.html' %}
 
 {% block body %}
+<<<<<<< HEAD
 	<div class="row-fluid">
 		<div class="span12">
 			<form action="" method="post">
@@ -26,5 +27,20 @@
 				</div></div>
 			</form>
 		</div>
+=======
+	<div>
+		<form action="" method="post">
+			{% csrf_token %}
+			<div>
+				<p>{{ formUser.username.label_tag }} {{ formUser.username }}</p>
+				<p>{{ formUser.first_name.label_tag }} {{ formUser.first_name }}</p>
+				<p>{{ formUser.last_name.label_tag }} {{ formUser.last_name }}</p>
+				<p>{{ formUser.email.label_tag }} {{ formUser.email }}</p>
+				<p>{{ formUser.password.label_tag }} {{ formUser.password }}</p>
+				<!-- {{ formAcademic.as_p }} -->
+				<button type="submit">Adicionar</button>
+			</div>
+		</form>
+>>>>>>> [Updated] Sign up view
 	</div>
 {% endblock %}

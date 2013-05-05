@@ -47,7 +47,10 @@ def addAcademic( request ):
 		formAcademic = FormAcademic( data = request.POST )
 		formUser = FormUser( data = request.POST )
 		if formAcademic.is_valid() and formUser.is_valid():
-			user = formUser.save()
+			# User
+			user = formUser.save( commit = False )
+
+			# Academic
 			academic = formAcademic.save( commit = False )
 			academic.user = user
 			academic.save()
