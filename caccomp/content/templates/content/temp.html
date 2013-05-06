@@ -1,0 +1,16 @@
+{% extends 'content/base.html' %}
+
+{% block body %}
+	<div class="row-fluid">
+		<div class="span12">
+			<form action="" method="post">
+				{% csrf_token %}
+				<div class="row-fluid"><div class="span12">
+					{{ formUser.as_p }}
+					{{ formAcademic.as_p }}
+					<button type="submit" class="btn btn-success" class="">Adicionar</button>
+				</div></div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

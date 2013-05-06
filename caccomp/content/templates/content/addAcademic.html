@@ -1,46 +1,28 @@
 {% extends 'content/base.html' %}
 
 {% block body %}
-<<<<<<< HEAD
 	<div class="row-fluid">
 		<div class="span12">
-			<form action="" method="post">
+			<form action="" method="post" enctype="multipart/form-data">
 				{% csrf_token %}
 				<div class="row-fluid"><div class="span12">
-					<p>{{ formUser.username.label_tag }} {{ formUser.username }}</p>
+					{{ formUser }}
 				</div></div>
 				<div class="row-fluid"><div class="span12">
-					<p>{{ formUser.first_name.label_tag }} {{ formUser.first_name }}</p>
+					{{ formAcademic.enrollment.label_tag }}
+					{{ formAcademic.enrollment }}
 				</div></div>
 				<div class="row-fluid"><div class="span12">
-					<p>{{ formUser.last_name.label_tag }} {{ formUser.last_name }}</p>
+					{{ formAcademic.role.label_tag }}
+					{{ formAcademic.role }}
 				</div></div>
 				<div class="row-fluid"><div class="span12">
-					<p>{{ formUser.email.label_tag }} {{ formUser.email }}</p>
+					{{ formDocument.image.errors }}
+					{{ formDocument.image.label_tag }}
+					{{ formDocument.image }}
 				</div></div>
-				<div class="row-fluid"><div class="span12">
-					<p>{{ formUser.password.label_tag }} {{ formUser.password }}</p>
-				</div></div>
-				<div class="row-fluid"><div class="span12">
-					{{ formAcademic.as_p }}
-					<button type="submit" class="btn btn-success" class="">Adicionar</button>
-				</div></div>
+				<p><button type="submit" class="btn btn-success" class="">Adicionar</button></p>
 			</form>
 		</div>
-=======
-	<div>
-		<form action="" method="post">
-			{% csrf_token %}
-			<div>
-				<p>{{ formUser.username.label_tag }} {{ formUser.username }}</p>
-				<p>{{ formUser.first_name.label_tag }} {{ formUser.first_name }}</p>
-				<p>{{ formUser.last_name.label_tag }} {{ formUser.last_name }}</p>
-				<p>{{ formUser.email.label_tag }} {{ formUser.email }}</p>
-				<p>{{ formUser.password.label_tag }} {{ formUser.password }}</p>
-				<!-- {{ formAcademic.as_p }} -->
-				<button type="submit">Adicionar</button>
-			</div>
-		</form>
->>>>>>> [Updated] Sign up view
 	</div>
 {% endblock %}

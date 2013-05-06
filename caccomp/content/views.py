@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
 from models import Academic
-from forms import FormUser, FormAcademic, FormPost, FormGalery, FormCategory
+from forms import FormUser, FormAcademic, FormDocument, FormPost, FormGalery, FormCategory
 
 # Create your views here.
 
@@ -46,21 +46,29 @@ def addAcademic( request ):
 	if request.method == 'POST':
 		formAcademic = FormAcademic( data = request.POST )
 		formUser = FormUser( data = request.POST )
-		if formAcademic.is_valid() and formUser.is_valid():
+		formDocument = FormDocument( data = request.POST )
+		if formUser.is_valid() and formDocument.is_valid():
 			# User
-			user = formUser.save( commit = False )
+			user = formUser.save()
+
+			# Document
+			document = formDocument.save( commit = False )
+			document.legend = document.image.__str__()
+			document.save()
 
 			# Academic
 			academic = formAcademic.save( commit = False )
 			academic.user = user
+			academic.picture = document
 			academic.save()
-			return render_to_response( 'saved.html', { 'name' : u'Acadêmico', 'this' : 'academic/add/' } )
+			return render_to_response( 'content/saved.html', { 'name' : u'Acadêmico', 'this' : 'academic/add/' } )
 	else:
 		formAcademic = FormAcademic()
 		formUser = FormUser()
+		formDocument = FormDocument()
 
-	return render_to_response( 'content/addAcademic.html', { 'formAcademic' : formAcademic, 'formUser' : formUser },
-								context_instance = RequestContext( request ) )
+	return render_to_response( 'content/addAcademic.html', { 'formAcademic' : formAcademic, 'formUser' : formUser, 
+		'formDocument' : formDocument }, context_instance = RequestContext( request ) )
 
 @login_required
 def addPost( request ):
@@ -70,7 +78,7 @@ def addPost( request ):
 			item = form.save()
 			item.academic = Academic.objects.get( user__pk = request.user.pk )
 			item.save()
-			return render_to_response( 'saved.html', { 'name' : u'Postagem', 'this' : 'post/add/' } )
+			return render_to_response( 'content/saved.html', { 'name' : u'Postagem', 'this' : 'post/add/' } )
 	else:
 		form = FormPost()
 

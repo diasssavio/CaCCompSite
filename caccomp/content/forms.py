@@ -2,13 +2,14 @@
 
 from django import forms
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 from models import Academic, Post, Keyword, Galery, Document, Category
 
-class FormUser( forms.ModelForm ):
+class FormUser( UserCreationForm ):
 	class Meta:
 		model = User
-		# fields = ( 'username',  )
+		fields = ( 'username', 'first_name', 'last_name', 'email',  )
 
 class FormAcademic( forms.ModelForm ):
 	'''

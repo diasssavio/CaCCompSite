@@ -24,12 +24,6 @@ class Academic( models.Model ):
 	class Meta:
 		verbose_name = u'Acadêmico'
 
-def createAcademic( sender, instance, created, **kwargs ):
-	if created:
-		profile, created = Academic.objects.get_or_create( user = instance )
-
-post_save.connect( createAcademic, sender = User )
-
 class Post( models.Model ):
 	'''
 	Model que representa a tabela de postagens
@@ -79,7 +73,7 @@ class Document( models.Model ):
 
 	legend = models.CharField( max_length = 45 )
 	document = models.FileField( upload_to = 'content/documents', null = True, default = None, blank = True )
-	image = models.FileField( upload_to = 'content/pictures', null = True, default = None, blank = True )
+	image = models.FileField( upload_to = 'content/pictures', null = True, default = None, blank = True, verbose_name = 'Imagem' )
 	url = models.CharField( max_length = 255, null = True, default = None, blank = True )
 
 	galery = models.ForeignKey( Galery, null = True, default = None, blank = True )
