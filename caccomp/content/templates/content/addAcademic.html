@@ -5,19 +5,32 @@
 		<div class="span12">
 			<form action="" method="post" enctype="multipart/form-data">
 				{% csrf_token %}
+
+				<script type="text/javascript">$(".alert").alert()</script>
+				{% for form in formUser %}
 				<div class="row-fluid"><div class="span12">
-					{{ formUser }}
+					{% if form.errors %}
+						<div class="alert alert-block alert-error fade in" style="width:250px; margin-left:20px">{{ form.errors }}</div>
+					{% endif %}
+					{{ form.label_tag }}
+					{{ form }}
 				</div></div>
+				{% endfor %}
+
+				{% for form in formAcademic %}
 				<div class="row-fluid"><div class="span12">
-					{{ formAcademic.enrollment.label_tag }}
-					{{ formAcademic.enrollment }}
+					{% if form.errors %}
+						<div class="alert alert-block alert-error fade in" style="width:250px; margin-left:20px">{{ form.errors }}</div>
+					{% endif %}
+					{{ form.label_tag }}
+					{{ form }}
 				</div></div>
+				{% endfor %}
+
 				<div class="row-fluid"><div class="span12">
-					{{ formAcademic.role.label_tag }}
-					{{ formAcademic.role }}
-				</div></div>
-				<div class="row-fluid"><div class="span12">
-					{{ formDocument.image.errors }}
+					{% if form.errors %}
+						<div class="alert alert-block alert-error fade in" style="width:250px; margin-left:20px">{{ formDocument.image.errors }}</div>
+					{% endif %}
 					{{ formDocument.image.label_tag }}
 					{{ formDocument.image }}
 				</div></div>
