@@ -63,7 +63,7 @@ class AdminDocument( admin.ModelAdmin ):
 	'''
 
 	fields = ( 'legend', 'document', 'image', 'url', 'galery', 'post', )
-	list_display = ( 'legend', )
+	list_display = ( 'legend', 'document', 'image', 'url', 'galery', 'post', )
 
 admin.site.register( Document, AdminDocument )
 

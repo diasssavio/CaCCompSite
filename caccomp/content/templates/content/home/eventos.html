@@ -1,0 +1,110 @@
+                  <a class="btn btn-inverse" style="width:299px">Eventos</a>
+                  <div class="well">
+                      <div id="calendario" data-date-format="dd-mm-yyyy"></div>
+                      <!-- <div id="calendario" data-date="03-05-2013" data-date-format="dd-mm-yyyy"></div> -->
+                  </div>
+                  <script>
+                    $(function(){
+                      window.prettyPrint && prettyPrint();  
+                      $.fn.datepicker.dates['en'] = {
+                        days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"],
+                        daysShort: ["Do", "Se", "Te", "Qa", "Qi", "Sx", "Sa", "Do"],
+                        daysMin: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"],
+                        months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+                        monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
+                      }; 
+                      $('#calendario').datepicker({
+                      });
+                    });
+                  </script>
+                  <table class="table table-striped" style="margin: 0px 0px 0px 0px; background-color: #FFFFFF">
+                    <thead>
+                      <tr style="margin: 0px 0px 0px 0px;"><th><div class="row-fluid"><div class="span4"><h4 style="margin: 0px 0px 0px 0px;">Data</h4></div><div class="span1"><h4 style="margin: 0px 0px 0px 0px;">&nbsp;&nbsp;-</h4></div><div class="span7"><h4 style="margin: 0px 0px 0px 0px;">Evento</h4></div></div></th></tr>
+                    </thead>
+                    <tbody>
+                      <!-- Primeiro dia -->
+                      <tr style="margin: 0px 0px 0px 0px;">
+                        <td>
+                          <div class="row-fluid">
+                            <div class="span4">
+                              <h5 style="margin: 0px 0px 0px 0px;">04/05(Sábado)</h5>
+                            </div>
+                            <div class="span1">
+                              <h5 style="margin: 0px 0px 0px 0px;">&nbsp;&nbsp;-</h5>
+                            </div>
+                            <div class="span7">
+                              <h5 style="margin: 0px 0px 0px 0px;">Hoje</h5>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <!-- Segundo Dia -->
+                      <tr style="margin: 0px 0px 0px 0px;">
+                        <td>
+                          <div class="row-fluid">
+                            <div class="span4">
+                              <h5 style="margin: 0px 0px 0px 0px;">05/05(Domingo)</h5>
+                            </div>
+                            <div class="span1">
+                              <h5 style="margin: 0px 0px 0px 0px;">&nbsp;&nbsp;-</h5>
+                            </div>
+                            <div class="span7">
+                              <h5 style="margin: 0px 0px 0px 0px;">Amanhã</h5>
+                            </div>
+                          </div>
+                          <div class="row-fluid">  
+                            <div class="span4">
+                              <h6 style="margin: 0px 0px 0px 0px;">08h30 - 11h00:</h6>
+                            </div>
+                            <div class="span8">
+                              <h6 style="margin: 0px 0px 0px 0px;">Reunião</h6>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <!-- Terceiro Dia -->
+                      <tr style="margin: 0px 0px 0px 0px;">
+                        <td>
+                          <div class="row-fluid">
+                            <div class="span4"><h5 style="margin: 0px 0px 0px 0px;">06 de Maio</h5></div>
+                            <div class="span1"><h5 style="margin: 0px 0px 0px 0px;">&nbsp;&nbsp;-</h5></div>
+                            <div class="span7"><h5 style="margin: 0px 0px 0px 0px;">Segunda Feira</h5></div>
+                          </div>
+                          <div class="row-fluid"> 
+                            <div class="span4"><h6 style="margin: 0px 0px 0px 0px;">08h00 - 10h40:</h6></div>
+                            <div class="span8"><h6 style="margin: 0px 0px 0px 0px;">Aula de Introdução a Programação</h6></div>
+                          </div>
+                          <div class="row-fluid"> 
+                            <div class="span4"><h6 style="margin: 0px 0px 0px 0px;">10h00 - 11h40:</h6></div>
+                            <div class="span8"><h6 style="margin: 0px 0px 0px 0px;">Aula de Introdução a Ciência da Computação</h6></div>
+                          </div>
+                          <div class="row-fluid"> 
+                            <div class="span4"><h6 style="margin: 0px 0px 0px 0px;">12h00 - 13h00:</h6></div>
+                            <div class="span8"><h6 style="margin: 0px 0px 0px 0px;">Confecção de Carteirinhas</h6></div>
+                          </div>
+                          <div class="row-fluid"> 
+                            <div class="span4"><h6 style="margin: 0px 0px 0px 0px;">14h00 - 15h40:</h6></div>
+                            <div class="span8"><h6 style="margin: 0px 0px 0px 0px;">Aula de Calculo Numérico</h6></div>
+                          </div>
+                          <div class="row-fluid"> 
+                            <div class="span4"><h6 style="margin: 0px 0px 0px 0px;">16h00 - 17h40:</h6></div>
+                            <div class="span8"><h6 style="margin: 0px 0px 0px 0px;">Aula de Fisica para Computação</h6></div>
+                          </div>
+                          <div class="row-fluid"> 
+                            <div class="span4"><h6 style="margin: 0px 0px 0px 0px;">18h00 - 18h40:</h6></div>
+                            <div class="span8"><h6 style="margin: 0px 0px 0px 0px;">Assembléia do CACCOMP</h6></div>
+                          </div>
+                          <div class="row-fluid"> 
+                            <div class="span4"><h6 style="margin: 0px 0px 0px 0px;">19h00 - 22h40:</h6></div>
+                            <div class="span8"><h6 style="margin: 0px 0px 0px 0px;">Aula de Animações Digitais</h6></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <!-- Mais Eventos -->
+                      <tr style="margin: 0px 0px 0px 0px;"><td><div class="row-fluid">
+                        <div class="span5 offset7">
+                          <a class="btn btn-success" href="#"><i class=" icon-plus icon-white"></i>Eventos</a>
+                        </div>
+                      </div></td></tr>  
+                    </tbody>
+                  </table>

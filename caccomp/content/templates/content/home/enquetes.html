@@ -1,0 +1,101 @@
+                            <script type="text/javascript">
+                              <!--
+                                //Quando o mouse passa por cima da opção
+                                function mouseIn(id){
+                                  var resp = document.enquete.elements['optionsRadios'];
+                                  var idTr = "enquete_op"+id;
+                                  //alert(idTr);
+                                  if (resp[id-1].checked == false) {
+                                    document.getElementById(idTr).className='success';
+                                    //alert(idTr);
+                                  };
+                                }
+
+                                //Quando o mouse sai de cima da opção
+                                function mouseOut(id){
+                                  var resp = document.enquete.elements['optionsRadios'];
+                                  var idTr = "enquete_op"+id;
+                                  //alert(idTr);
+                                  if (resp[id-1].checked == false) {
+                                    document.getElementById(idTr).className='';
+                                    //alert(idTr);
+                                  };
+                                }
+
+                                //Quando é selecionado uma opção
+                                function selecionar(id){
+                                  var resp = document.enquete.elements['optionsRadios'];
+                                  var idTr;
+                                  for (var i=1; i<=resp.length; i++) {
+                                    idTr = "enquete_op"+(i);
+                                    document.getElementById(idTr).className='';
+                                  };
+                                  idTr = "enquete_op"+id;
+                                  document.getElementById(idTr).className='info';
+                                }
+                              -->
+                            </script>
+                            <div class="row-fluid">
+                              <div class="span12">
+                                <a class="btn btn-inverse" style="width:262px">Enquete</a>
+                              </div>
+                            </div>
+                            <div class="row-fluid">
+                              <div class="span12">
+                                <form class="bs-docs-example form-inline" name="enquete">
+                                  <table class="table table-striped">
+                                    <thead>
+                                      <tr><th>Como você avalia o novo layout do site do CACCOMP:</th></tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr  onmouseover="mouseIn(1);" onmouseout="mouseOut(1);" id="enquete_op1">
+                                        <td>
+                                          <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="enqueteRadios1" value="option1" onclick="selecionar(1);" checked>
+                                            Ótimo
+                                          </label>
+                                        </td>
+                                      </tr>
+                                      <tr onmouseover="mouseIn(2);" onmouseout="mouseOut(2);" id="enquete_op2">
+                                        <td>
+                                          <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="selecionar(2);" checked>
+                                            Bom
+                                          </label>
+                                        </td>
+                                      </tr>
+                                      <tr onmouseover="mouseIn(3);" onmouseout="mouseOut(3);" id="enquete_op3">
+                                        <td>
+                                          <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" onclick="selecionar(3);" checked>
+                                            Médio
+                                          </label>
+                                        </td>
+                                      </tr>
+                                      <tr onmouseover="mouseIn(4);" onmouseout="mouseOut(4);" id="enquete_op4">
+                                        <td>
+                                          <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" onclick="selecionar(4);" checked>
+                                            Ruim
+                                          </label>
+                                        </td>
+                                      </tr>
+                                      <tr onmouseover="mouseIn(5);" onmouseout="mouseOut(5);" id="enquete_op5">
+                                        <td>
+                                          <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios5" value="option5" onclick="selecionar(5);" checked>
+                                            Péssimo
+                                          </label>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <button type="submit" class="btn btn-primary">Votar</button>
+                                          Deixe a sua opinião, e veja outras pesquisas aqui. 
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </form>
+                              </div>
+                            </div>

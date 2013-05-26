@@ -37,6 +37,8 @@ class Post( models.Model ):
 	category = models.ForeignKey( 'Category' )
 	keywords = models.ManyToManyField( 'Keyword' )
 
+	
+
 	def __unicode__( self ):
 		return '%s - %s' % ( self.title, self.datepost.strftime( '%H:%Mhrs %d/%m/%Y' ) )
 

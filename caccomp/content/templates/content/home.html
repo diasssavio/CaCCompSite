@@ -1,0 +1,100 @@
+{% extends "content/base.html" %}
+{% block content %}
+      <div class="row-fluid">
+        <div class="span12">
+          <!-- NEWS CCOMP -->
+          {% include "content/home/news_ccomp.html" %}
+          <!-- FIM NEWS CCOMP -->
+        </div>
+        <div class="row-fluid">
+          <div class="span12">
+            <!-- NEWS UFT -->
+            {% include "content/home/news_uft.html" %}
+            <!-- FIM NEWS UFT -->
+          </div>
+        </div>
+        <div class="row-fluid">
+          <div class="span4">
+            <div class="row-fluid">
+              <div class="span12">
+                <!-- EVENTOS -->
+                {% include "content/home/eventos.html" %}
+                <!-- FIM EVENTOS -->
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span12">
+                <!-- GALERIAS -->
+                {% include "content/home/galerias.html" %}
+                <!-- FIM GALERIAS -->
+              </div>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="row-fluid">
+              <div class="span1" style="width: 365px;">
+                <!-- DICAS E LINKS -->
+                {% include "content/home/links_dicas.html" %}                  
+                <!-- FIM DE DICAS E LINKS -->
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span12" style="width: 365px;" >
+                <!-- DOCUMENTOS -->
+                {% include "content/home/documentos.html" %}
+                <!-- FIM DE DOCUMENTOS --></div>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="row-fluid">
+              <div class="span11">
+                <div class="row-fluid">
+                  <div class="span11">
+                    <div class="row-fluid">
+                      <div class="span11">
+                        <div class="row-fluid">
+                          <div class="span10 offset2" style="border: solid thick #dddddd; border-radius: 8px; background-color: #ffffff; border-width: 1px; width: 290px;">
+                            <!-- ENQUETE -->
+                            {% include "content/home/enquetes.html" %}
+                            <!-- FIM ENQUETE -->
+                          </div>
+                        </div>
+                        <div class="row-fluid">
+                          <div class="span10 offset2">
+                            <!-- TWITTER PLUGIN -->
+                            {% include "content/home/twitter.html" %}
+                            <!-- FIM TWITTER PLUGIN -->
+                          </div>
+                        </div>
+                        <div class="row-fluid">
+                          <div class="span10 offset2">
+                            <!-- FACEBOOK PLUGIN -->
+                            {% include "content/home/facebook.html" %}
+                            <!-- FIM FACEBOOK PLUGIN -->
+                          </div>
+                        </div>
+                        <div class="row-fluid">
+                          <div class="span10 offset2" style="width: 290px;">
+                            <!-- APOIADORES -->
+                            {% include "content/home/apoiadores_vertical.html" %}
+                            <!-- FIM DE APOIADORES -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row-fluid">
+          <div class="span12">
+            <a class="btn btn-inverse" style="margin-left: 19px; width:960px;">Vídeos</a>
+            <!-- VIDEOS -->
+            {% include "content/home/videos.html" %}
+            <!-- Videos -->
+          </div>
+        </div>
+      </div>
+{% endblock%}

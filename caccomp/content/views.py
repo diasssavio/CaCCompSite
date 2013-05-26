@@ -40,7 +40,8 @@ def logout_then_login( request ):
 	# Redirect to a success page.
 
 def index( request, user = None ):
-	pass
+	return render_to_response( 'content/home.html', locals(),
+								context_instance = RequestContext( request ) )
 
 def addAcademic( request ):
 	if request.method == 'POST':

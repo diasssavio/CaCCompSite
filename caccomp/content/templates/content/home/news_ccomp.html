@@ -1,0 +1,48 @@
+          <div id="container">
+            <!--- The Content ---->
+            <div id="jslidernews3" class="lof-slidecontent" style="width:980px; height:300px;">
+              <div class="preload"><div></div></div>
+              <div  class="button-previous">Previous</div>
+              <!-- MAIN CONTENT --> 
+              <div class="main-slider-content" style="width:980px; height:300px;">
+                <ul class="sliders-wrap-inner">
+                  
+                  <!-- {% for noticia in news_ccomp %}
+                  <li>
+                    <img src="{{MEDIA_URL}}{{noticia.get_thumb.endereco}}" title="{{noticia.title}}" >           
+                    <div class="slider-description">
+                      <div class="slider-meta"><a target="_parent" title="Newsflash 1" href="#Category-1">/ {{noticia.user_postage}} /</a> <i> — {{noticia.public_date}}</i></div>
+                      <h4>{{noticia.title}}</h4>
+                      <p>{{noticia.description}}...
+                        <a class="readmore" href="#">Ler mais </a>
+                      </p>
+                    </div>
+                  </li> 
+                  {% endfor %} -->
+                  
+
+                </ul>   
+              </div>
+              <!-- END MAIN CONTENT --> 
+              <!-- NAVIGATOR -->
+              <div class="navigator-content">
+                <div class="navigator-wrapper">
+                  <ul class="navigator-wrap-inner">
+
+                    {% for noticia in noticias %}
+                    <li>
+                      <div>
+                        <img src="{{MEDIA_URL}}{{noticia.get_mini_thumb.endereco}}" />
+                        <h3> {{noticia.title}} </h3>
+                        <span>{{noticia.public_date}}</span> - {{noticia.description}}...
+                      </div>    
+                    </li>
+                    {% endfor %}
+                    
+                  </ul>
+                </div>
+              </div> 
+              <!----------------- END OF NAVIGATOR -------------------->
+              <div class="button-next">Next</div>
+            </div> 
+          </div> 
