@@ -108,3 +108,6 @@ def addCategory( request ):
 		form = FormGalery()
 
 	return render_to_response( 'addCategory.html', { 'form' : form }, context_instance = RequestContext( request ) )
+
+def listLinksDicas( request ):
+	return render_to_response( 'content/linksdicas.html', locals(), context_instance = RequestContext( request ) )
