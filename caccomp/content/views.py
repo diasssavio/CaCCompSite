@@ -5,39 +5,13 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.core.exceptions import ObjectDoesNotExist
 
-from models import Academic
+from models import Academic, Post, Document
 from forms import FormUser, FormAcademic, FormDocument, FormPost, FormGalery, FormCategory
 
 # Create your views here.
-
-def login( request ):
-	'''
-	Função para autenticar e logar usuário
-	'''
-	if request.method == 'POST':
-		username = request.POST['username']
-		password = request.POST['password']
-		user = authenticate( username = username, password = password )
-		if user is not None:
-			if user.is_active:
-				login( request, user )
-				# Redirect to a success page.
-			else:
-				# Return a 'disabled account' error message
-				pass
-		else:
-			# Return an 'invalid login' error message.
-			pass
-	else:
-		pass
-
-def logout_then_login( request ):
-	'''
-	Função para deslogar usuário e redirecionar ele para tela de login
-	'''
-	logout( request )
-	# Redirect to a success page.
 
 def index( request, user = None ):
 	return render_to_response( 'content/home.html', locals(),
@@ -109,5 +83,27 @@ def addCategory( request ):
 
 	return render_to_response( 'addCategory.html', { 'form' : form }, context_instance = RequestContext( request ) )
 
-def listLinksDicas( request ):
-	return render_to_response( 'content/linksdicas.html', locals(), context_instance = RequestContext( request ) )
+def listTips( request ):
+	tip_list = Post.objects.filter( category__name = 'LINKS_TIPS' ).filter( status = True ).order_by( '-datepost' )
+
+	links = []
+	for tip in tip_list:
+		try:
+			links += [ Document.objects.get( post = tip ).url ]
+		except ObjectDoesNotExist:
+			continue
+
+	tipsPaginator = Paginator( tip_list, 10 )
+	page = request.GET.get( 'page' )
+	try:
+		tips = tipsPaginator.page( page )
+	except PageNotAnInteger:
+		tips = tipsPaginator.page( 1 )
+	except EmptyPage:
+		tips = tipsPaginator.page( tipsPaginator.num_pages )
+
+	return render_to_response( 'content/tips.html', { 'tips' : tips, 'links' : links }, 
+		context_instance = RequestContext( request ) )
+
+
+

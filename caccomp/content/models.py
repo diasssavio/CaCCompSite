@@ -32,12 +32,11 @@ class Post( models.Model ):
 	title = models.CharField( max_length = 255 )
 	datepost = models.DateTimeField( auto_now_add = True )
 	content = models.TextField( null = True, default = None, blank = True )
+	status = models.BooleanField( default = False )
 
 	academic = models.ForeignKey( Academic )
 	category = models.ForeignKey( 'Category' )
 	keywords = models.ManyToManyField( 'Keyword' )
-
-	
 
 	def __unicode__( self ):
 		return '%s - %s' % ( self.title, self.datepost.strftime( '%H:%Mhrs %d/%m/%Y' ) )

@@ -9,7 +9,7 @@ urlpatterns = patterns('',
 	url(r'^post/add/$', 'content.views.addPost'),
 	url(r'^galery/add/$', 'content.views.addGalery'),
 	url(r'^category/add/$', 'content.views.addCategory'),
-	url(r'^links&dicas/$', 'content.views.listLinksDicas'),
+	url(r'^tips/$', 'content.views.listTips'),
 
 	# List urls
 )

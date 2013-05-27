@@ -1,0 +1,81 @@
+{% extends "content/base.html" %}
+{% block content %}
+<div class="row-fluid">
+  <div class="span7">
+  	<a class="btn btn-inverse" style="width:100%">Posted</a>
+
+    <table class="table" style="margin: 0px 0px 0px 0px;">
+      {% for tip in tips %}
+        <tr>
+          <td>
+            <div class="row-fluid">
+              <div class="span4">
+                <img src="{{ MEDIA_URL }}{{ tip.academic.picture.image }}" />
+              </div>
+              <div class="span8">
+                <table class="table" style="margin: 0px 0px 0px 0px;">
+                  <tr style="margin: 0px 0px 0px 0px;">
+                    <td>
+                      <a href="#"><h4 style="margin: 0px 0px 0px 0px;">{{ tip.title }}</h4></a>
+                      <h6 style="margin: 0px 0px 0px 0px;">Posted in {{ tip.datepost }}<h6>
+                    </td>
+                  </tr>
+                  <tr style="margin: 0px 0px 0px 0px;">
+                    <td>
+                      <h5 style="margin: 0px 0px 0px 0px;">Autor: {{ tip.academic }}</h5>
+                    </td>
+                  </tr>
+                  <tr style="margin: 0px 0px 0px 0px;">
+                    <td>
+                      <h5 style="margin: 0px 0px 0px 0px;">{{ tip.content }}</h5>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="btn-group">
+                        <a class="btn btn-mini btn-primary" href="{{ links.pop }}"><i class="icon-hand-down icon-white"></i> Link</a>
+                        <a class="btn btn-mini btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"> Abrir inbox</a></li>
+                          <li><a href="#"> Abrir nova aba</a></li>
+                          <li><a href="#"> Abrir nova janela</a></li>
+                          <li class="divider"></li>
+                        </ul>
+                      </div>
+                      <a class="btn btn-mini btn-success" href="#"> <i class=" icon-plus icon-white"></i>INFO</a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+    <div class="pagination">
+      <span class="step-links">
+        <a href="?page={{ 1 }}">Primeira</a>
+        {% if tips.has_previous %}
+          <a href="?page={{ tips.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        <span class="current">
+          {{ tips.number }}/{{ tips.paginator.num_pages }}
+        </span>
+
+        {% if tips.has_next %}
+          <a href="?page={{ tips.next_page_number }}">Próximo</a>
+        {% endif %}
+        <a href="?page={{ tips.paginator.num_pages }}">Última</a>
+      </span>
+    </div>
+
+  </div>
+  <div class="span1"><div class="row-fluid"></div></div>
+  <div class="span3">
+	<a class="btn btn-inverse" style="width:100%">+Vistos</a>
+	
+  </div>
+</div>      
+{% endblock %}

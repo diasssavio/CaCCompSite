@@ -32,8 +32,8 @@ class AdminPost( admin.ModelAdmin ):
 	Classe para personalizar a interface de admin
 	'''
 
-	fields = ( 'title', 'content', 'academic', 'category', 'keywords', )
-	list_display = ( 'title', 'content', 'academic', )
+	fields = ( 'title', 'content', 'academic', 'category', 'keywords', 'status', )
+	list_display = ( 'title', 'content', 'academic', 'status', )
 
 admin.site.register( Post, AdminPost )
 
