@@ -10,12 +10,23 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from models import Academic, Post, Document
 from forms import FormUser, FormAcademic, FormDocument, FormPost, FormGalery, FormCategory
+from utils import getFirstPicture
 
 # Create your views here.
 
 def index( request, user = None ):
-	return render_to_response( 'content/home.html', locals(),
-								context_instance = RequestContext( request ) )
+	# CCCOMP_NEWS
+	try:
+		ccompNews = Post.objects.filter( category__name = 'NEWS_CCOMP' ).filter( status = True ).order_by( '-datepost' )[:6]
+	except:
+		ccompNews = Post.objects.filter( category__name = 'NEWS_CCOMP' ).filter( status = True ).order_by( '-datepost' )
+
+	pictures = []
+	for news in ccompNews:
+		pictures += [ getFirstPicture( news ).image ]
+
+	return render_to_response( 'content/home.html', { 'ccompNews' : ccompNews, 'picture1' : pictures.__iter__(),
+								'picture2' : pictures.__iter__() }, context_instance = RequestContext( request ) )
 
 def addAcademic( request ):
 	if request.method == 'POST':
@@ -104,6 +115,5 @@ def listTips( request ):
 
 	return render_to_response( 'content/tips.html', { 'tips' : tips, 'links' : links }, 
 		context_instance = RequestContext( request ) )
-
 
 
