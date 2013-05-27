@@ -93,13 +93,6 @@ def addCategory( request ):
 def listTips( request ):
 	tip_list = Post.objects.filter( category__name = 'LINKS_TIPS' ).filter( status = True ).order_by( '-datepost' )
 
-	links = []
-	for tip in tip_list:
-		try:
-			links += [ Document.objects.get( post = tip ).url ]
-		except ObjectDoesNotExist:
-			continue
-
 	tipsPaginator = Paginator( tip_list, 10 )
 	page = request.GET.get( 'page' )
 	try:
@@ -109,7 +102,6 @@ def listTips( request ):
 	except EmptyPage:
 		tips = tipsPaginator.page( tipsPaginator.num_pages )
 
-	return render_to_response( 'content/tips.html', { 'tips' : tips, 'links' : links }, 
-		context_instance = RequestContext( request ) )
+	return render_to_response( 'content/tips.html', { 'tips' : tips }, context_instance = RequestContext( request ) )
 
 

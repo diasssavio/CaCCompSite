@@ -41,6 +41,9 @@ class Post( models.Model ):
 	def get_picture( self ):
 		return Document.objects.filter( post = self ).filter( image__isnull = False )[0]
 
+	def get_link( self ):
+		return Document.objects.filter( post = self ).filter( url__isnull = False )[0]
+
 	def __unicode__( self ):
 		return '%s - %s' % ( self.title, self.datepost.strftime( '%H:%Mhrs %d/%m/%Y' ) )
 
