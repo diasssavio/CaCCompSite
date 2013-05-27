@@ -1,42 +1,42 @@
 <div id="container">
-            <!--- The Content ---->
-            <div id="jslidernews3" class="lof-slidecontent" style="width:980px; height:300px;">
-              <div class="preload"><div></div></div>
-              <div  class="button-previous">Previous</div>
-              <!-- MAIN CONTENT --> 
-              <div class="main-slider-content" style="width:980px; height:300px;">
-                <ul class="sliders-wrap-inner">
-                  {% for news in ccompNews %}
-                    <li>
-                      <img src="{{ MEDIA_URL }}{{ picture1.next }}" title="Newsflash 2" >           
-                      <div class="slider-description">
-                        <div class="slider-meta"><a target="_parent" title="Newsflash 1" href="#Category-1">/ {{ news.title }} /</a> <i> — {{ news.date_post }}</i></div>
-                        <h4>Conteúdo de {{ news.title }}</h4>
-                        <p>{{ news.content|cut:'98' }}...
-                          <a class="readmore" href="#">Read more </a>
-                        </p>
-                      </div>
-                    </li>
-                  {% endfor %}
-                </ul>   
-              </div>
-              <!-- END MAIN CONTENT --> 
-              <!-- NAVIGATOR -->
-              <div class="navigator-content">
-                <div class="navigator-wrapper">
-                  <ul class="navigator-wrap-inner">
-                    {% for news in ccompNews %}
-                      <li>
-                        <div>
-                          <img src="{{ MEDIA_URL }}{{ picture2.next }}" />
-                          <h3> {{ news.title }} </h3>
-                          <span>{{ news.date_post }}</span> - {{ news.content|cut:'72' }}...
-                        </div>
-                      </li>
-                    {% endfor %}         
-                  </ul>
-                </div>
-              </div> 
-              <!----------------- END OF NAVIGATOR -------------------->
-              <div class="button-next">Next</div>
-            </div> 
+<!--- The Content ---->
+<div id="jslidernews3" class="lof-slidecontent" style="width:980px; height:300px;">
+  <div class="preload"><div></div></div>
+  <div  class="button-previous">Previous</div>
+  <!-- MAIN CONTENT --> 
+  <div class="main-slider-content" style="width:980px; height:300px;">
+    <ul class="sliders-wrap-inner">
+      {% for news in ccompNews %}
+        <li>
+          <img src="{{ MEDIA_URL }}{{ news.get_picture.image }}" title="Newsflash 2" >           
+          <div class="slider-description">
+            <div class="slider-meta"><a target="_parent" title="Newsflash 1" href="#Category-1">/ {{ news.title }} /</a> <i> — {{ news.date_post }}</i></div>
+            <h4>Conteúdo de {{ news.title }}</h4>
+            <p>{{ news.content|cut:'98' }}...
+              <a class="readmore" href="#">Read more </a>
+            </p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>   
+  </div>
+  <!-- END MAIN CONTENT --> 
+  <!-- NAVIGATOR -->
+  <div class="navigator-content">
+    <div class="navigator-wrapper">
+      <ul class="navigator-wrap-inner">
+        {% for news in ccompNews %}
+          <li>
+            <div>
+              <img src="{{ MEDIA_URL }}{{ news.get_picture.image }}" />
+              <h3> {{ news.title }} </h3>
+              <span>{{ news.date_post }}</span> - {{ news.content|cut:'72' }}...
+            </div>
+          </li>
+        {% endfor %}         
+      </ul>
+    </div>
+  </div> 
+  <!----------------- END OF NAVIGATOR -------------------->
+  <div class="button-next">Next</div>
+</div> 

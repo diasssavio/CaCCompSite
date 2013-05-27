@@ -12,7 +12,3 @@ register = template.Library()
 def cut( value, amount ):
 	'''Template filter para realizar slice em uma list/string'''
 	return value[:amount]
-
-def getFirstPicture( post ):
-	'''Retorna a primeira imagem inserida no Banco para o post'''
-	return Document.objects.filter( post = post ).filter( image__isnull = False )[0]
