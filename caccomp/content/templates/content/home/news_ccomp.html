@@ -12,7 +12,7 @@
           <div class="slider-description">
             <div class="slider-meta"><a target="_parent" title="Newsflash 1" href="#Category-1">/ {{ news.title }} /</a> <i> — {{ news.date_post }}</i></div>
             <h4>Conteúdo de {{ news.title }}</h4>
-            <p>{{ news.content|cut:'98' }}...
+            <p>{{ news.content|slice:':98' }}...
               <a class="readmore" href="#">Read more </a>
             </p>
           </div>
@@ -30,7 +30,7 @@
             <div>
               <img src="{{ MEDIA_URL }}{{ news.get_picture.image }}" />
               <h3> {{ news.title }} </h3>
-              <span>{{ news.date_post }}</span> - {{ news.content|cut:'72' }}...
+              <span>{{ news.date_post }}</span> - {{ news.content|slice:':72' }}...
             </div>
           </li>
         {% endfor %}         

@@ -6,7 +6,7 @@
         <img class="thumb" src="{{ MEDIA_URL }}{{ news.get_picture.image }}" data-bw="{{ MEDIA_URL }}{{ news.get_picture.image }}">
         <div style="margin-top:16px"></div>
         <h2>{{ news.title }}</h2>
-        <p>{{ news.content|cut:'80' }}...</p>
+        <p>{{ news.content|slice:':80' }}...</p>
         <a class="buttonlight morebutton" href="#">Ver Mais</a>
         <!-- ************************************************************************************************
           -  HERE YOU CAN DEFINE THE EXTRA PAGE WHICH SHOULD BE SHOWN IN CASE THE "BUTTON" HAS BEED PRESSED -
@@ -15,7 +15,7 @@
           <img class="big-image" width="498" height="280" src="{{ MEDIA_URL }}{{ news.get_picture.image }}">
           <div class="details_double">
             <h2>{{ news.title }}</h2>
-            <p>{{ news.content|cut:'400' }}...</p>
+            <p>{{ news.content|slice:':400' }}...</p>
             <a class="buttonlight" href="#">Notícia Completa</a>
           </div>
           <div class="closer"></div>

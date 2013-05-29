@@ -1,0 +1,52 @@
+<a class="btn btn-inverse" style="width:340px">Documentos</a>
+
+<table class="table" style="margin: 0px 0px 0px 0px;">
+  {% for doc in docs %}
+    <tr>
+      <td>
+        <div class="row-fluid">
+          <div class="span12">
+            <table class="table" style="margin: 0px 0px 0px 0px;">
+              <tr style="margin: 0px 0px 0px 0px;">
+                <td>
+                  <a href="#"><h4 style="margin: 0px 0px 0px 0px;">{{ doc.title }}</h4></a>
+                  <h6 style="margin: 0px 0px 0px 0px;">Posted by {{ doc.academic.user.first_name }} {{ doc.academic.user.last_name }} in {{ doc.datepost }}<h6>
+                </td>
+              </tr>
+              <tr style="margin: 0px 0px 0px 0px;">
+                <td>
+                  <h5 style="margin: 0px 0px 0px 0px;">{{ doc.content|slice:':45' }}...</h5>
+              </tr>
+              <tr>
+                <td>
+                  <div class="btn-group">
+                   <a class="btn btn-mini btn-info" href="{{ MEDIA_URL }}{{ doc.get_document.document }}"> <i class=" icon-download icon-white"></i> Download</a>
+                    <a class="btn btn-mini btn-primary" href="#"><i class="icon-file icon-white"></i> Visualizar</a>
+                    <a class="btn btn-mini btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#"> Visualizar inbox</a></li>
+                      <li><a href="#"> Visualizar nova aba</a></li>
+                      <li><a href="#"> Visualizar nova janela</a></li>
+                      <li class="divider"></li>
+                    </ul>
+                  </div>
+                  <a class="btn btn-mini btn-success" href="#"> <i class=" icon-plus icon-white"></i>INFO</a>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </td>
+    </tr> 
+  {% endfor %}        
+  <!-- ############ MAIS DOCUMENTOS ################# -->
+  <tr>
+    <td>
+      <div class="row-fluid">
+        <div class="span5 offset7">
+          <a class="btn btn-success" href="/content/docs/"><i class=" icon-plus icon-white"></i>Documentos</a>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>

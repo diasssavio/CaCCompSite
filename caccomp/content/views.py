@@ -20,7 +20,13 @@ def index( request, user = None ):
 	# UFT_NEWS
 	uftNews = Post.objects.filter( category__name = 'NEWS_UFT' ).filter( status = True ).order_by( '-datepost' )[:5]
 
-	data = { 'ccompNews' : ccompNews, 'uftNews' : uftNews }
+    # LINKS_TIPS
+	tips = Post.objects.filter( category__name = 'LINKS_TIPS' ).filter( status = True ).order_by( '-datepost' )[:4]
+
+	# DOCS
+	docs = Post.objects.filter( category__name = 'DOCS' ).filter( status = True ).order_by( '-datepost' )[:4]
+
+	data = { 'ccompNews' : ccompNews, 'uftNews' : uftNews, 'tips' : tips, 'docs' : docs }
 
 	return render_to_response( 'content/home.html', data, context_instance = RequestContext( request ) )
 
@@ -49,7 +55,7 @@ def addAcademic( request ):
 		formUser = FormUser()
 		formDocument = FormDocument()
 
-	return render_to_response( 'content/addAcademic.html', { 'formAcademic' : formAcademic, 'formUser' : formUser, 
+	return render_to_response( 'content/addAcademic.html', { 'formAcademic' : formAcademic, 'formUser' : formUser,
 		'formDocument' : formDocument }, context_instance = RequestContext( request ) )
 
 @login_required
@@ -104,4 +110,17 @@ def listTips( request ):
 
 	return render_to_response( 'content/tips.html', { 'tips' : tips }, context_instance = RequestContext( request ) )
 
+def listDocs( request ):
+	doc_list = Post.objects.filter( category__name = 'DOCS' ).filter( status = True ).order_by( '-datepost' )
+
+	docsPaginator = Paginator( doc_list, 10 )
+	page = request.GET.get( 'page' )
+	try:
+		docs = docsPaginator.page( page )
+	except PageNotAnInteger:
+		docs = docsPaginator.page( 1 )
+	except EmptyPage:
+		docs = docsPaginator.page( docsPaginator.num_pages )
+
+	return render_to_response( 'content/docs.html', { 'docs' : docs }, context_instance = RequestContext( request ) )
 

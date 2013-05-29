@@ -10,6 +10,7 @@ urlpatterns = patterns('',
 	url(r'^galery/add/$', 'content.views.addGalery'),
 	url(r'^category/add/$', 'content.views.addCategory'),
 	url(r'^tips/$', 'content.views.listTips'),
+	url(r'^docs/$', 'content.views.listDocs'),
 
 	# List urls
 )
