@@ -13,7 +13,7 @@
             <div class="slider-meta"><a target="_parent" title="Newsflash 1" href="#Category-1">/ {{ news.title }} /</a> <i> — {{ news.date_post }}</i></div>
             <h4>Conteúdo de {{ news.title }}</h4>
             <p>{{ news.content|slice:':98' }}...
-              <a class="readmore" href="#">Read more </a>
+              <a class="readmore" href="/content/articles/{{ news.id }}/">Read more </a>
             </p>
           </div>
         </li>
