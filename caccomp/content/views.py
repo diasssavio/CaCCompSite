@@ -3,6 +3,7 @@
 
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
+from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -105,6 +106,7 @@ def addCategory(request):
 
 def listTips(request):
     tip_list = Post.objects.filter(category__name='LINKS_TIPS').filter(status=True).order_by('-datepost')
+    most_viewed = Post.objects.filter(category__name='LINKS_TIPS').filter(status=True).order_by('-view')[:4]
 
     tipsPaginator = Paginator(tip_list, 10)
     page = request.GET.get('page')
@@ -115,11 +117,13 @@ def listTips(request):
     except EmptyPage:
         tips = tipsPaginator.page(tipsPaginator.num_pages)
 
-    return render_to_response('content/tips.html', {'tips': tips}, context_instance=RequestContext(request))
+    return render_to_response('content/tips.html', {'tips': tips, 'most_viewed': most_viewed},
+                              context_instance=RequestContext(request))
 
 
 def listDocs(request):
     doc_list = Post.objects.filter(category__name='DOCS').filter(status=True).order_by('-datepost')
+    most_viewed = Post.objects.filter(category__name='DOCS').filter(status=True).order_by('-view')[:4]
 
     docsPaginator = Paginator(doc_list, 10)
     page = request.GET.get('page')
@@ -130,10 +134,26 @@ def listDocs(request):
     except EmptyPage:
         docs = docsPaginator.page(docsPaginator.num_pages)
 
-    return render_to_response('content/docs.html', {'docs': docs}, context_instance=RequestContext(request))
+    return render_to_response('content/docs.html', {'docs': docs, 'most_viewed': most_viewed},
+                              context_instance=RequestContext(request))
 
 
 def showArticle(request, id):
     article = get_object_or_404(Post, Q(pk=id), Q(category__name='NEWS_CCOMP') | Q(category__name='NEWS_UFT'))
 
-    return render_to_response('content/showArticle.html', {'article': article}, context_instance=RequestContext(request))
+    return render_to_response('content/article.html', {'article': article}, context_instance=RequestContext(request))
+
+
+def documentPageCount(request, id):
+    post = Post.objects.get(pk=id)
+    post.view += 1
+    post.save()
+
+    return HttpResponseRedirect('/media/' + post.get_document().document.__str__())
+
+def tipsPageCount(request, id):
+    post = Post.objects.get(pk=id)
+    post.view += 1
+    post.save()
+
+    return HttpResponseRedirect(post.get_link().url.__str__())

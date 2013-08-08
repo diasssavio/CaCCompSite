@@ -1,0 +1,72 @@
+{% extends "content/base.html" %}
+
+{% block scriptstyle %}
+    <link href="{{ STATIC_URL }}src/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="{{ STATIC_URL }}src/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block content %}
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <h2>{{ article.title }}</h2>
+            <blockquote>
+                <small>{{ article.academic.user.first_name }} {{ article.academic.user.last_name }}</small>
+                <small>{{ article.datepost }}</small>
+            </blockquote>
+            <p>{{ article.content }}</p>
+            {% if article.get_pictures %}
+                <blockquote><h5>Imagens desta notícia</h5></blockquote>
+                <ul class="thumbnails">
+                    {% for picture in article.get_pictures %}
+                        <li class="span5">
+                            <div class="thumbnail">
+                                <img src="{{ MEDIA_URL }}{{ picture.image }}" class="img-rounded" alt="">
+                                <h5>{{ picture.legend }}</h5>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if article.get_documents %}
+                <blockquote><h5>Documentos desta notícia</h5></blockquote>
+                <ul class="thumbnails">
+                    {% for document in article.get_documents %}
+                        <li class="span5">
+                            <h5>{{ document.legend }}</h5>
+                            <div class="btn-group">
+                                <a class="btn btn-mini btn-primary" href="{{ MEDIA_URL }}{{ document.document }}"><i class="icon-hand-down icon-white"></i>Documento</a>
+                                <a class="btn btn-mini btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"> Abrir inbox</a></li>
+                                    <li><a href="#"> Abrir nova aba</a></li>
+                                    <li><a href="#"> Abrir nova janela</a></li>
+                                    <li class="divider"></li>
+                                </ul>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if article.get_links %}
+                <blockquote><h5>Links desta notícia</h5></blockquote>
+                <ul class="thumbnails">
+                    {% for link in article.get_links %}
+                        <li class="span5">
+                            <h5>{{ link.legend }}</h5>
+                            <div class="btn-group">
+                                <a class="btn btn-mini btn-primary" href="{{ link.url }}"><i class="icon-hand-down icon-white"></i>Link</a>
+                                <a class="btn btn-mini btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"> Abrir inbox</a></li>
+                                    <li><a href="#"> Abrir nova aba</a></li>
+                                    <li><a href="#"> Abrir nova janela</a></li>
+                                    <li class="divider"></li>
+                                </ul>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

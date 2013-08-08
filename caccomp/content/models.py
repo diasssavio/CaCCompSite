@@ -3,7 +3,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
+from django.db.models import Q
 
 # Create your models here.
 class Academic(models.Model):
@@ -19,7 +19,7 @@ class Academic(models.Model):
     user = models.OneToOneField(User, verbose_name=u'Usuário')
 
     def __unicode__(self):
-        return '%s %s' % ( self.user.first_name, self.user.last_name )
+        return '%s %s' % (self.user.first_name, self.user.last_name)
 
     class Meta:
         verbose_name = u'Acadêmico'
@@ -34,22 +34,29 @@ class Post(models.Model):
     datepost = models.DateTimeField(auto_now_add=True)
     content = models.TextField(null=True, default=None, blank=True, verbose_name=u'Conteúdo')
     status = models.BooleanField(default=False)
+    view = models.PositiveIntegerField(default=0, verbose_name=u'Visualizações')
 
     academic = models.ForeignKey(Academic, verbose_name='Acadêmico')
     category = models.ForeignKey('Category', verbose_name='Categoria')
     keywords = models.ManyToManyField('Keyword', verbose_name='Palavras-Chave')
 
-    def get_picture(self):
-        return Document.objects.filter(post=self).filter(image__isnull=False)[0]
-
     def get_pictures(self):
-        return Document.objects.filter(post=self).filter(image__isnull=False)
+        return Document.objects.filter(post=self).exclude(image='')
+
+    def get_picture(self):
+        return Document.objects.filter(post=self).exclude(image='')[0]
+
+    def get_links(self):
+        return Document.objects.filter(post=self).exclude(url='')
 
     def get_link(self):
-        return Document.objects.filter(post=self).filter(url__isnull=False)[0]
+        return Document.objects.filter(post=self).exclude(url='')[0]
+
+    def get_documents(self):
+        return Document.objects.filter(post=self).exclude(document='')
 
     def get_document(self):
-        return Document.objects.filter(post=self).filter(document__isnull=False)[0]
+        return Document.objects.filter(post=self).exclude(document='')[0]
 
     def __unicode__(self):
         return '%s - %s' % (self.title, self.datepost.strftime('%H:%Mhrs %d/%m/%Y'))
@@ -66,7 +73,7 @@ class Keyword(models.Model):
     name = models.CharField(max_length=45, verbose_name='Nome')
 
     def __unicode__(self):
-        return '%s' % ( self.name )
+        return '%s' % self.name
 
     class Meta:
         verbose_name = 'Palavra-chave'
@@ -89,8 +96,7 @@ class Document(models.Model):
 	'''
 
     legend = models.CharField(max_length=45, verbose_name='Legenda')
-    document = models.FileField(upload_to='content/documents', null=True, default=None, blank=True,
-                                verbose_name='Documento')
+    document = models.FileField(upload_to='content/documents', null=True, default=None, blank=True, verbose_name='Documento')
     image = models.FileField(upload_to='content/pictures', null=True, default=None, blank=True, verbose_name='Imagem')
     url = models.CharField(max_length=255, null=True, default=None, blank=True)
 
@@ -98,7 +104,7 @@ class Document(models.Model):
     post = models.ForeignKey(Post, null=True, default=None, blank=True, verbose_name='Post')
 
     def __unicode__(self):
-        return '%s' % ( self.legend )
+        return '%s' % self.legend
 
     class Meta:
         verbose_name = 'Documento'
@@ -113,7 +119,7 @@ class Category(models.Model):
     description = models.CharField(max_length=255, verbose_name=u'Descrição')
 
     def __unicode__(self):
-        return '%s' % ( self.name )
+        return '%s' % self.name
 
     class Meta:
         verbose_name = u'Categoria-Notícia'

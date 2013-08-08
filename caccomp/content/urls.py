@@ -16,4 +16,8 @@ urlpatterns = patterns('',
                        url(r'^docs/$', 'content.views.listDocs'),
 
                        # List urls
+
+                       # Count urls
+                       url(r'^doccount/(?P<id>\d+)', 'content.views.documentPageCount'),
+                       url(r'^tipscount/(?P<id>\d+)', 'content.views.tipsPageCount'),
 )
