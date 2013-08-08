@@ -138,21 +138,40 @@ def listDocs(request):
                               context_instance=RequestContext(request))
 
 
+def listArticles(request):
+    article_list = Post.objects.filter(Q(category__name='NEWS_UFT') | Q(category__name='NEWS_CCOMP')).filter(status=True).order_by('-datepost')
+    most_viewed = Post.objects.filter(Q(category__name='NEWS_UFT') | Q(category__name='NEWS_CCOMP')).filter(status=True).order_by('-view')[:4]
+
+    articlesPaginator = Paginator(article_list, 10)
+    page = request.GET.get('page')
+    try:
+        articles = articlesPaginator.page(page)
+    except PageNotAnInteger:
+        articles = articlesPaginator.page(1)
+    except EmptyPage:
+        articles = articlesPaginator.page(articlesPaginator.num_pages)
+
+    return render_to_response('content/articles.html', {'articles': articles, 'most_viewed': most_viewed},
+                              context_instance=RequestContext(request))
+
+
 def showArticle(request, id):
     article = get_object_or_404(Post, Q(pk=id), Q(category__name='NEWS_CCOMP') | Q(category__name='NEWS_UFT'))
+    article.view += 1
+    article.save()
 
     return render_to_response('content/article.html', {'article': article}, context_instance=RequestContext(request))
 
 
 def documentPageCount(request, id):
-    post = Post.objects.get(pk=id)
+    post = get_object_or_404(Post, pk=id)
     post.view += 1
     post.save()
 
     return HttpResponseRedirect('/media/' + post.get_document().document.__str__())
 
 def tipsPageCount(request, id):
-    post = Post.objects.get(pk=id)
+    post = get_object_or_404(Post, pk=id)
     post.view += 1
     post.save()
 

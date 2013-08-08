@@ -12,6 +12,7 @@ urlpatterns = patterns('',
 
                        # Show pages urls
                        url(r'^articles/(?P<id>\d+)/$', 'content.views.showArticle'),
+                       url(r'^articles/$', 'content.views.listArticles'),
                        url(r'^tips/$', 'content.views.listTips'),
                        url(r'^docs/$', 'content.views.listDocs'),
 

@@ -1,0 +1,77 @@
+{% extends "content/base.html" %}
+
+{% block scriptstyle %}
+    <link href="{{ STATIC_URL }}src/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="{{ STATIC_URL }}src/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block content %}
+    <div class="row-fluid">
+        <div class="span7">
+            <a class="btn btn-inverse" style="width:100%">Posted</a>
+
+            <table class="table" style="margin: 0px 0px 0px 0px;">
+                {% for article in articles %}
+                    <tr>
+                        <td>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <table class="table table-bordered" style="margin: 0px 0px 0px 0px;">
+                                        <tr style="margin: 0px 0px 0px 0px;">
+                                            <td>
+                                                <a href="{{ article.pk }}"><h4 style="margin: 0px 0px 0px 0px;"><i class="icon-plus"></i>{{ article.title }}</h4></a>
+                                                <h6 style="margin: 0px 0px 0px 0px;">Posted by {{ article.academic.user.first_name }} {{ article.academic.user.last_name }} in {{ article.datepost }}</h6>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <div class="pagination">
+              <span class="step-links">
+                <a href="?page={{ 1 }}">Primeira</a>
+                  {% if tips.has_previous %}
+                      <a href="?page={{ tips.previous_page_number }}">Anterior</a>
+                  {% endif %}
+
+                  <span class="current">
+                  {{ tips.number }}/{{ tips.paginator.num_pages }}
+                </span>
+
+                  {% if tips.has_next %}
+                      <a href="?page={{ tips.next_page_number }}">Próximo</a>
+                  {% endif %}
+                  <a href="?page={{ tips.paginator.num_pages }}">Última</a>
+              </span>
+            </div>
+
+        </div>
+        <div class="span3 offset1">
+            <a class="btn btn-inverse" style="width:100%"><i class="icon-plus icon-white"></i>Vistos</a>
+            <table class="table" style="margin: 0px 0px 0px 0px;">
+                {% for article in most_viewed %}
+                    <tr>
+                        <td>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <table class="table table-bordered" style="margin: 0px 0px 0px 0px;">
+                                        <tr style="margin: 0px 0px 0px 0px;">
+                                            <td>
+                                                <a href="{{ article.pk }}"><h4 style="margin: 0px 0px 0px 0px;"><i class="icon-plus"></i>{{ article.title }}</h4></a>
+                                                <h6 style="margin: 0px 0px 0px 0px;">Posted by {{ article.academic.user.first_name }} {{ article.academic.user.last_name }} in {{ article.datepost }}</h6>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}
