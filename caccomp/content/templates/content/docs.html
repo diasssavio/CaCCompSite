@@ -2,14 +2,14 @@
 {% block content %}
     <div class="row-fluid">
         <div class="span7">
-            <a class="btn btn-inverse" style="width:100%">Posted</a>
+            <a class="btn btn-inverse" style="width:100%">Postados</a>
 
-            <table class="table" style="margin: 0px 0px 0px 0px;">
+            <table class="table table-striped" style="margin: 0px 0px 0px 0px;">
                 {% for doc in docs %}
                     <tr>
                         <td>
                             <div class="row-fluid">
-                                <table class="table" style="margin: 0px 0px 0px 0px;">
+                                <table class="table table-bordered" style="margin: 0px 0px 0px 0px;">
                                     <tr style="margin: 0px 0px 0px 0px;">
                                         <td>
                                             <a href="#"><h4 style="margin: 0px 0px 0px 0px;">{{ doc.title }}</h4></a>
@@ -64,13 +64,13 @@
         </div>
         <div class="span1"><div class="row-fluid"></div></div>
         <div class="span3">
-            <a class="btn btn-inverse" style="width:100%">+Vistos</a>
-            <table class="table" style="margin: 0px 0px 0px 0px;">
+            <a class="btn btn-inverse" style="width:100%"><i class=" icon-plus icon-white"></i>Vistos</a>
+            <table class="table table-striped" style="margin: 0px 0px 0px 0px;">
                 {% for doc in most_viewed %}
                     <tr>
                         <td>
                             <div class="row-fluid">
-                                <table class="table" style="margin: 0px 0px 0px 0px;">
+                                <table class="table table-bordered" style="margin: 0px 0px 0px 0px;">
                                     <tr style="margin: 0px 0px 0px 0px;">
                                         <td>
                                             <a href="#"><h4 style="margin: 0px 0px 0px 0px;">{{ doc.title }}</h4></a>
