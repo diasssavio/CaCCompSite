@@ -8,9 +8,9 @@
 {% block content %}
     <div class="row-fluid">
         <div class="span7">
-            <a class="btn btn-inverse" style="width:100%">Postados</a>
+            <a class="btn btn-inverse" style="width:100%">Posted</a>
 
-            <table class="table table-striped" style="margin: 0px 0px 0px 0px;">
+            <table class="table" style="margin: 0px 0px 0px 0px;">
                 {% for article in articles %}
                     <tr>
                         <td>
@@ -52,7 +52,7 @@
         </div>
         <div class="span3 offset1">
             <a class="btn btn-inverse" style="width:100%"><i class="icon-plus icon-white"></i>Vistos</a>
-            <table class="table table-striped" style="margin: 0px 0px 0px 0px;">
+            <table class="table" style="margin: 0px 0px 0px 0px;">
                 {% for article in most_viewed %}
                     <tr>
                         <td>

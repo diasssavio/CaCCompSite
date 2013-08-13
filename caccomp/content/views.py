@@ -9,8 +9,10 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.core.exceptions import ObjectDoesNotExist
+from datetime import datetime
+from datetime import date
 
-from models import Academic, Post, Document
+from models import Academic, Post, Document, Poll, Events
 from forms import FormUser, FormAcademic, FormDocument, FormPost, FormGalery, FormCategory
 
 # Create your views here.
@@ -28,7 +30,11 @@ def index(request, user=None):
     # DOCS
     docs = Post.objects.filter(category__name='DOCS').filter(status=True).order_by('-datepost')[:4]
 
-    data = {'ccompNews': ccompNews, 'uftNews': uftNews, 'tips': tips, 'docs': docs}
+    # POLL
+    polls = Poll.objects.filter(datebegin__lte=datetime.now()).filter(dateend__gte=datetime.now()).order_by('-datepost')[:1]
+
+
+    data = {'ccompNews': ccompNews, 'uftNews': uftNews, 'tips': tips, 'docs': docs, 'polls': polls}
 
     return render_to_response('content/home.html', data, context_instance=RequestContext(request))
 
@@ -176,3 +182,60 @@ def tipsPageCount(request, id):
     post.save()
 
     return HttpResponseRedirect(post.get_link().url.__str__())
+def listPolls(request):
+    #lista de enquetes abertos para votação
+    poll_list = Poll.objects.filter(datebegin__lte=datetime.now()).filter(dateend__gte=datetime.now()).order_by('-datepost')
+
+    #lista de enquetes que vão abrir
+    poll_list_future = Poll.objects.filter(datebegin__gt=datetime.now()).order_by('-datepost') 
+
+    #lista de enquetes que já fecharam
+    poll_list_pass =  Poll.objects.filter(dateend__lt=datetime.now()).order_by('-datepost') 
+
+    pollsPaginator = Paginator(poll_list, 5)
+    page = request.GET.get('page')
+    try:
+        polls = pollsPaginator.page(page)
+    except PageNotAnInteger:
+        polls = pollsPaginator.page(1)
+    except EmptyPage:
+        polls = pollsPaginator.page(pollsPaginator.num_pages)
+
+    pollsFuturePaginator = Paginator(poll_list_future, 5)
+    page = request.GET.get('pageFuture')
+    try:
+        pollsFuture = pollsFuturePaginator.page(page)
+    except PageNotAnInteger:
+        pollsFuture = pollsFuturePaginator.page(1)
+    except EmptyPage:
+        pollsFuture = pollsFuturePaginator.page(pollsFuturePaginator.num_pages)
+
+    pollsPassPaginator = Paginator(poll_list_pass, 5)
+    page = request.GET.get('pagePass')
+    try:
+        pollsPass = pollsPassPaginator.page(page)
+    except PageNotAnInteger:
+        pollsPass = pollsPassPaginator.page(1)
+    except EmptyPage:
+        pollsPass = pollsPassPaginator.page(pollPassPaginator.num_pages)
+
+    return render_to_response('content/polls.html', {'polls': polls, 'pollsFuture': pollsFuture, 'pollsPass': pollsPass, }, context_instance=RequestContext(request))
+
+def votingPoll(request, id):
+    voting = get_object_or_404(Vote, Q(pk=id))
+    #voting.view += 1
+    #voting.save()
+
+    return render_to_response('content/polls.html', {'voting': voting}, context_instance=RequestContext(request))
+    pass
+
+def listEvents(request):
+    #lista de eventos de hoje
+    events_list_today = Events.objects.filter(dateevent__gte=date.today()).order_by('-dateevent').order_by('timebegin')
+
+    #lista de eventos de amanhã
+    #events_list_tomorrow = Events.objects.filter(datebegin__gt=datetime.now()).order_by('-datebegin') 
+    # data = {'today': events_list_today, 'tomorrow': events_list_tomorrow}
+    # return render_to_response('content/events.html', data, context_instance=RequestContext(request))
+
+    return render_to_response('content/events.html', {'events_list_today': events_list_today}, context_instance=RequestContext(request))

@@ -15,6 +15,11 @@ urlpatterns = patterns('',
                        url(r'^articles/$', 'content.views.listArticles'),
                        url(r'^tips/$', 'content.views.listTips'),
                        url(r'^docs/$', 'content.views.listDocs'),
+                       url(r'^polls/$', 'content.views.listPolls'),
+                       url(r'^events/$', 'content.views.listEvents'),
+
+                       # Voting Poll
+                       url(r'^polls/(?P<id>\d+)/$', 'content.views.votingPoll'),
 
                        # List urls
 

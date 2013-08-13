@@ -45,53 +45,25 @@
                                 <form class="bs-docs-example form-inline" name="enquete">
                                   <table class="table table-striped">
                                     <thead>
-                                      <tr><th>Como você avalia o novo layout do site do CACCOMP:</th></tr>
+                                      <tr><th>{{ polls.title }}</th></tr>
                                     </thead>
                                     <tbody>
-                                      <tr  onmouseover="mouseIn(1);" onmouseout="mouseOut(1);" id="enquete_op1">
+                                      {% for alternative in polls.get_alternatives %}
+                                      <tr  onmouseover="mouseIn( {{ alternative.pk }} );" onmouseout="mouseOut( {{ alternative.pk }} );" id="enquete_op{{ alternative.pk }}">
                                         <td>
                                           <label class="radio">
-                                            <input type="radio" name="optionsRadios" id="enqueteRadios1" value="option1" onclick="selecionar(1);" checked>
-                                            Ótimo
+                                            <input type="radio" name="optionsRadios" id="enqueteRadios{{ alternative.pk }}" value="option{{ alternative.pk }}" onclick="selecionar( {{ alternative.pk }} );" checked>
+                                            {{ alternative.name }}
                                           </label>
                                         </td>
                                       </tr>
-                                      <tr onmouseover="mouseIn(2);" onmouseout="mouseOut(2);" id="enquete_op2">
-                                        <td>
-                                          <label class="radio">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="selecionar(2);" checked>
-                                            Bom
-                                          </label>
-                                        </td>
-                                      </tr>
-                                      <tr onmouseover="mouseIn(3);" onmouseout="mouseOut(3);" id="enquete_op3">
-                                        <td>
-                                          <label class="radio">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" onclick="selecionar(3);" checked>
-                                            Médio
-                                          </label>
-                                        </td>
-                                      </tr>
-                                      <tr onmouseover="mouseIn(4);" onmouseout="mouseOut(4);" id="enquete_op4">
-                                        <td>
-                                          <label class="radio">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4" onclick="selecionar(4);" checked>
-                                            Ruim
-                                          </label>
-                                        </td>
-                                      </tr>
-                                      <tr onmouseover="mouseIn(5);" onmouseout="mouseOut(5);" id="enquete_op5">
-                                        <td>
-                                          <label class="radio">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios5" value="option5" onclick="selecionar(5);" checked>
-                                            Péssimo
-                                          </label>
-                                        </td>
-                                      </tr>
+                                      {% endfor %}
                                       <tr>
                                         <td>
-                                          <button type="submit" class="btn btn-primary">Votar</button>
-                                          Deixe a sua opinião, e veja outras pesquisas aqui. 
+                                          <div class="span4">
+                                            <button type="submit" class="btn btn-primary">Votar</button>
+                                          </div>
+                                          <div class="span8">Deixe a sua opinião, e veja outras pesquisas <a href="/content/polls">aqui</a>.</div> 
                                         </td>
                                       </tr>
                                     </tbody>
