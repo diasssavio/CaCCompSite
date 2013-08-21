@@ -100,10 +100,5 @@ class FormCategory(forms.ModelForm):
 		Permite a personalização do formulário gerado automaticamente
 		'''
 
-<<<<<<< HEAD
         model = Category
         fields = ( 'name', 'description', )
-=======
-		model = Category
-		fields = ( 'name', 'description', )
->>>>>>> 118d4de621f93c588bb37fbf5afd167c3b95ad23

@@ -140,11 +140,7 @@ class Poll(models.Model):
         return Alternative.objects.filter(poll=self)
 
     def __unicode__(self):
-<<<<<<< HEAD
         return '%s' % (self.title)
-=======
-        return '%s' % (self.title )
->>>>>>> 118d4de621f93c588bb37fbf5afd167c3b95ad23
 
     class Meta:
         verbose_name = 'Enquete'
