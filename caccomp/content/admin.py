@@ -5,7 +5,11 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
+<<<<<<< HEAD
 from content.models import Academic, Post, Keyword, Galery, Document, Category, Vote, Poll, Alternative, Events
+=======
+from content.models import Academic, Post, Keyword, Galery, Document, Category, Poll, Vote, Alternative, Events
+>>>>>>> 118d4de621f93c588bb37fbf5afd167c3b95ad23
 
 
 class academicInline(admin.StackedInline):
@@ -90,45 +94,72 @@ class AdminCategory(admin.ModelAdmin):
 
 admin.site.register(Category, AdminCategory)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 118d4de621f93c588bb37fbf5afd167c3b95ad23
 class alternativeInline(admin.StackedInline):
     model = Alternative
     can_delete = False
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 118d4de621f93c588bb37fbf5afd167c3b95ad23
 class AdminPoll(admin.ModelAdmin):
     '''
     Classe para personalizar a interface de admin
     '''
 
+<<<<<<< HEAD
     fields = ( 'title', 'datebegin', 'dateend', 'academic', )
     list_display = ( 'pk', 'title', 'datebegin', 'dateend', 'academic', )
+=======
+    fields = ( 'title','datebegin','dateend','academic', )
+    list_display = ( 'pk','title','datebegin','dateend','academic', )
+>>>>>>> 118d4de621f93c588bb37fbf5afd167c3b95ad23
 
     inlines = [alternativeInline]
 
 
 admin.site.register(Poll, AdminPoll)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 118d4de621f93c588bb37fbf5afd167c3b95ad23
 class AdminVote(admin.ModelAdmin):
     '''
     Classe para personalizar a interface de admin
     '''
 
+<<<<<<< HEAD
     fields = ( 'academic', 'poll', 'alternative', )
     list_display = ( 'pk', 'academic', 'poll', 'alternative', )
+=======
+    fields = ( 'academic','poll','alternative', )
+    list_display = ( 'pk','academic','poll','alternative', )
+>>>>>>> 118d4de621f93c588bb37fbf5afd167c3b95ad23
 
 
 admin.site.register(Vote, AdminVote)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 118d4de621f93c588bb37fbf5afd167c3b95ad23
 class AdminEvents(admin.ModelAdmin):
     '''
     Classe para personalizar a interface de admin
     '''
 
+<<<<<<< HEAD
     fields = ( 'name', 'dateevent', 'timebegin', 'timeend', 'academic', 'post', )
     list_display = ( 'pk', 'name', 'dateevent', 'timebegin', 'timeend', 'academic', 'post', )
+=======
+    fields = ( 'name','dateevent','timebegin','timeend','academic','post', )
+    list_display = ( 'pk','name','dateevent','timebegin','timeend','academic','post', )
+>>>>>>> 118d4de621f93c588bb37fbf5afd167c3b95ad23
 
 
 admin.site.register(Events, AdminEvents)

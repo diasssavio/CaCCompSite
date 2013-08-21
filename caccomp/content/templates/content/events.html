@@ -1,0 +1,56 @@
+{% extends "content/base.html" %}
+{% block content %}
+    <div class="row-fluid">
+        <div class="span6">
+            <a class="btn btn-inverse" style="width:100%">Events</a>
+            <table class="table" style="margin: 0px 0px 0px 0px;">
+                <thead>
+                    <tr style="margin: 0px 0px 0px 0px;">
+                        <th>
+                            <div class="row-fluid">
+                                <div class="span4">
+                                    <h4 style="margin: 0px 0px 0px 0px;">Data</h4>
+                                </div>
+                                <div class="offset1 span7">
+                                    <h4 style="margin: 0px 0px 0px 0px;">Evento</h4>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for event in events_list_today %}
+                    <tr>
+                        <td>
+                            <div class="row-fluid">
+                                <div class="span4"><h6>{{ event.timebegin }} - {{ event.timeend }}</h6></div>
+                                <div class="offset1 span7"><h6>{{ event.name }}</h6></div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <div class="well">
+              <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                <input class="span2" size="16" type="text" value="12-02-2012" readonly="">
+                <span class="add-on"><i class="icon-th"></i></span>
+              </div>
+          </div>
+        </div>
+    </div>
+
+    <script>
+                    $(function(){
+                      window.prettyPrint && prettyPrint();  
+                      $.fn.datepicker.dates['en'] = {
+                        days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"],
+                        daysShort: ["Do", "Se", "Te", "Qa", "Qi", "Sx", "Sa", "Do"],
+                        daysMin: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"],
+                        months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+                        monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
+                      }; 
+                      $('#dp3').datepicker({
+                      });
+                    });
+                  </script>
+{% endblock %}

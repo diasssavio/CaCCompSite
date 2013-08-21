@@ -8,11 +8,20 @@ from django.db.models import Q
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+<<<<<<< HEAD
 
 from models import Academic, Post, Document, Poll, Alternative, Vote, Events
 from forms import FormUser, FormAcademic, FormDocument, FormPost, FormGalery, FormCategory, VoteForm
 
 from datetime import datetime, date
+=======
+from django.core.exceptions import ObjectDoesNotExist
+from datetime import datetime
+from datetime import date
+
+from models import Academic, Post, Document, Poll, Events
+from forms import FormUser, FormAcademic, FormDocument, FormPost, FormGalery, FormCategory
+>>>>>>> 118d4de621f93c588bb37fbf5afd167c3b95ad23
 
 # Create your views here.
 
@@ -30,6 +39,7 @@ def index(request):
     docs = Post.objects.filter(category__name='DOCS').filter(status=True).order_by('-datepost')[:4]
 
     # POLL
+<<<<<<< HEAD
     poll = Poll.objects.filter(datebegin__lte=datetime.now()).filter(dateend__gte=datetime.now()).order_by('-datepost')[0]
     voted = False
     if request.method == 'POST':
@@ -44,6 +54,12 @@ def index(request):
 
     data = {'ccompNews': ccompNews, 'uftNews': uftNews, 'tips': tips, 'docs': docs, 'poll': poll, 'voteForm': voteForm,
             'voted': voted}
+=======
+    polls = Poll.objects.filter(datebegin__lte=datetime.now()).filter(dateend__gte=datetime.now()).order_by('-datepost')[:1]
+
+
+    data = {'ccompNews': ccompNews, 'uftNews': uftNews, 'tips': tips, 'docs': docs, 'polls': polls}
+>>>>>>> 118d4de621f93c588bb37fbf5afd167c3b95ad23
 
     return render_to_response('content/home.html', data, context_instance=RequestContext(request))
 
@@ -192,17 +208,27 @@ def tipsPageCount(request, id):
     post.save()
 
     return HttpResponseRedirect(post.get_link().url.__str__())
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 118d4de621f93c588bb37fbf5afd167c3b95ad23
 def listPolls(request):
     #lista de enquetes abertos para votação
     poll_list = Poll.objects.filter(datebegin__lte=datetime.now()).filter(dateend__gte=datetime.now()).order_by('-datepost')
 
     #lista de enquetes que vão abrir
+<<<<<<< HEAD
     poll_list_future = Poll.objects.filter(datebegin__gt=datetime.now()).order_by('-datepost')
 
     #lista de enquetes que já fecharam
     poll_list_pass =  Poll.objects.filter(dateend__lt=datetime.now()).order_by('-datepost')
+=======
+    poll_list_future = Poll.objects.filter(datebegin__gt=datetime.now()).order_by('-datepost') 
+
+    #lista de enquetes que já fecharam
+    poll_list_pass =  Poll.objects.filter(dateend__lt=datetime.now()).order_by('-datepost') 
+>>>>>>> 118d4de621f93c588bb37fbf5afd167c3b95ad23
 
     pollsPaginator = Paginator(poll_list, 5)
     page = request.GET.get('page')
@@ -229,7 +255,11 @@ def listPolls(request):
     except PageNotAnInteger:
         pollsPass = pollsPassPaginator.page(1)
     except EmptyPage:
+<<<<<<< HEAD
         pollsPass = pollsPassPaginator.page(pollsPassPaginator.num_pages)
+=======
+        pollsPass = pollsPassPaginator.page(pollPassPaginator.num_pages)
+>>>>>>> 118d4de621f93c588bb37fbf5afd167c3b95ad23
 
     return render_to_response('content/polls.html', {'polls': polls, 'pollsFuture': pollsFuture, 'pollsPass': pollsPass, }, context_instance=RequestContext(request))
 
@@ -246,7 +276,11 @@ def listEvents(request):
     events_list_today = Events.objects.filter(dateevent__gte=date.today()).order_by('-dateevent').order_by('timebegin')
 
     #lista de eventos de amanhã
+<<<<<<< HEAD
     #events_list_tomorrow = Events.objects.filter(datebegin__gt=datetime.now()).order_by('-datebegin')
+=======
+    #events_list_tomorrow = Events.objects.filter(datebegin__gt=datetime.now()).order_by('-datebegin') 
+>>>>>>> 118d4de621f93c588bb37fbf5afd167c3b95ad23
     # data = {'today': events_list_today, 'tomorrow': events_list_tomorrow}
     # return render_to_response('content/events.html', data, context_instance=RequestContext(request))
 
