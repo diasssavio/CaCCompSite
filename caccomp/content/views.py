@@ -8,14 +8,15 @@ from django.db.models import Q
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.core.exceptions import ObjectDoesNotExist
 
-from models import Academic, Post, Document
-from forms import FormUser, FormAcademic, FormDocument, FormPost, FormGalery, FormCategory
+from models import Academic, Post, Document, Poll, Alternative, Vote, Events
+from forms import FormUser, FormAcademic, FormDocument, FormPost, FormGalery, FormCategory, VoteForm
+
+from datetime import datetime, date
 
 # Create your views here.
 
-def index(request, user=None):
+def index(request):
     # CCOMP_NEWS
     ccompNews = Post.objects.filter(category__name='NEWS_CCOMP').filter(status=True).order_by('-datepost')[:6]
 
@@ -28,7 +29,21 @@ def index(request, user=None):
     # DOCS
     docs = Post.objects.filter(category__name='DOCS').filter(status=True).order_by('-datepost')[:4]
 
-    data = {'ccompNews': ccompNews, 'uftNews': uftNews, 'tips': tips, 'docs': docs}
+    # POLL
+    poll = Poll.objects.filter(datebegin__lte=datetime.now()).filter(dateend__gte=datetime.now()).order_by('-datepost')[0]
+    voted = False
+    if request.method == 'POST':
+        voteForm = VoteForm(poll.get_alternatives(), data=request.POST)
+        if voteForm.is_valid():
+            alternative = Alternative.objects.get(pk=voteForm.cleaned_data['alternative'][0])
+            vote = Vote(academic=Academic.objects.get(user=request.user), poll=poll, alternative=alternative)
+            vote.save()
+            voted = True
+    else:
+        voteForm = VoteForm(poll.get_alternatives())
+
+    data = {'ccompNews': ccompNews, 'uftNews': uftNews, 'tips': tips, 'docs': docs, 'poll': poll, 'voteForm': voteForm,
+            'voted': voted}
 
     return render_to_response('content/home.html', data, context_instance=RequestContext(request))
 
@@ -170,9 +185,69 @@ def documentPageCount(request, id):
 
     return HttpResponseRedirect('/media/' + post.get_document().document.__str__())
 
+
 def tipsPageCount(request, id):
     post = get_object_or_404(Post, pk=id)
     post.view += 1
     post.save()
 
     return HttpResponseRedirect(post.get_link().url.__str__())
+
+
+def listPolls(request):
+    #lista de enquetes abertos para votação
+    poll_list = Poll.objects.filter(datebegin__lte=datetime.now()).filter(dateend__gte=datetime.now()).order_by('-datepost')
+
+    #lista de enquetes que vão abrir
+    poll_list_future = Poll.objects.filter(datebegin__gt=datetime.now()).order_by('-datepost')
+
+    #lista de enquetes que já fecharam
+    poll_list_pass =  Poll.objects.filter(dateend__lt=datetime.now()).order_by('-datepost')
+
+    pollsPaginator = Paginator(poll_list, 5)
+    page = request.GET.get('page')
+    try:
+        polls = pollsPaginator.page(page)
+    except PageNotAnInteger:
+        polls = pollsPaginator.page(1)
+    except EmptyPage:
+        polls = pollsPaginator.page(pollsPaginator.num_pages)
+
+    pollsFuturePaginator = Paginator(poll_list_future, 5)
+    page = request.GET.get('pageFuture')
+    try:
+        pollsFuture = pollsFuturePaginator.page(page)
+    except PageNotAnInteger:
+        pollsFuture = pollsFuturePaginator.page(1)
+    except EmptyPage:
+        pollsFuture = pollsFuturePaginator.page(pollsFuturePaginator.num_pages)
+
+    pollsPassPaginator = Paginator(poll_list_pass, 5)
+    page = request.GET.get('pagePass')
+    try:
+        pollsPass = pollsPassPaginator.page(page)
+    except PageNotAnInteger:
+        pollsPass = pollsPassPaginator.page(1)
+    except EmptyPage:
+        pollsPass = pollsPassPaginator.page(pollsPassPaginator.num_pages)
+
+    return render_to_response('content/polls.html', {'polls': polls, 'pollsFuture': pollsFuture, 'pollsPass': pollsPass, }, context_instance=RequestContext(request))
+
+def votingPoll(request, id):
+    voting = get_object_or_404(Vote, Q(pk=id))
+    #voting.view += 1
+    #voting.save()
+
+    return render_to_response('content/polls.html', {'voting': voting}, context_instance=RequestContext(request))
+    pass
+
+def listEvents(request):
+    #lista de eventos de hoje
+    events_list_today = Events.objects.filter(dateevent__gte=date.today()).order_by('-dateevent').order_by('timebegin')
+
+    #lista de eventos de amanhã
+    #events_list_tomorrow = Events.objects.filter(datebegin__gt=datetime.now()).order_by('-datebegin')
+    # data = {'today': events_list_today, 'tomorrow': events_list_tomorrow}
+    # return render_to_response('content/events.html', data, context_instance=RequestContext(request))
+
+    return render_to_response('content/events.html', {'events_list_today': events_list_today}, context_instance=RequestContext(request))

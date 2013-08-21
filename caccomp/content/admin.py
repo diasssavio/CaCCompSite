@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
-from content.models import Academic, Post, Keyword, Galery, Document, Category
+from content.models import Academic, Post, Keyword, Galery, Document, Category, Vote, Poll, Alternative, Events
 
 
 class academicInline(admin.StackedInline):
@@ -37,7 +37,7 @@ class AdminPost(admin.ModelAdmin):
 	'''
 
     fields = ('title', 'content', 'academic', 'category', 'keywords', 'status',)
-    list_display = ('pk','title', 'content', 'academic', 'category', 'status',)
+    list_display = ('pk', 'title', 'content', 'academic', 'category', 'status',)
 
 
 admin.site.register(Post, AdminPost)
@@ -89,3 +89,46 @@ class AdminCategory(admin.ModelAdmin):
 
 
 admin.site.register(Category, AdminCategory)
+
+
+class alternativeInline(admin.StackedInline):
+    model = Alternative
+    can_delete = False
+
+
+class AdminPoll(admin.ModelAdmin):
+    '''
+    Classe para personalizar a interface de admin
+    '''
+
+    fields = ( 'title', 'datebegin', 'dateend', 'academic', )
+    list_display = ( 'pk', 'title', 'datebegin', 'dateend', 'academic', )
+
+    inlines = [alternativeInline]
+
+
+admin.site.register(Poll, AdminPoll)
+
+
+class AdminVote(admin.ModelAdmin):
+    '''
+    Classe para personalizar a interface de admin
+    '''
+
+    fields = ( 'academic', 'poll', 'alternative', )
+    list_display = ( 'pk', 'academic', 'poll', 'alternative', )
+
+
+admin.site.register(Vote, AdminVote)
+
+
+class AdminEvents(admin.ModelAdmin):
+    '''
+    Classe para personalizar a interface de admin
+    '''
+
+    fields = ( 'name', 'dateevent', 'timebegin', 'timeend', 'academic', 'post', )
+    list_display = ( 'pk', 'name', 'dateevent', 'timebegin', 'timeend', 'academic', 'post', )
+
+
+admin.site.register(Events, AdminEvents)

@@ -123,3 +123,74 @@ class Category(models.Model):
 
     class Meta:
         verbose_name = u'Categoria-Notícia'
+
+
+class Poll(models.Model):
+    '''
+    Model que representa a tabela de enquetes
+    '''
+
+    title = models.CharField(max_length=255, verbose_name='Título')
+    datepost = models.DateTimeField(auto_now_add=True)
+    datebegin = models.DateTimeField(verbose_name='Data de abertura')
+    dateend = models.DateTimeField(verbose_name='Data de fechamento')
+    academic = models.ForeignKey(Academic, verbose_name='Acadêmico')
+
+    def get_alternatives(self):
+        return Alternative.objects.filter(poll=self)
+
+    def __unicode__(self):
+        return '%s' % (self.title)
+
+    class Meta:
+        verbose_name = 'Enquete'
+
+class Vote(models.Model):
+    '''
+    Model que representa a tabela de votos das enquetes
+    '''
+
+    datevote = models.DateTimeField(auto_now_add=True)
+    academic = models.ForeignKey(Academic, verbose_name='Acadêmico')
+    poll = models.ForeignKey(Poll, verbose_name='Enquete')
+    alternative = models.ForeignKey('Alternative', verbose_name='Alternativa')
+
+    def __unicode__(self):
+        return '%s' % (self.datevote )
+
+    class Meta:
+        verbose_name = 'Voto'
+
+class Alternative(models.Model):
+    '''
+    Model que representa a tabela de alternativas de votos das enquetes
+    '''
+
+    name = models.CharField(max_length=50, verbose_name='Nome')
+    poll = models.ForeignKey(Poll, verbose_name='Enquete')
+
+    def __unicode__(self):
+        return '%s' % (self.name )
+
+    class Meta:
+        verbose_name = 'Alternativa'
+
+
+class Events(models.Model):
+    '''
+    Model que representa a tabela de eventos
+    '''
+
+    name = models.CharField(max_length=50, verbose_name='Nome')
+    datepost = models.DateTimeField(auto_now_add=True)
+    dateevent = models.DateField(verbose_name='Data do Evento')
+    timebegin = models.TimeField(verbose_name='Hora de abertura')
+    timeend = models.TimeField(verbose_name='Hora de fechamento')
+    academic = models.ForeignKey(Academic, verbose_name='Acadêmico')
+    post = models.ForeignKey(Post, verbose_name='Acadêmico', null=True, default=None, blank=True)
+
+    def __unicode__(self):
+        return '%s' % (self.name )
+
+    class Meta:
+        verbose_name = 'Eventos'
