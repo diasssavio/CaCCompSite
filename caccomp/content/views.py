@@ -18,29 +18,46 @@ from datetime import datetime, date
 
 def index(request):
     # CCOMP_NEWS
-    ccompNews = Post.objects.filter(category__name='NEWS_CCOMP').filter(status=True).order_by('-datepost')[:6]
+    try:
+        ccompNews = Post.objects.filter(category__name='NEWS_CCOMP').filter(status=True).order_by('-datepost')[:6]
+    except:
+        ccompNews = None
 
     # UFT_NEWS
-    uftNews = Post.objects.filter(category__name='NEWS_UFT').filter(status=True).order_by('-datepost')[:5]
+    try:
+        uftNews = Post.objects.filter(category__name='NEWS_UFT').filter(status=True).order_by('-datepost')[:5]
+    except:
+        uftNews = None
 
     # LINKS_TIPS
-    tips = Post.objects.filter(category__name='LINKS_TIPS').filter(status=True).order_by('-datepost')[:4]
+    try:
+        tips = Post.objects.filter(category__name='LINKS_TIPS').filter(status=True).order_by('-datepost')[:4]
+    except:
+        tips = None
 
     # DOCS
-    docs = Post.objects.filter(category__name='DOCS').filter(status=True).order_by('-datepost')[:4]
+    try:
+        docs = Post.objects.filter(category__name='DOCS').filter(status=True).order_by('-datepost')[:4]
+    except:
+        docs = None
 
     # POLL
-    poll = Poll.objects.filter(datebegin__lte=datetime.now()).filter(dateend__gte=datetime.now()).order_by('-datepost')[0]
-    voted = False
-    if request.method == 'POST':
-        voteForm = VoteForm(poll.get_alternatives(), data=request.POST)
-        if voteForm.is_valid():
-            alternative = Alternative.objects.get(pk=voteForm.cleaned_data['alternative'][0])
-            vote = Vote(academic=Academic.objects.get(user=request.user), poll=poll, alternative=alternative)
-            vote.save()
-            voted = True
-    else:
-        voteForm = VoteForm(poll.get_alternatives())
+    try:
+        poll = Poll.objects.filter(datebegin__lte=datetime.now()).filter(dateend__gte=datetime.now()).order_by('-datepost')[0]
+        voted = False
+        if request.method == 'POST':
+            voteForm = VoteForm(poll.get_alternatives(), data=request.POST)
+            if voteForm.is_valid():
+                alternative = Alternative.objects.get(pk=voteForm.cleaned_data['alternative'][0])
+                vote = Vote(academic=Academic.objects.get(user=request.user), poll=poll, alternative=alternative)
+                vote.save()
+                voted = True
+        else:
+            voteForm = VoteForm(poll.get_alternatives())
+    except:
+        voted = False
+        poll = None
+        voteForm = None
 
     data = {'ccompNews': ccompNews, 'uftNews': uftNews, 'tips': tips, 'docs': docs, 'poll': poll, 'voteForm': voteForm,
             'voted': voted}

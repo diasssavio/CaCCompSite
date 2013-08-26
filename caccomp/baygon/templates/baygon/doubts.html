@@ -1,0 +1,153 @@
+{% extends "content/base.html" %}
+{% block content %}
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <ul class="nav nav-tabs">
+                <h4 class="pull-left">Dúvidas</h4>
+                <li class="pull-right"><a href="#most_popular" data-toggle="tab"><i class="icon-plus"></i>Populares</a></li>
+                <li class="pull-right"><a href="#most_viewed" data-toggle="tab"><i class="icon-plus"></i>Vistos</a></li>
+                <li class="active pull-right"><a href="#recent" data-toggle="tab"><i class="icon-plus"></i>Recentes</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="recent">
+                    <table class="table table-bordered" style="margin: 0px 0px 0px 0px;">
+                        <tr>
+                            <td>
+                                <div class="row-fluid">
+                                    <div class="span3">
+                                        <table class="table table-bordered">
+                                            <tr><td>
+                                                <div class="row-fluid">
+                                                    <div class="span4" style="background-color: #408140; color: #eeeeee">
+                                                        <h4 class="text-center">0</h4>
+                                                        <p class="text-center"><i class="icon-ok icon-white"></i></p>
+                                                    </div>
+                                                    <div class="span4" style="background-color: #942a25; color: #eeeeee">
+                                                        <h4 class="text-center">0</h4>
+                                                        <p class="text-center"><i class="icon-comment icon-white"></i></p>
+                                                    </div>
+                                                    <div class="span4" style="background-color: #515151; color: #eeeeee">
+                                                        <h4 class="text-center">0</h4>
+                                                        <p class="text-center"><i class="icon-eye-open icon-white"></i></p>
+                                                    </div>
+                                                </div>
+                                            </td></tr>
+                                        </table>
+                                    </div>
+                                    <div class="span9">
+                                        <table class="table table-bordered">
+                                            <tr><td>
+                                                <h4><a href="#">Pergunta</a></h4>
+                                                <p>
+                                                    <span class="label label-info">Palavras-chave</span> <span class="label label-info">Palavras-chave</span>
+                                                    <span class="pull-right">Data <a href="#">Sávio Dias</a></span>
+                                                </p>
+                                            </td></tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="pagination">
+                    <span class="step-links">
+                    <a href="?page={{ 1 }}">Primeira</a>
+                        {% if tips.has_previous %}
+                            <a href="?page={{ tips.previous_page_number }}">Anterior</a>
+                        {% endif %}
+                        <span class="current">
+                    {{ tips.number }}/{{ tips.paginator.num_pages }}
+                    </span>
+                        {% if tips.has_next %}
+                            <a href="?page={{ tips.next_page_number }}">Próximo</a>
+                        {% endif %}
+                        <a href="?page={{ tips.paginator.num_pages }}">Última</a>
+                    </span>
+                    </div>
+                </div>
+                <div class="tab-pane" id="most_viewed">
+                    <table class="table table-bordered" style="margin: 0px 0px 0px 0px;">
+                        <tr>
+                            <td>
+                                <div class="row-fluid">
+                                    <div class="span3">
+                                        <table class="table table-bordered">
+                                            <tr><td>
+                                                <div class="row-fluid">
+                                                    <div class="span4" style="background-color: #408140; color: #eeeeee">
+                                                        <h4 class="text-center">0</h4>
+                                                        <p class="text-center"><i class="icon-ok icon-white"></i></p>
+                                                    </div>
+                                                    <div class="span4" style="background-color: #942a25; color: #eeeeee">
+                                                        <h4 class="text-center">0</h4>
+                                                        <p class="text-center"><i class="icon-comment icon-white"></i></p>
+                                                    </div>
+                                                    <div class="span4" style="background-color: #515151; color: #eeeeee">
+                                                        <h4 class="text-center">0</h4>
+                                                        <p class="text-center"><i class="icon-eye-open icon-white"></i></p>
+                                                    </div>
+                                                </div>
+                                            </td></tr>
+                                        </table>
+                                    </div>
+                                    <div class="span9">
+                                        <table class="table table-bordered">
+                                            <tr><td>
+                                                <h4><a href="#">Pergunta</a></h4>
+                                                <p>
+                                                    <span class="label label-info">Palavras-chave</span> <span class="label label-info">Palavras-chave</span>
+                                                    <span class="pull-right">Data <a href="#">Sávio Dias</a></span>
+                                                </p>
+                                            </td></tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tab-pane" id="most_popular">
+                    <table class="table table-bordered" style="margin: 0px 0px 0px 0px;">
+                        <tr>
+                            <td>
+                                <div class="row-fluid">
+                                    <div class="span3">
+                                        <table class="table table-bordered">
+                                            <tr><td>
+                                                <div class="row-fluid">
+                                                    <div class="span4" style="background-color: #408140; color: #eeeeee">
+                                                        <h4 class="text-center">0</h4>
+                                                        <p class="text-center"><i class="icon-ok icon-white"></i></p>
+                                                    </div>
+                                                    <div class="span4" style="background-color: #942a25; color: #eeeeee">
+                                                        <h4 class="text-center">0</h4>
+                                                        <p class="text-center"><i class="icon-comment icon-white"></i></p>
+                                                    </div>
+                                                    <div class="span4" style="background-color: #515151; color: #eeeeee">
+                                                        <h4 class="text-center">0</h4>
+                                                        <p class="text-center"><i class="icon-eye-open icon-white"></i></p>
+                                                    </div>
+                                                </div>
+                                            </td></tr>
+                                        </table>
+                                    </div>
+                                    <div class="span9">
+                                        <table class="table table-bordered">
+                                            <tr><td>
+                                                <h4><a href="#">Pergunta</a></h4>
+                                                <p>
+                                                    <span class="label label-info">Palavras-chave</span> <span class="label label-info">Palavras-chave</span>
+                                                    <span class="pull-right">Data <a href="#">Sávio Dias</a></span>
+                                                </p>
+                                            </td></tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
