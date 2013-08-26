@@ -15,7 +15,7 @@ class AnswerInline(admin.StackedInline):
 
 class AdminDoubt(admin.ModelAdmin):
     fields = ('asking', 'explanation', 'code', 'keywords',)
-    list_display = ('asking', 'academic', 'datepost', 'popularity',)
+    list_display = ('asking', 'academic', 'datepost', 'popularity', 'view',)
     inlines = [AnswerInline]
 
     def save_model(self, request, obj, form, change):

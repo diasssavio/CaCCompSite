@@ -10,142 +10,160 @@
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="recent">
-                    <table class="table table-bordered" style="margin: 0px 0px 0px 0px;">
-                        <tr>
-                            <td>
-                                <div class="row-fluid">
-                                    <div class="span3">
-                                        <table class="table table-bordered">
-                                            <tr><td>
-                                                <div class="row-fluid">
-                                                    <div class="span4" style="background-color: #408140; color: #eeeeee">
-                                                        <h4 class="text-center">0</h4>
-                                                        <p class="text-center"><i class="icon-ok icon-white"></i></p>
-                                                    </div>
-                                                    <div class="span4" style="background-color: #942a25; color: #eeeeee">
-                                                        <h4 class="text-center">0</h4>
-                                                        <p class="text-center"><i class="icon-comment icon-white"></i></p>
-                                                    </div>
-                                                    <div class="span4" style="background-color: #515151; color: #eeeeee">
-                                                        <h4 class="text-center">0</h4>
-                                                        <p class="text-center"><i class="icon-eye-open icon-white"></i></p>
-                                                    </div>
-                                                </div>
-                                            </td></tr>
-                                        </table>
-                                    </div>
-                                    <div class="span9">
-                                        <table class="table table-bordered">
-                                            <tr><td>
-                                                <h4><a href="#">Pergunta</a></h4>
-                                                <p>
-                                                    <span class="label label-info">Palavras-chave</span> <span class="label label-info">Palavras-chave</span>
-                                                    <span class="pull-right">Data <a href="#">Sávio Dias</a></span>
-                                                </p>
-                                            </td></tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                    <div class="pagination">
-                    <span class="step-links">
-                    <a href="?page={{ 1 }}">Primeira</a>
-                        {% if tips.has_previous %}
-                            <a href="?page={{ tips.previous_page_number }}">Anterior</a>
-                        {% endif %}
-                        <span class="current">
-                    {{ tips.number }}/{{ tips.paginator.num_pages }}
-                    </span>
-                        {% if tips.has_next %}
-                            <a href="?page={{ tips.next_page_number }}">Próximo</a>
-                        {% endif %}
-                        <a href="?page={{ tips.paginator.num_pages }}">Última</a>
-                    </span>
-                    </div>
+                    {% if doubts %}
+                        <table class="table table-bordered" style="margin: 0px 0px 0px 0px;">
+                            {% for doubt in doubts %}
+                                <tr>
+                                    <td>
+                                        <div class="row-fluid">
+                                            <div class="span3">
+                                                <table class="table table-bordered">
+                                                    <tr><td>
+                                                        <div class="row-fluid">
+                                                            <div class="span4" style="background-color: #408140; color: #eeeeee">
+                                                                <h4 class="text-center">{{ doubt.popularity }}</h4>
+                                                                <p class="text-center"><i class="icon-ok icon-white"></i></p>
+                                                            </div>
+                                                            <div class="span4" style="background-color: #942a25; color: #eeeeee">
+                                                                <h4 class="text-center">{{ doubt.get_answers|length }}</h4>
+                                                                <p class="text-center"><i class="icon-comment icon-white"></i></p>
+                                                            </div>
+                                                            <div class="span4" style="background-color: #515151; color: #eeeeee">
+                                                                <h4 class="text-center">{{ doubt.view }}</h4>
+                                                                <p class="text-center"><i class="icon-eye-open icon-white"></i></p>
+                                                            </div>
+                                                        </div>
+                                                    </td></tr>
+                                                </table>
+                                            </div>
+                                            <div class="span9">
+                                                <table class="table table-bordered">
+                                                    <tr><td>
+                                                        <h4><a href="#">{{ doubt.asking }}</a></h4>
+                                                        <p>
+                                                            {% for keyword in doubt.keywords.all %}
+                                                                <span class="label label-info">{{ keyword.name }}</span>
+                                                            {% endfor %}
+                                                            <span class="pull-right">{{ doubt.datepost }} <a href="#">{{ doubt.academic }}</a></span>
+                                                        </p>
+                                                    </td></tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                        <div class="pagination">
+                            <span class="step-links">
+                            <a href="?page={{ 1 }}">Primeira</a>
+                                {% if tips.has_previous %}
+                                    <a href="?page={{ tips.previous_page_number }}">Anterior</a>
+                                {% endif %}
+                                <span class="current">
+                                {{ tips.number }}/{{ tips.paginator.num_pages }}
+                            </span>
+                                {% if tips.has_next %}
+                                    <a href="?page={{ tips.next_page_number }}">Próximo</a>
+                                {% endif %}
+                                <a href="?page={{ tips.paginator.num_pages }}">Última</a>
+                            </span>
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="tab-pane" id="most_viewed">
-                    <table class="table table-bordered" style="margin: 0px 0px 0px 0px;">
-                        <tr>
-                            <td>
-                                <div class="row-fluid">
-                                    <div class="span3">
-                                        <table class="table table-bordered">
-                                            <tr><td>
-                                                <div class="row-fluid">
-                                                    <div class="span4" style="background-color: #408140; color: #eeeeee">
-                                                        <h4 class="text-center">0</h4>
-                                                        <p class="text-center"><i class="icon-ok icon-white"></i></p>
-                                                    </div>
-                                                    <div class="span4" style="background-color: #942a25; color: #eeeeee">
-                                                        <h4 class="text-center">0</h4>
-                                                        <p class="text-center"><i class="icon-comment icon-white"></i></p>
-                                                    </div>
-                                                    <div class="span4" style="background-color: #515151; color: #eeeeee">
-                                                        <h4 class="text-center">0</h4>
-                                                        <p class="text-center"><i class="icon-eye-open icon-white"></i></p>
-                                                    </div>
-                                                </div>
-                                            </td></tr>
-                                        </table>
-                                    </div>
-                                    <div class="span9">
-                                        <table class="table table-bordered">
-                                            <tr><td>
-                                                <h4><a href="#">Pergunta</a></h4>
-                                                <p>
-                                                    <span class="label label-info">Palavras-chave</span> <span class="label label-info">Palavras-chave</span>
-                                                    <span class="pull-right">Data <a href="#">Sávio Dias</a></span>
-                                                </p>
-                                            </td></tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
+                    {% if most_viewed %}
+                        <table class="table table-bordered" style="margin: 0px 0px 0px 0px;">
+                            {% for doubt in most_viewed %}
+                                <tr>
+                                    <td>
+                                        <div class="row-fluid">
+                                            <div class="span3">
+                                                <table class="table table-bordered">
+                                                    <tr><td>
+                                                        <div class="row-fluid">
+                                                            <div class="span4" style="background-color: #408140; color: #eeeeee">
+                                                                <h4 class="text-center">{{ doubt.popularity }}</h4>
+                                                                <p class="text-center"><i class="icon-ok icon-white"></i></p>
+                                                            </div>
+                                                            <div class="span4" style="background-color: #942a25; color: #eeeeee">
+                                                                <h4 class="text-center">{{ doubt.get_answers|length }}</h4>
+                                                                <p class="text-center"><i class="icon-comment icon-white"></i></p>
+                                                            </div>
+                                                            <div class="span4" style="background-color: #515151; color: #eeeeee">
+                                                                <h4 class="text-center">{{ doubt.view }}</h4>
+                                                                <p class="text-center"><i class="icon-eye-open icon-white"></i></p>
+                                                            </div>
+                                                        </div>
+                                                    </td></tr>
+                                                </table>
+                                            </div>
+                                            <div class="span9">
+                                                <table class="table table-bordered">
+                                                    <tr><td>
+                                                        <h4><a href="#">{{ doubt.asking }}</a></h4>
+                                                        <p>
+                                                            {% for keyword in doubt.keywords.all %}
+                                                                <span class="label label-info">{{ keyword.name }}</span>
+                                                            {% endfor %}
+                                                            <span class="pull-right">{{ doubt.datepost }} <a href="#">{{ doubt.academic }}</a></span>
+                                                        </p>
+                                                    </td></tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% endif %}
                 </div>
                 <div class="tab-pane" id="most_popular">
-                    <table class="table table-bordered" style="margin: 0px 0px 0px 0px;">
-                        <tr>
-                            <td>
-                                <div class="row-fluid">
-                                    <div class="span3">
-                                        <table class="table table-bordered">
-                                            <tr><td>
-                                                <div class="row-fluid">
-                                                    <div class="span4" style="background-color: #408140; color: #eeeeee">
-                                                        <h4 class="text-center">0</h4>
-                                                        <p class="text-center"><i class="icon-ok icon-white"></i></p>
-                                                    </div>
-                                                    <div class="span4" style="background-color: #942a25; color: #eeeeee">
-                                                        <h4 class="text-center">0</h4>
-                                                        <p class="text-center"><i class="icon-comment icon-white"></i></p>
-                                                    </div>
-                                                    <div class="span4" style="background-color: #515151; color: #eeeeee">
-                                                        <h4 class="text-center">0</h4>
-                                                        <p class="text-center"><i class="icon-eye-open icon-white"></i></p>
-                                                    </div>
-                                                </div>
-                                            </td></tr>
-                                        </table>
-                                    </div>
-                                    <div class="span9">
-                                        <table class="table table-bordered">
-                                            <tr><td>
-                                                <h4><a href="#">Pergunta</a></h4>
-                                                <p>
-                                                    <span class="label label-info">Palavras-chave</span> <span class="label label-info">Palavras-chave</span>
-                                                    <span class="pull-right">Data <a href="#">Sávio Dias</a></span>
-                                                </p>
-                                            </td></tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
+                    {% if most_popular %}
+                        <table class="table table-bordered" style="margin: 0px 0px 0px 0px;">
+                            {% for doubt in doubts %}
+                                <tr>
+                                    <td>
+                                        <div class="row-fluid">
+                                            <div class="span3">
+                                                <table class="table table-bordered">
+                                                    <tr><td>
+                                                        <div class="row-fluid">
+                                                            <div class="span4" style="background-color: #408140; color: #eeeeee">
+                                                                <h4 class="text-center">{{ doubt.popularity }}</h4>
+                                                                <p class="text-center"><i class="icon-ok icon-white"></i></p>
+                                                            </div>
+                                                            <div class="span4" style="background-color: #942a25; color: #eeeeee">
+                                                                <h4 class="text-center">{{ doubt.get_answers|length }}</h4>
+                                                                <p class="text-center"><i class="icon-comment icon-white"></i></p>
+                                                            </div>
+                                                            <div class="span4" style="background-color: #515151; color: #eeeeee">
+                                                                <h4 class="text-center">{{ doubt.view }}</h4>
+                                                                <p class="text-center"><i class="icon-eye-open icon-white"></i></p>
+                                                            </div>
+                                                        </div>
+                                                    </td></tr>
+                                                </table>
+                                            </div>
+                                            <div class="span9">
+                                                <table class="table table-bordered">
+                                                    <tr><td>
+                                                        <h4><a href="#">{{ doubt.asking }}</a></h4>
+                                                        <p>
+                                                            {% for keyword in doubt.keywords.all %}
+                                                                <span class="label label-info">{{ keyword.name }}</span>
+                                                            {% endfor %}
+                                                            <span class="pull-right">{{ doubt.datepost }} <a href="#">{{ doubt.academic }}</a></span>
+                                                        </p>
+                                                    </td></tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% endif %}
                 </div>
             </div>
         </div>
