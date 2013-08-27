@@ -5,4 +5,5 @@ from django.conf.urls import patterns, url
 
 urlpatterns = patterns('',
                        url(r'^$', 'baygon.views.listDoubts'),
+                       url(r'^doubt/$', 'baygon.views.showDoubt'),
 )

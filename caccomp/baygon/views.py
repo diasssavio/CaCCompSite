@@ -26,3 +26,6 @@ def listDoubts(request):
 
     return render_to_response('baygon/doubts.html', {'doubts': doubts, 'most_viewed': most_viewed,
                               'most_popular': most_popular}, context_instance=RequestContext(request))
+
+def showDoubt(request):
+    return render_to_response('baygon/doubt.html', context_instance=RequestContext(request))
