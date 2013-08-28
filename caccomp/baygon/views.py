@@ -6,7 +6,9 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
+from content.models import Academic
 from baygon.models import Doubt, Answer
+from baygon.forms import FormAnswer
 
 # Create your views here.
 
@@ -27,5 +29,22 @@ def listDoubts(request):
     return render_to_response('baygon/doubts.html', {'doubts': doubts, 'most_viewed': most_viewed,
                               'most_popular': most_popular}, context_instance=RequestContext(request))
 
-def showDoubt(request):
-    return render_to_response('baygon/doubt.html', context_instance=RequestContext(request))
+def showDoubt(request, id):
+    doubt = get_object_or_404(Doubt, pk=id)
+    doubt.view += 1
+    doubt.save()
+
+    commented = False
+    if request.method == 'POST':
+        answerForm = FormAnswer(data=request.POST)
+        if answerForm.is_valid():
+            answer = answerForm.save(commit=False)
+            answer.academic = Academic.objects.get(user=request.user)
+            answer.doubt = doubt
+            answer.save()
+            commented = True
+    else:
+        answerForm = FormAnswer()
+
+    return render_to_response('baygon/doubt.html', {'doubt': doubt, 'answerForm': answerForm, 'commented': commented},
+                              context_instance=RequestContext(request))

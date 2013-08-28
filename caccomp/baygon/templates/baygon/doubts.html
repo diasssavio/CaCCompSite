@@ -21,7 +21,7 @@
                                                     <tr><td>
                                                         <div class="row-fluid">
                                                             <div class="span4" style="background-color: #408140; color: #eeeeee">
-                                                                <h4 class="text-center">{{ doubt.popularity }}</h4>
+                                                                <h4 class="text-center">{{ doubt.get_popularity|length }}</h4>
                                                                 <p class="text-center"><i class="icon-ok icon-white"></i></p>
                                                             </div>
                                                             <div class="span4" style="background-color: #942a25; color: #eeeeee">
@@ -39,7 +39,7 @@
                                             <div class="span9">
                                                 <table class="table table-bordered">
                                                     <tr><td>
-                                                        <h4><a href="#">{{ doubt.asking }}</a></h4>
+                                                        <h4><a href="doubt/{{ doubt.pk }}">{{ doubt.asking }}</a></h4>
                                                         <p>
                                                             {% for keyword in doubt.keywords.all %}
                                                                 <span class="label label-info">{{ keyword.name }}</span>
@@ -83,7 +83,7 @@
                                                     <tr><td>
                                                         <div class="row-fluid">
                                                             <div class="span4" style="background-color: #408140; color: #eeeeee">
-                                                                <h4 class="text-center">{{ doubt.popularity }}</h4>
+                                                                <h4 class="text-center">{{ doubt.get_popularity|length }}</h4>
                                                                 <p class="text-center"><i class="icon-ok icon-white"></i></p>
                                                             </div>
                                                             <div class="span4" style="background-color: #942a25; color: #eeeeee">
@@ -101,7 +101,7 @@
                                             <div class="span9">
                                                 <table class="table table-bordered">
                                                     <tr><td>
-                                                        <h4><a href="#">{{ doubt.asking }}</a></h4>
+                                                        <h4><a href="doubt/{{ doubt.pk }}">{{ doubt.asking }}</a></h4>
                                                         <p>
                                                             {% for keyword in doubt.keywords.all %}
                                                                 <span class="label label-info">{{ keyword.name }}</span>
@@ -130,7 +130,7 @@
                                                     <tr><td>
                                                         <div class="row-fluid">
                                                             <div class="span4" style="background-color: #408140; color: #eeeeee">
-                                                                <h4 class="text-center">{{ doubt.popularity }}</h4>
+                                                                <h4 class="text-center">{{ doubt.get_popularity|length }}</h4>
                                                                 <p class="text-center"><i class="icon-ok icon-white"></i></p>
                                                             </div>
                                                             <div class="span4" style="background-color: #942a25; color: #eeeeee">
@@ -148,7 +148,7 @@
                                             <div class="span9">
                                                 <table class="table table-bordered">
                                                     <tr><td>
-                                                        <h4><a href="#">{{ doubt.asking }}</a></h4>
+                                                        <h4><a href="doubt/{{ doubt.pk }}">{{ doubt.asking }}</a></h4>
                                                         <p>
                                                             {% for keyword in doubt.keywords.all %}
                                                                 <span class="label label-info">{{ keyword.name }}</span>

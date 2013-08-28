@@ -3,18 +3,18 @@
 
 from django.contrib import admin
 from content.models import Academic
-from baygon.models import Answer, Doubt
+from baygon.models import Answer, Doubt, Language
 
 
 class AnswerInline(admin.StackedInline):
     model = Answer
-    fields = ('explanation', 'code',)
+    fields = ('explanation', 'code', 'language')
     can_delete = True
     extra = 1
 
 
 class AdminDoubt(admin.ModelAdmin):
-    fields = ('asking', 'explanation', 'code', 'keywords',)
+    fields = ('asking', 'explanation', 'code', 'language', 'keywords',)
     list_display = ('asking', 'academic', 'datepost', 'popularity', 'view',)
     inlines = [AnswerInline]
 
@@ -29,3 +29,10 @@ class AdminDoubt(admin.ModelAdmin):
         formset.save_m2m()
 
 admin.site.register(Doubt, AdminDoubt)
+
+
+class AdminLanguage(admin.ModelAdmin):
+    fields = ('name', 'brush',)
+    list_display = ('name', 'brush',)
+
+admin.site.register(Language, AdminLanguage)
