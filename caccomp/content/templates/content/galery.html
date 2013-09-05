@@ -1,0 +1,100 @@
+{% extends "content/base.html" %}
+
+{% block scriptstyle %}{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+  <div class="span4">
+    <a class="btn btn-inverse" style="width:299px">Galerias</a>
+    <table class="table" style="margin: 0px 0px 0px 0px;">
+    <!-- Lista de galerias -->
+    {% for galery in galerys %}  
+      <tr>
+        <td>
+          <div class="row-fluid">
+            <div class="span6">
+              <img src="{{ MEDIA_URL }}{{ galery.get_image.image }}" class="img-rounded" alt="">
+            </div>
+            <div class="span6">
+              <table class="table" style="margin: 0px 0px 0px 0px;">
+                <tr style="margin: 0px 0px 0px 0px;">
+                  <td>
+                    <a href="?infocus={{ galery.pk }}"><h5 style="margin: 0px 0px 0px 0px;">{{ galery.post.title }}</h5></a>
+                    <h6 style="margin: 0px 0px 0px 0px;">Posted by {{ galery.post.academic.user.first_name }} in {{ galery.post.datepost }}<h6>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a class="btn btn-mini btn-primary" href="?infocus={{ galery.pk }}"><i class="icon-picture icon-white"></i> Galeria</a>
+                    <a class="btn btn-mini btn-success" href="/content/articles/{{ galery.post.pk }}/"><i class=" icon-plus icon-white"></i> INFO</a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </td>
+      </tr>
+    {% endfor %}
+    <!-- Fim da lista de galerias -->
+    <!-- ############ MAIS GALERIAS ################# -->
+      <tr>
+        <td>
+          <div class="row-fluid">
+            <div class="span5 offset7">
+              <div class="pagination">
+                <span class="step-links">
+                  <a href="?page={{ 1 }}">Primeira</a>
+                    {% if galerys.has_previous %}
+                        <a href="?page={{ galerys.previous_page_number }}">Anterior</a>
+                    {% endif %}
+
+                    <span class="current">
+                    {{ galerys.number }}/{{ galerys.paginator.num_pages }}
+                  </span>
+
+                    {% if galerys.has_next %}
+                        <a href="?page={{ galerys.next_page_number }}">Próximo</a>
+                    {% endif %}
+                    <a href="?page={{ galerys.paginator.num_pages }}">Última</a>
+                </span>
+            </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="span8">
+    <div id="myCarousel" class="carousel slide">
+      <ol class="carousel-indicators">
+      {% for focus in focus %}
+        <li data-target="#myCarousel" data-slide-to="{{ focus.get_document.pk }}" class="active"></li>
+        {% for item in focus.get_documents_rest %}
+          <li data-target="#myCarousel" data-slide-to="{{ item.pk }}" class=""></li>
+        {% endfor %}
+      {% endfor %}
+      </ol>
+      <div class="carousel-inner">
+      {% for focus in focus %}
+        <div class="active item">
+          <img src="{{ MEDIA_URL }}{{ focus.get_document.image }}" alt="">
+          <div class="carousel-caption">
+            <h4><a href="/content/articles/{{ focus.post.pk }}/">{{ focus.post.title }}</a> - {{ focus.get_document.legend }}</h4>
+          </div>
+        </div>
+        {% for item in focus.get_documents_rest %}
+          <div class="item">
+            <img src="{{ MEDIA_URL }}{{ item.image }}" alt="">
+            <div class="carousel-caption">
+              <h4><a href="/content/articles/{{ focus.post.pk }}/">{{ focus.post.title }}</a> - {{ item.legend }}</h4>
+            </div>
+          </div>
+        {% endfor %}
+      {% endfor %}
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+    </div>
+  </div>
+</div>  
+{% endblock %} 

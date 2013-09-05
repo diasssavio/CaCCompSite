@@ -16,6 +16,7 @@ urlpatterns = patterns('',
                        url(r'^docs/$', 'content.views.listDocs'),
                        url(r'^polls/$', 'content.views.listPolls'),
                        url(r'^events/$', 'content.views.listEvents'),
+                       url(r'^galery/$', 'content.views.listGalery'),
 
                        # Voting Poll
                        url(r'^polls/(?P<id>\d+)/$', 'content.views.votingPoll'),

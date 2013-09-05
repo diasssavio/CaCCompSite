@@ -1,15 +1,47 @@
 {% extends "content/base.html" %}
+
+{% block scriptstyle %}
+    <script>
+        $(function(){
+          window.prettyPrint && prettyPrint();  
+          $.fn.datepicker.dates['en'] = {
+            days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"],
+            daysShort: ["Do", "Se", "Te", "Qa", "Qi", "Sx", "Sa", "Do"],
+            daysMin: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"],
+            months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+            monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
+          }; 
+          $('#dp3').datepicker({
+          });
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
     <div class="row-fluid">
         <div class="span6">
-            <a class="btn btn-inverse" style="width:100%">Events</a>
+            <a class="btn btn-inverse" style="width:100%">Eventos</a>
+            <div class="well" style="width:97%">
+              <div class="input-append date" id="dp3" data-date="{% now "d-m-o" %}" data-date-format="dd-mm-yyyy">
+                <div class="row-fluid">
+                    <div class="span5">
+                        <label>Listar eventos do dia:</label>
+                    </div>
+                    <div class="span5">
+                        <input class="span9" size="15" type="text" value="{% now "d-m-o" %}" readonly="">
+                        <span class="add-on"><i class="icon-th"></i></span>
+                    </div>
+                    <div class="span2"><input type="submit" class="btn" value="Search"></div>
+                </div>
+              </div>
+            </div>
             <table class="table" style="margin: 0px 0px 0px 0px;">
                 <thead>
                     <tr style="margin: 0px 0px 0px 0px;">
                         <th>
                             <div class="row-fluid">
                                 <div class="span4">
-                                    <h4 style="margin: 0px 0px 0px 0px;">Data</h4>
+                                    <h4 style="margin: 0px 0px 0px 0px;">Hora</h4>
                                 </div>
                                 <div class="offset1 span7">
                                     <h4 style="margin: 0px 0px 0px 0px;">Evento</h4>
@@ -30,27 +62,156 @@
                     </tr>
                 {% endfor %}
             </table>
-            <div class="well">
-              <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                <input class="span2" size="16" type="text" value="12-02-2012" readonly="">
-                <span class="add-on"><i class="icon-th"></i></span>
+        </div>
+
+
+
+        <div class="span4 offset2">
+            <a class="btn btn-inverse" style="width:299px">Eventos Próximos</a>
+              <div class="well">
+                  <div id="calendario" data-date-format="dd-mm-yyyy"></div>
+                  <!-- <div id="calendario" data-date="03-05-2013" data-date-format="dd-mm-yyyy"></div> -->
               </div>
-          </div>
+              <script>
+                $(function(){
+                  window.prettyPrint && prettyPrint();  
+                  $.fn.datepicker.dates['en'] = {
+                    days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"],
+                    daysShort: ["Do", "Se", "Te", "Qa", "Qi", "Sx", "Sa", "Do"],
+                    daysMin: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"],
+                    months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+                    monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
+                  }; 
+                  $('#calendario').datepicker('setStartDate', '2013-08-27');
+                });
+              </script>
+              <table class="table table-striped" style="margin: 0px 0px 0px 0px; background-color: #FFFFFF">
+                <thead>
+                  <tr style="margin: 0px 0px 0px 0px;"><th><div class="row-fluid"><div class="span4"><h4 style="margin: 0px 0px 0px 0px;">Data</h4></div><div class="span1"><h4 style="margin: 0px 0px 0px 0px;">&nbsp;&nbsp;</h4></div><div class="span7"><h4 style="margin: 0px 0px 0px 0px;">Evento</h4></div></div></th></tr>
+                </thead>
+                <tbody>
+                  {% if not eventsToday and not eventsTomorrow %}
+                    <tr style="margin: 0px 0px 0px 0px;">
+                      <td>
+                        <h5>Nenhum evento cadastrado para hoje e amanhã.</h5>
+                      </td>
+                    </tr>
+                  {% else %}
+                  <!-- Hoje -->
+                    {% if eventsToday %}
+                      <tr style="margin: 0px 0px 0px 0px;">
+                        <td>
+                          <div class="row-fluid">
+                            <div class="span4">
+                              <h5 style="margin: 0px 0px 0px 0px;">{{ date_today|date:"d \d\e M" }}.</h5>
+                            </div>
+                            <div class="span1">
+                              <h5 style="margin: 0px 0px 0px 0px;">&nbsp;&nbsp;-</h5>
+                            </div>
+                            <div class="span7">
+                              <h5 style="margin: 0px 0px 0px 0px;">Hoje ({{ date_today|date:"l" }})</h5>
+                            </div>
+                          </div>
+                          {% for event in eventsToday %}
+                            <div class="row-fluid">  
+                            {% if event.timebegin == event.timeend %}  
+                              <div class="span12">
+                                <h5 style="margin: 0px 0px 0px 0px;">
+                                  {% if event.post %}
+                                    <a href="/content/articles/{{ event.post.pk }}/"><i class="icon-star"></i> {{ event.name }}</a>
+                                  {% else %}
+                                    {{ event.name }}
+                                  {% endif %}
+                                </h5>
+                              </div>
+                            {% else %}
+                              <div class="span4">
+                                <h6 style="margin: 0px 0px 0px 0px;">{{ event.timebegin }} / {{ event.timeend }}</h6>
+                              </div>
+                              <div class="span1">
+                                <h5 style="margin: 0px 0px 0px 0px;">&nbsp;&nbsp;-</h5>
+                              </div>
+                              <div class="span7">
+                                <h6 style="margin: 0px 0px 0px 0px;">
+                                  {% if event.post %}
+                                    <a href="/content/articles/{{ event.post.pk }}/">{{ event.name }}</a>
+                                  {% else %}
+                                    {{ event.name }}
+                                  {% endif %}
+                                </h6>
+                              </div>
+                            {% endif %}
+                            </div>
+                          {% endfor %}
+                        </td>
+                      </tr>
+                    {% else %}
+                      <tr style="margin: 0px 0px 0px 0px;">
+                        <td>
+                          <h5>Nenhum evento cadastrado para hoje.</h5>
+                        </td>
+                      </tr>
+                    {% endif %}
+                    <!-- Amanhã -->
+                    {% if eventsTomorrow %}
+                      <tr style="margin: 0px 0px 0px 0px;">
+                        <td>
+                          <div class="row-fluid">
+                            <div class="span4">
+                              <h5 style="margin: 0px 0px 0px 0px;">{{ date_tomorrow|date:"d \d\e M" }}.</h5>
+                            </div>
+                            <div class="span1">
+                              <h5 style="margin: 0px 0px 0px 0px;">&nbsp;&nbsp;-</h5>
+                            </div>
+                            <div class="span7">
+                              <h5 style="margin: 0px 0px 0px 0px;">Amanhã ({{ date_tomorrow|date:"l" }})</h5>
+                            </div>
+                          </div>
+                          {% for event in eventsTomorrow %}
+                            <div class="row-fluid">  
+                            {% if event.timebegin == event.timeend %}  
+                              <div class="span12">
+                                <h5 style="margin: 0px 0px 0px 0px;">
+                                  {% if event.post %}
+                                    <a href="/content/articles/{{ event.post.pk }}/"><i class="icon-star"></i> {{ event.name }}</a>
+                                  {% else %}
+                                    {{ event.name }}
+                                  {% endif %}
+                                </h5>
+                              </div>
+                            {% else %}
+                              <div class="span4">
+                                <h6 style="margin: 0px 0px 0px 0px;">{{ event.timebegin }} / {{ event.timeend }}</h6>
+                              </div>
+                              <div class="span1">
+                                <h5 style="margin: 0px 0px 0px 0px;">&nbsp;&nbsp;-</h5>
+                              </div>
+                              <div class="span7">
+                                <h6 style="margin: 0px 0px 0px 0px;">
+                                  {% if event.post %}
+                                    <a href="/content/articles/{{ event.post.pk }}/">{{ event.name }}</a>
+                                  {% else %}
+                                    {{ event.name }}
+                                  {% endif %}
+                                </h6>
+                              </div>
+                            {% endif %}
+                            </div>  
+                          {% endfor %}
+                        </td>
+                      </tr>
+                    {% else %}
+                      <tr style="margin: 0px 0px 0px 0px;">
+                        <td>
+                          <h5>Nenhum evento cadastrado para amanhã.</h5>
+                        </td>
+                      </tr>
+                    {% endif %}
+                  {% endif %} 
+                </tbody>
+              </table>
         </div>
     </div>
 
-    <script>
-                    $(function(){
-                      window.prettyPrint && prettyPrint();  
-                      $.fn.datepicker.dates['en'] = {
-                        days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"],
-                        daysShort: ["Do", "Se", "Te", "Qa", "Qi", "Sx", "Sa", "Do"],
-                        daysMin: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"],
-                        months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
-                        monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
-                      }; 
-                      $('#dp3').datepicker({
-                      });
-                    });
-                  </script>
+    
 {% endblock %}

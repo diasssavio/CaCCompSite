@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
-from models import Academic, Post, Document, Poll, Alternative, Vote, Events
+from models import Academic, Post, Galery, Document, Poll, Alternative, Vote, Events
 from forms import FormUser, FormAcademic, FormDocument, FormPost, FormGalery, FormCategory, VoteForm
 
 from datetime import datetime, date
@@ -59,8 +59,26 @@ def index(request):
         poll = None
         voteForm = None
 
+    # EVENTS    
+    try:
+        eventsToday = Events.objects.filter(dateevent=date.today()).order_by('-dateevent').order_by('timebegin')
+    except:
+        eventsToday = None
+    try:
+        # eventsTomorrow = Events.objects.filter(dateevent=date.today()).order_by('-dateevent').order_by('timebegin')
+        eventsTomorrow = Events.objects.filter(dateevent=date.fromordinal(date.today().toordinal()+1)).order_by('-dateevent').order_by('timebegin')
+    except:
+        eventsTomorrow = None
+
+
+    # GALERYS
+    try:
+        galerys = Galery.objects.order_by('-pk')[:4]
+    except:
+        galerys = None
+
     data = {'ccompNews': ccompNews, 'uftNews': uftNews, 'tips': tips, 'docs': docs, 'poll': poll, 'voteForm': voteForm,
-            'voted': voted}
+            'voted': voted, 'eventsToday': eventsToday, 'eventsTomorrow': eventsTomorrow, 'date_today': eventsToday[0].dateevent, 'date_tomorrow': eventsTomorrow[0].dateevent, 'galerys': galerys, }
 
     return render_to_response('content/home.html', data, context_instance=RequestContext(request))
 
@@ -258,6 +276,32 @@ def votingPoll(request, id):
     return render_to_response('content/polls.html', {'voting': voting}, context_instance=RequestContext(request))
     pass
 
+def listGalery(request):
+    galery_list = Galery.objects.order_by('-pk')
+
+    galerysPaginator = Paginator(galery_list, 4)
+    page = request.GET.get('page')
+    try:
+        galerys = galerysPaginator.page(page)
+    except PageNotAnInteger:
+        galerys = galerysPaginator.page(1)
+    except EmptyPage:
+        galerys = galerysPaginator.page(galerysPaginator.num_pages)
+
+    galery_list = Galery.objects.order_by('pk')
+
+    galeryPaginator = Paginator(galery_list, 1)
+    page = request.GET.get('infocus')
+    try:
+        focus = galeryPaginator.page(page)
+    except PageNotAnInteger:
+        focus = galeryPaginator.page(1)
+    except EmptyPage:
+        focus = galeryPaginator.page(galeryPaginator.num_pages)
+
+    return render_to_response('content/galery.html', {'galerys': galerys, 'focus': focus},
+                              context_instance=RequestContext(request))
+
 def listEvents(request):
     #lista de eventos de hoje
     events_list_today = Events.objects.filter(dateevent__gte=date.today()).order_by('-dateevent').order_by('timebegin')
@@ -267,4 +311,18 @@ def listEvents(request):
     # data = {'today': events_list_today, 'tomorrow': events_list_tomorrow}
     # return render_to_response('content/events.html', data, context_instance=RequestContext(request))
 
-    return render_to_response('content/events.html', {'events_list_today': events_list_today}, context_instance=RequestContext(request))
+
+    # EVENTS    
+    try:
+        eventsToday = Events.objects.filter(dateevent=date.today()).order_by('-dateevent').order_by('timebegin')
+    except:
+        eventsToday = None
+    try:
+        # eventsTomorrow = Events.objects.filter(dateevent=date.today()).order_by('-dateevent').order_by('timebegin')
+        eventsTomorrow = Events.objects.filter(dateevent=date.fromordinal(date.today().toordinal()+1)).order_by('-dateevent').order_by('timebegin')
+    except:
+        eventsTomorrow = None
+
+    data = {'eventsToday': eventsToday, 'eventsTomorrow': eventsTomorrow, 'date_today': eventsToday[0].dateevent, 'date_tomorrow': eventsTomorrow[0].dateevent, }
+
+    return render_to_response('content/events.html', data, context_instance=RequestContext(request))

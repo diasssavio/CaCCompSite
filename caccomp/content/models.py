@@ -86,6 +86,18 @@ class Galery(models.Model):
 
     post = models.OneToOneField(Post, verbose_name='Postagem')
 
+    def get_document(self):
+        return Document.objects.filter(galery=self)[0]
+
+    def get_documents_rest(self):
+        return Document.objects.filter(galery=self)[1:]
+
+    def get_documents(self):
+        return Document.objects.filter(galery=self)
+
+    def get_image(self):
+        return Document.objects.filter(galery=self).exclude(image='')[0]
+
     class Meta:
         verbose_name = 'Galeria'
 
@@ -187,10 +199,10 @@ class Events(models.Model):
     timebegin = models.TimeField(verbose_name='Hora de abertura')
     timeend = models.TimeField(verbose_name='Hora de fechamento')
     academic = models.ForeignKey(Academic, verbose_name='Acadêmico')
-    post = models.ForeignKey(Post, verbose_name='Acadêmico', null=True, default=None, blank=True)
+    post = models.ForeignKey(Post, verbose_name='Post', null=True, default=None, blank=True)
 
     def __unicode__(self):
         return '%s' % (self.name )
 
     class Meta:
-        verbose_name = 'Eventos'
+        verbose_name = 'Evento'
